@@ -1,0 +1,74 @@
+.contact-section {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+  text-align: center;
+
+  h2 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: #333;
+  }
+
+  form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      color: #555;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box; /* Include padding and border in element's total width and height */
+      font-size: 1rem;
+
+      &:focus {
+        outline: none;
+        border-color: var(--bright-blue); // Example: using a CSS variable defined elsewhere
+        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); // Example focus style
+      }
+    }
+
+    textarea {
+      resize: vertical;
+    }
+  }
+
+  .submit-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--bright-blue); // Example: using a CSS variable
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: color-mix(in srgb, var(--bright-blue) 85%, black); // Darken the button on hover
+    }
+
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  }
+} 

@@ -22,10 +22,11 @@ export class HeroComponent implements OnInit, OnDestroy {
   
   // Configure slideshow settings
   readonly slideshowDelay = 5000; // 5 seconds
-  readonly fadeTransitionTime = 500; // 0.5 seconds
+  readonly slideTransitionTime = 800; // 0.8 seconds
   
   // For managing animation states
   isFading = signal<boolean>(false);
+  nextImage = signal<HeroImage | null>(null); // Store the next image to preload
   
   constructor(@Inject(PLATFORM_ID) platformId: Object) {
     this.isBrowser = isPlatformBrowser(platformId);
@@ -59,18 +60,40 @@ export class HeroComponent implements OnInit, OnDestroy {
   private startSlideshow(): void {
     if (!this.isBrowser) return;
     
+    // Pre-calculate next image for smoother transitions
+    const preloadNextImage = () => {
+      // Get the next image that will be shown
+      const currentIndex = this.slideshowService.activeIndex();
+      const images = this.slideshowService.images();
+      const nextIndex = (currentIndex + 1) % images.length;
+      this.nextImage.set(images[nextIndex]);
+      
+      // Preload the image
+      if (this.isBrowser && this.nextImage()) {
+        const img = new Image();
+        img.src = this.nextImage()!.url;
+      }
+    };
+    
+    // Initial preload of the next image
+    preloadNextImage();
+    
     this.slideshowInterval = window.setInterval(() => {
+      // Preload the next image before starting transition
+      preloadNextImage();
+      
+      // Start slide transition
       this.isFading.set(true);
       
-      // Wait for fadeout animation
+      // Wait for slide-out animation to complete
       setTimeout(() => {
         // Advance to next image
         this.slideshowService.nextImage();
         this.currentImage.set(this.slideshowService.getCurrentImage());
         
-        // Reset fade state
+        // Reset slide state
         this.isFading.set(false);
-      }, this.fadeTransitionTime);
+      }, this.slideTransitionTime);
     }, this.slideshowDelay);
   }
   

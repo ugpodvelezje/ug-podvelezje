@@ -11,7 +11,7 @@
   transition: all abstracts.$transition-medium;
   
   // Default state - consistent background across all pages
-  background-color: rgba(abstracts.$primary-color, 0.8);
+  background-color: rgba(4, 60, 51, 0.95); // #043c33 with slight transparency
   backdrop-filter: blur(8px);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   
@@ -21,6 +21,7 @@
     height: 100%;
     margin: 0 auto;
     @include abstracts.flex(row, space-between, center);
+    position: relative;
   }
   
   // Logo styling
@@ -52,33 +53,75 @@
     
     // Show when mobile menu is open
     .navbar--mobile-open & {
-      display: block;
-      position: absolute;
+      display: flex;
+      justify-content: center;
+      position: fixed;
       top: 70px;
       left: 0;
       width: 100%;
+      height: calc(100vh - 70px);
       background-color: abstracts.$primary-color;
-      padding: abstracts.$spacing-md 0;
+      padding: abstracts.$spacing-xl 0;
       @include abstracts.shadow-md;
+      animation: slideIn 0.3s ease-out forwards;
+      
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
     }
   }
   
   &__nav-list {
     @include abstracts.flex(row, flex-end, center);
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
     
     // Stack vertically on mobile
     .navbar--mobile-open & {
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      gap: abstracts.$spacing-xl;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
     }
   }
   
   &__nav-item {
     margin: 0 abstracts.$spacing-md;
+    display: inline-block;
     
-    // Add spacing on mobile
+    // Add spacing and animation on mobile
     .navbar--mobile-open & {
-      margin: abstracts.$spacing-sm 0;
+      margin: abstracts.$spacing-md 0;
+      opacity: 0;
+      animation: fadeIn 0.5s ease-out forwards;
+      
+      @for $i from 1 through 4 {
+        &:nth-child(#{$i}) {
+          animation-delay: #{$i * 0.1}s;
+        }
+      }
+      
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
     }
   }
   
@@ -88,80 +131,112 @@
     font-weight: 600;
     padding: abstracts.$spacing-xs abstracts.$spacing-sm;
     position: relative;
-    transition: color abstracts.$transition-medium;
+    transition: all abstracts.$transition-medium;
     letter-spacing: 0.5px;
-    
-    // Hover effect
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background-color: abstracts.$secondary-color;
-      transition: width abstracts.$transition-medium;
-    }
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
     
     &:hover {
       color: abstracts.$secondary-color;
-    }
-    
-    &:hover::after,
-    &--active::after {
-      width: 100%;
     }
     
     // Active state
     &--active {
       font-weight: 700;
       color: abstracts.$secondary-color;
+      border-bottom: 2px solid abstracts.$secondary-color;
+      padding-bottom: 2px;
     }
     
     // Mobile styles
     .navbar--mobile-open & {
-      font-size: abstracts.$font-size-lg;
-      padding: abstracts.$spacing-sm;
+      font-size: calc(abstracts.$font-size-lg * 1.2);
+      padding: abstracts.$spacing-md abstracts.$spacing-xl;
+      display: block;
+      width: 100%;
+      text-align: center;
+      
+      // Active state on mobile
+      &--active {
+        border-bottom: none;
+        background-color: rgba(abstracts.$secondary-color, 0.2);
+        border-radius: abstracts.$border-radius-sm;
+      }
     }
   }
   
   // Mobile menu toggle button
   &__mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 40px;
     height: 40px;
-    @include abstracts.flex(column, space-between, center);
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
     z-index: abstracts.$z-index-navbar + 10;
-    background-color: rgba(abstracts.$secondary-color, 0.2);
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid abstracts.$secondary-color;
-    margin-right: 10px;
     
     // Hide on desktop
     @include abstracts.respond-to(lg) {
       display: none;
     }
+
+    &-wrapper {
+      position: relative;
+      width: 30px;
+      height: 20px;
+    }
     
     // Hamburger bars
     &-bar {
-      width: 90%;
-      height: 3px;
-      background-color: abstracts.$light-color;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #DFD4B8;
       border-radius: abstracts.$border-radius-sm;
-      transition: transform abstracts.$transition-medium, opacity abstracts.$transition-medium;
+      transition: transform 0.3s ease,
+                  opacity 0.2s ease;
       
-      // Transformed state when menu is open
-      .navbar--mobile-open & {
+      &:nth-child(1) {
+        top: 0;
+        transform-origin: top left;
+      }
+      
+      &:nth-child(2) {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      
+      &:nth-child(3) {
+        bottom: 0;
+        transform-origin: bottom left;
+      }
+    }
+    
+    // Hover state
+    &:hover .navbar__mobile-toggle-bar {
+      background-color: lighten(#DFD4B8, 10%);
+    }
+    
+    // Open state animations
+    &--open {
+      .navbar__mobile-toggle-bar {
         &:nth-child(1) {
-          transform: translateY(10px) rotate(45deg);
+          transform: rotate(45deg);
+          width: 120%;
         }
         
         &:nth-child(2) {
           opacity: 0;
+          transform: translateX(-10px);
         }
         
         &:nth-child(3) {
-          transform: translateY(-10px) rotate(-45deg);
+          transform: rotate(-45deg);
+          width: 120%;
         }
       }
     }
@@ -169,7 +244,11 @@
   
   // When mobile menu is open
   &--mobile-open {
-    background-color: abstracts.$primary-color;
-    @include abstracts.shadow-md;
+    background-color: rgba(4, 60, 51, 0.95);
+    
+    .navbar__nav {
+      background-color: rgba(4, 60, 51, 0.95);
+      backdrop-filter: blur(8px);
+    }
   }
 }
