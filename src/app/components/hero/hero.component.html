@@ -1,7 +1,8 @@
 <section class="hero">
   <div class="hero__background" 
        [ngClass]="{'hero__background--fading': isFading()}"
-       [style.backgroundImage]="'url(' + currentImage().url + ')'">
+       [style.backgroundImage]="'url(' + currentImage().url + ')'"
+       [style.--next-image]="nextImage() ? 'url(' + nextImage()?.url + ')' : 'none'">
   </div>
   
   <div class="hero__content">

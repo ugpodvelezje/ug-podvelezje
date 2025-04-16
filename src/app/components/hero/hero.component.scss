@@ -2,13 +2,12 @@
 
 .hero {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   overflow: hidden;
   margin: 0;
   padding: 0;
-  left: 0;
-  top: 0;
+  z-index: 0;
   
   // Background with image
   &__background {
@@ -19,8 +18,10 @@
     height: 100%;
     background-size: cover;
     background-position: center;
-    transition: opacity abstracts.$transition-slow;
+    transition: opacity 0.8s ease-in-out;
     z-index: 1;
+    margin: 0;
+    padding: 0;
     
     // Dark overlay over image
     &::after {
@@ -34,9 +35,27 @@
       z-index: 2;
     }
     
-    // Fading animation
-    &--fading {
+    // Create a second background element for fade transition
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-image: var(--next-image);
       opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      z-index: 1;
+    }
+    
+    // Fade transition
+    &--fading {
+      &::before {
+        opacity: 1;
+      }
     }
   }
   
@@ -51,6 +70,7 @@
     justify-content: center;
     align-items: center;
     padding: 0;
+    margin-top: 70px; // Offset for navbar
   }
   
   &__content-wrapper {
@@ -161,10 +181,30 @@
     letter-spacing: 1px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
     font-size: abstracts.$font-size-md;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: all 0.4s ease;
+    }
     
     &:hover {
       transform: translateY(-2px);
       box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
+      background-color: #043c33; /* Green color on hover */
+      
+      &::before {
+        left: 100%;
+      }
     }
     
     &.bounce {
