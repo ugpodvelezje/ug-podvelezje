@@ -1,0 +1,22 @@
+@use '../../../styles/abstracts' as abstracts;
+
+.home-page {
+  width: 100%;
+  overflow-x: hidden;
+  
+  // Add spacing between sections
+  section {
+    scroll-margin-top: 70px; // Account for fixed navbar height
+  }
+  
+  .about {
+    padding-top: abstracts.$spacing-xxl * 2;
+    padding-bottom: abstracts.$spacing-xxl * 2;
+    background-color: abstracts.$light-color;
+  }
+}
+
+// Import About section styles but with overrides
+.about {
+  @import '../about/about.component.scss';
+}

@@ -1,0 +1,100 @@
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mix;
+@use 'sass:color';
+
+// Main typography styles
+body {
+  @include mix.font-primary;
+  color: vars.$dark-color;
+  font-size: vars.$font-size-md;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @include mix.font-secondary;
+  margin-bottom: vars.$spacing-md;
+  line-height: 1.2;
+  color: vars.$primary-color;
+}
+
+h1 {
+  font-size: vars.$font-size-xxl;
+  margin-bottom: vars.$spacing-lg;
+  
+  @include mix.respond-to(md) {
+    font-size: vars.$font-size-hero;
+  }
+}
+
+h2 {
+  font-size: vars.$font-size-xl;
+  
+  @include mix.respond-to(md) {
+    font-size: vars.$font-size-xxl;
+  }
+}
+
+h3 {
+  font-size: vars.$font-size-lg;
+  
+  @include mix.respond-to(md) {
+    font-size: vars.$font-size-xl;
+  }
+}
+
+h4 {
+  font-size: vars.$font-size-md;
+  
+  @include mix.respond-to(md) {
+    font-size: vars.$font-size-lg;
+  }
+}
+
+p {
+  margin-bottom: vars.$spacing-md;
+}
+
+a {
+  color: vars.$primary-color;
+  transition: color vars.$transition-fast;
+  
+  &:hover {
+    color: color.adjust(vars.$primary-color, $lightness: 15%);
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: vars.$primary-color;
+}
+
+.text-secondary {
+  color: vars.$secondary-color;
+}
+
+.text-light {
+  color: vars.$light-color;
+}
+
+.text-dark {
+  color: vars.$dark-color;
+}
+
+.font-sm {
+  font-size: vars.$font-size-sm;
+}
+
+.font-lg {
+  font-size: vars.$font-size-lg;
+}
+
+.font-weight-bold {
+  font-weight: 700;
+}
+
+.font-weight-light {
+  font-weight: 300;
+} 
