@@ -1,0 +1,44 @@
+<header class="navbar" [ngClass]="{'navbar--mobile-open': isMobileMenuOpen()}">
+  <div class="navbar__container">
+    <!-- Logo -->
+    <a href="/" class="navbar__logo">
+      <img src="assets/images/logo.png" alt="UG Podvelezje Logo" class="navbar__logo-image">
+    </a>
+    
+    <!-- Desktop navigation -->
+    <nav class="navbar__nav">
+      <ul class="navbar__nav-list">
+        <li class="navbar__nav-item">
+          <a routerLink="/" routerLinkActive="navbar__nav-link--active" [routerLinkActiveOptions]="{exact: true}" class="navbar__nav-link" (click)="closeMobileMenu()">
+            Početna
+          </a>
+        </li>
+        <li class="navbar__nav-item">
+          <a routerLink="/" fragment="about" class="navbar__nav-link" (click)="navigateToAbout()">
+            O nama
+          </a>
+        </li>
+        <li class="navbar__nav-item">
+          <a routerLink="/news" routerLinkActive="navbar__nav-link--active" class="navbar__nav-link" (click)="closeMobileMenu()">
+            Novosti
+          </a>
+        </li>
+        <li class="navbar__nav-item">
+          <a routerLink="/contact" routerLinkActive="navbar__nav-link--active" class="navbar__nav-link" (click)="closeMobileMenu()">
+            Kontakt
+          </a>
+        </li>
+      </ul>
+    </nav>
+    
+    <!-- Mobile menu toggle button -->
+    <button 
+      class="navbar__mobile-toggle" 
+      aria-label="Toggle menu"
+      (click)="toggleMobileMenu()">
+      <span class="navbar__mobile-bar"></span>
+      <span class="navbar__mobile-bar"></span>
+      <span class="navbar__mobile-bar"></span>
+    </button>
+  </div>
+</header>

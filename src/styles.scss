@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+// Abstracts
+@use 'styles/abstracts' as *;
+
+// Base styles
+@use 'styles/base' as *;
+
+// Import Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+// Components styles will be imported in their respective component SCSS files

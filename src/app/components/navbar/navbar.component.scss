@@ -1,0 +1,175 @@
+@use '../../../styles/abstracts' as abstracts;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  padding: 0 abstracts.$spacing-md;
+  z-index: abstracts.$z-index-navbar;
+  transition: all abstracts.$transition-medium;
+  
+  // Default state - consistent background across all pages
+  background-color: rgba(abstracts.$primary-color, 0.8);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  
+  // Container for layout
+  &__container {
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    @include abstracts.flex(row, space-between, center);
+  }
+  
+  // Logo styling
+  &__logo {
+    display: block;
+    z-index: abstracts.$z-index-navbar + 10;
+    height: 50px;
+    
+    &-image {
+      height: 100%;
+      width: auto;
+      object-fit: contain;
+    }
+  }
+  
+  // When scrolled or mobile menu is open
+  &--scrolled, &--mobile-open {
+    background-color: abstracts.$primary-color;
+    @include abstracts.shadow-md;
+  }
+  
+  // Navigation
+  &__nav {
+    display: none;
+    
+    @include abstracts.respond-to(lg) {
+      display: block;
+    }
+    
+    // Show when mobile menu is open
+    .navbar--mobile-open & {
+      display: block;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      background-color: abstracts.$primary-color;
+      padding: abstracts.$spacing-md 0;
+      @include abstracts.shadow-md;
+    }
+  }
+  
+  &__nav-list {
+    @include abstracts.flex(row, flex-end, center);
+    
+    // Stack vertically on mobile
+    .navbar--mobile-open & {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  &__nav-item {
+    margin: 0 abstracts.$spacing-md;
+    
+    // Add spacing on mobile
+    .navbar--mobile-open & {
+      margin: abstracts.$spacing-sm 0;
+    }
+  }
+  
+  &__nav-link {
+    color: abstracts.$light-color;
+    font-size: abstracts.$font-size-md;
+    font-weight: 600;
+    padding: abstracts.$spacing-xs abstracts.$spacing-sm;
+    position: relative;
+    transition: color abstracts.$transition-medium;
+    letter-spacing: 0.5px;
+    
+    // Hover effect
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: abstracts.$secondary-color;
+      transition: width abstracts.$transition-medium;
+    }
+    
+    &:hover {
+      color: abstracts.$secondary-color;
+    }
+    
+    &:hover::after,
+    &--active::after {
+      width: 100%;
+    }
+    
+    // Active state
+    &--active {
+      font-weight: 700;
+      color: abstracts.$secondary-color;
+    }
+    
+    // Mobile styles
+    .navbar--mobile-open & {
+      font-size: abstracts.$font-size-lg;
+      padding: abstracts.$spacing-sm;
+    }
+  }
+  
+  // Mobile menu toggle button
+  &__mobile-toggle {
+    width: 40px;
+    height: 40px;
+    @include abstracts.flex(column, space-between, center);
+    z-index: abstracts.$z-index-navbar + 10;
+    background-color: rgba(abstracts.$secondary-color, 0.2);
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid abstracts.$secondary-color;
+    margin-right: 10px;
+    
+    // Hide on desktop
+    @include abstracts.respond-to(lg) {
+      display: none;
+    }
+    
+    // Hamburger bars
+    &-bar {
+      width: 90%;
+      height: 3px;
+      background-color: abstracts.$light-color;
+      border-radius: abstracts.$border-radius-sm;
+      transition: transform abstracts.$transition-medium, opacity abstracts.$transition-medium;
+      
+      // Transformed state when menu is open
+      .navbar--mobile-open & {
+        &:nth-child(1) {
+          transform: translateY(10px) rotate(45deg);
+        }
+        
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        
+        &:nth-child(3) {
+          transform: translateY(-10px) rotate(-45deg);
+        }
+      }
+    }
+  }
+  
+  // When mobile menu is open
+  &--mobile-open {
+    background-color: abstracts.$primary-color;
+    @include abstracts.shadow-md;
+  }
+}
