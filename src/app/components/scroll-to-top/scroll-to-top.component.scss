@@ -1,0 +1,43 @@
+@use '../../../styles/abstracts' as abstracts;
+
+.scroll-to-top {
+  position: fixed;
+  bottom: abstracts.$spacing-lg;
+  right: abstracts.$spacing-lg;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: rgba(abstracts.$primary-color, 0.9);
+  color: abstracts.$secondary-color;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: abstracts.$z-index-navbar - 1;
+  backdrop-filter: blur(4px);
+  @include abstracts.shadow-md;
+  transition: all abstracts.$transition-medium;
+
+  i {
+    font-size: abstracts.$font-size-lg;
+    transition: transform abstracts.$transition-medium;
+  }
+
+  &:hover {
+    background-color: abstracts.$primary-color;
+    transform: translateY(-3px);
+    @include abstracts.shadow-lg;
+
+    i {
+      transform: translateY(-2px);
+    }
+  }
+
+  @include abstracts.respond-to(md) {
+    width: 50px;
+    height: 50px;
+    bottom: abstracts.$spacing-xl;
+    right: abstracts.$spacing-xl;
+  }
+} 
