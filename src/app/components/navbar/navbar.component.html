@@ -48,11 +48,14 @@
     <!-- Mobile menu toggle button -->
     <button 
       class="navbar__mobile-toggle" 
+      [class.navbar__mobile-toggle--open]="isMobileMenuOpen()"
       aria-label="Toggle menu"
       (click)="toggleMobileMenu()">
-      <span class="navbar__mobile-bar"></span>
-      <span class="navbar__mobile-bar"></span>
-      <span class="navbar__mobile-bar"></span>
+      <div class="navbar__mobile-toggle-wrapper">
+        <span class="navbar__mobile-bar"></span>
+        <span class="navbar__mobile-bar"></span>
+        <span class="navbar__mobile-bar"></span>
+      </div>
     </button>
   </div>
 </header>
