@@ -1,59 +1,81 @@
-# UgPodvelezje
+# UG Podvelezje
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.1.
+Modern, mobile-first responsive website for the citizens' association "UG Podvelezje" built with Angular and SCSS.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- Server-Side Rendering (SSR) using Angular Universal
+- Mobile-first responsive design
+- Component-based architecture
+- Optimized for performance and SEO
 
-```bash
-ng serve
-```
+## Design Tokens
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- **Primary Color**: #043C2F
+- **Secondary Color**: #DFD5BA
 
-## Code scaffolding
+## Development Setup
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Prerequisites
 
-```bash
-ng generate component component-name
-```
+- Node.js (v18 or later)
+- npm (v9 or later)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+### Installation
 
 ```bash
-ng build
+# Clone the repository
+git clone <repository-url>
+cd ug-podvelezje
+
+# Install dependencies
+npm install
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Development Server
 
 ```bash
-ng test
+# Run the development server
+npm run dev
 ```
 
-## Running end-to-end tests
+Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-For end-to-end (e2e) testing, run:
+### Build
 
 ```bash
-ng e2e
+# Build for production with SSR
+npm run build:ssr
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### Running in Production Mode
 
-## Additional Resources
+```bash
+# Start the SSR server
+npm run serve:ssr
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Project Structure
+
+```
+├── src/
+│   ├── app/
+│   │   ├── components/        # Reusable components
+│   │   ├── pages/             # Page components
+│   │   ├── services/          # Services
+│   │   ├── assets/            # Static assets
+│   │   ├── styles/            # Global styles
+│   │   │   ├── abstracts/    # Variables, mixins
+│   │   │   ├── base/         # Base styles
+│   │   │   ├── components/   # Component styles
+```
+
+## Features Implemented
+
+- Hero section with image slideshow
+- Responsive navigation with mobile menu
+- Mobile-first, responsive layout
+
+## License
+
+This project is licensed under the MIT License.
