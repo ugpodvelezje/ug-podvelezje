@@ -21,6 +21,7 @@
     height: 100%;
     margin: 0 auto;
     @include abstracts.flex(row, space-between, center);
+    position: relative;
   }
   
   // Logo styling
@@ -52,14 +53,28 @@
     
     // Show when mobile menu is open
     .navbar--mobile-open & {
-      display: block;
-      position: absolute;
+      display: flex;
+      justify-content: center;
+      position: fixed;
       top: 70px;
       left: 0;
       width: 100%;
+      height: calc(100vh - 70px);
       background-color: abstracts.$primary-color;
-      padding: abstracts.$spacing-md 0;
+      padding: abstracts.$spacing-xl 0;
       @include abstracts.shadow-md;
+      animation: slideIn 0.3s ease-out forwards;
+      
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
     }
   }
   
@@ -73,6 +88,11 @@
     .navbar--mobile-open & {
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      gap: abstracts.$spacing-xl;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
     }
   }
   
@@ -80,9 +100,28 @@
     margin: 0 abstracts.$spacing-md;
     display: inline-block;
     
-    // Add spacing on mobile
+    // Add spacing and animation on mobile
     .navbar--mobile-open & {
-      margin: abstracts.$spacing-sm 0;
+      margin: abstracts.$spacing-md 0;
+      opacity: 0;
+      animation: fadeIn 0.5s ease-out forwards;
+      
+      @for $i from 1 through 4 {
+        &:nth-child(#{$i}) {
+          animation-delay: #{$i * 0.1}s;
+        }
+      }
+      
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
     }
   }
   
@@ -101,7 +140,7 @@
       color: abstracts.$secondary-color;
     }
     
-    // Active state - more distinct styling
+    // Active state
     &--active {
       font-weight: 700;
       color: abstracts.$secondary-color;
@@ -111,8 +150,11 @@
     
     // Mobile styles
     .navbar--mobile-open & {
-      font-size: abstracts.$font-size-lg;
-      padding: abstracts.$spacing-sm;
+      font-size: calc(abstracts.$font-size-lg * 1.2);
+      padding: abstracts.$spacing-md abstracts.$spacing-xl;
+      display: block;
+      width: 100%;
+      text-align: center;
       
       // Active state on mobile
       &--active {
@@ -125,14 +167,16 @@
   
   // Mobile menu toggle button
   &__mobile-toggle {
-    width: 40px;
-    height: 40px;
-    @include abstracts.flex(column, space-between, center);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
     z-index: abstracts.$z-index-navbar + 10;
-    background-color: rgba(abstracts.$secondary-color, 0.2);
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid abstracts.$secondary-color;
     margin-right: 10px;
     
     // Hide on desktop
@@ -142,16 +186,18 @@
     
     // Hamburger bars
     &-bar {
-      width: 90%;
-      height: 3px;
+      width: 100%;
+      height: 2px;
       background-color: abstracts.$light-color;
       border-radius: abstracts.$border-radius-sm;
-      transition: transform abstracts.$transition-medium, opacity abstracts.$transition-medium;
+      transition: transform 0.3s ease-in-out,
+                  opacity 0.2s ease-in-out;
+      transform-origin: center;
       
       // Transformed state when menu is open
       .navbar--mobile-open & {
         &:nth-child(1) {
-          transform: translateY(10px) rotate(45deg);
+          transform: translateY(9px) rotate(45deg);
         }
         
         &:nth-child(2) {
@@ -159,15 +205,23 @@
         }
         
         &:nth-child(3) {
-          transform: translateY(-10px) rotate(-45deg);
+          transform: translateY(-9px) rotate(-45deg);
         }
       }
+    }
+    
+    &:hover .navbar__mobile-toggle-bar {
+      background-color: abstracts.$secondary-color;
     }
   }
   
   // When mobile menu is open
   &--mobile-open {
-    background-color: #043c33; // Solid color when menu is open
-    @include abstracts.shadow-md;
+    background-color: rgba(4, 60, 51, 0.95);
+    
+    .navbar__nav {
+      background-color: rgba(4, 60, 51, 0.95);
+      backdrop-filter: blur(8px);
+    }
   }
 }
