@@ -258,12 +258,35 @@
     padding: 2rem;
     text-align: center;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid rgba(4, 60, 51, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 
     &:hover {
       transform: translateY(-5px);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      border-color: rgba(4, 60, 51, 0.3);
+    }
+
+    &:nth-child(1) {
+      border-color: rgba(4, 60, 51, 0.2);
+      &:hover {
+        border-color: rgba(4, 60, 51, 0.4);
+      }
+    }
+
+    &:nth-child(2) {
+      border-color: rgba(223, 212, 184, 0.3);
+      &:hover {
+        border-color: rgba(223, 212, 184, 0.5);
+      }
+    }
+
+    &:nth-child(3) {
+      border-color: rgba(10, 92, 74, 0.2);
+      &:hover {
+        border-color: rgba(10, 92, 74, 0.4);
+      }
     }
 
     .contact-icon {
