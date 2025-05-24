@@ -58,7 +58,7 @@
           box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 
           .icon-wrapper {
-            background-color: var(--primary-color, #4a90e2);
+            background-color: #043c33;
             
             .material-icons {
               color: white;
@@ -71,7 +71,7 @@
           width: 80px;
           height: 80px;
           border-radius: 50%;
-          background-color: rgba(74, 144, 226, 0.1);
+          background-color: rgba(4, 60, 51, 0.1);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -80,7 +80,7 @@
 
           .material-icons {
             font-size: 2.5rem;
-            color: var(--primary-color, #4a90e2);
+            color: #043c33;
             transition: all 0.3s ease;
           }
         }

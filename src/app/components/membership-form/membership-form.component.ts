@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MembershipForm } from '../../interfaces/membership.interface';
 
@@ -14,6 +14,7 @@ export class MembershipFormComponent implements OnInit {
   membershipForm: FormGroup;
   submitted = false;
   formSaved = false;
+  private isBrowser: boolean;
 
   interestOptions = [
     'Razvoj Zajednice',
@@ -24,7 +25,11 @@ export class MembershipFormComponent implements OnInit {
     'Društveni Rad'
   ];
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    @Inject(PLATFORM_ID) platformId: Object
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
     this.membershipForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
@@ -36,16 +41,18 @@ export class MembershipFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Load saved form data from localStorage if exists
-    const savedForm = localStorage.getItem('membershipFormData');
-    if (savedForm) {
-      this.membershipForm.patchValue(JSON.parse(savedForm));
-    }
+    if (this.isBrowser) {
+      // Load saved form data from localStorage if exists
+      const savedForm = localStorage.getItem('membershipFormData');
+      if (savedForm) {
+        this.membershipForm.patchValue(JSON.parse(savedForm));
+      }
 
-    // Save form changes to localStorage
-    this.membershipForm.valueChanges.subscribe(value => {
-      localStorage.setItem('membershipFormData', JSON.stringify(value));
-    });
+      // Save form changes to localStorage
+      this.membershipForm.valueChanges.subscribe(value => {
+        localStorage.setItem('membershipFormData', JSON.stringify(value));
+      });
+    }
   }
 
   onSubmit(): void {
@@ -54,7 +61,9 @@ export class MembershipFormComponent implements OnInit {
     if (this.membershipForm.valid) {
       console.log('Form submitted:', this.membershipForm.value);
       this.formSaved = true;
-      localStorage.removeItem('membershipFormData'); // Clear saved form data
+      if (this.isBrowser) {
+        localStorage.removeItem('membershipFormData'); // Clear saved form data
+      }
       this.membershipForm.reset();
       this.submitted = false;
     }
