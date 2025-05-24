@@ -10,10 +10,6 @@
   </div>
 
   <article class="news-article" *ngIf="!loading && !error && news">
-    <button class="back-button" (click)="goBack()">
-      ← Nazad na Vijesti
-    </button>
-
     <header class="article-header">
       <h1>{{news.title}}</h1>
       <div class="meta">
@@ -46,5 +42,12 @@
         </div>
       </div>
     </footer>
+
+    <nav class="bottom-navigation">
+      <button class="back-button" (click)="goBack()">
+        <i class="fas fa-arrow-left"></i>
+        Nazad na Vijesti
+      </button>
+    </nav>
   </article>
 </div>

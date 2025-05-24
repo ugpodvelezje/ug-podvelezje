@@ -4,7 +4,7 @@
   max-width: $breakpoint-xl;
   margin: 0 auto;
   padding: $spacing-lg;
-  padding-top: calc(#{$spacing-xxl} + 60px);
+  padding-top: calc(#{$spacing-xxl} + 80px);
 
   h2 {
     color: $dark-color;
@@ -154,6 +154,7 @@
 @media (max-width: $breakpoint-md) {
   .news-list-container {
     padding: $spacing-md;
+    padding-top: calc(#{$spacing-lg} + 80px);
 
     .news-header {
       flex-direction: column;

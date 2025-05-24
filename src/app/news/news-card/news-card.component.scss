@@ -9,6 +9,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  margin-top: $spacing-md;
 
   &:hover {
     transform: translateY(-4px);
@@ -22,14 +23,16 @@
   .news-image {
     position: relative;
     width: 100%;
-    height: 200px;
+    height: 300px;
     overflow: hidden;
+    background-color: $gray-color;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform $transition-medium;
+      object-position: center;
+      transition: transform 0.3s ease;
     }
 
     .tags {
@@ -47,6 +50,7 @@
         border-radius: $border-radius-sm;
         font-size: $font-size-sm;
         font-family: $font-family-primary;
+        backdrop-filter: blur(4px);
       }
     }
   }
@@ -106,6 +110,8 @@
 
 @media (max-width: $breakpoint-md) {
   .news-card {
+    margin-top: $spacing-sm;
+    
     .news-image {
       height: 160px;
     }

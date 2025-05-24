@@ -1,10 +1,11 @@
 @import '../../../styles/abstracts/variables';
+@import '../../../styles/abstracts/mixins';
 
 .news-detail-container {
   max-width: 900px;
   margin: 0 auto;
   padding: $spacing-lg;
-  padding-top: calc(#{$spacing-xxl} + 60px);
+  padding-top: calc(#{$spacing-xxl} + 80px);
 
   .loading-spinner {
     display: flex;
@@ -40,73 +41,14 @@
     }
 
     button {
-      padding: $spacing-sm $spacing-lg;
-      background: $primary-color;
-      color: $light-color;
-      border: none;
-      border-radius: $border-radius-md;
-      cursor: pointer;
-      font-family: $font-family-primary;
-      font-size: $font-size-md;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 120px;
-      height: 42px;
-      box-shadow: 0 2px 4px rgba($dark-color, 0.1);
-
-      &:hover {
-        background: darken($primary-color, 10%);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba($dark-color, 0.2);
-      }
-
-      &:active {
-        transform: translateY(0);
-        box-shadow: 0 2px 4px rgba($dark-color, 0.1);
-      }
+      @include modern-button;
     }
   }
 
   .news-article {
-    .back-button {
-      display: inline-flex;
-      align-items: center;
-      padding: $spacing-sm $spacing-lg;
-      background: $primary-color;
-      color: $light-color;
-      border: none;
-      border-radius: $border-radius-md;
-      cursor: pointer;
-      margin-bottom: $spacing-xl;
-      font-family: $font-family-primary;
-      font-size: $font-size-md;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      transition: all 0.3s ease;
-      min-width: 120px;
-      height: 42px;
-      box-shadow: 0 2px 4px rgba($dark-color, 0.1);
-
-      &:hover {
-        background: darken($primary-color, 10%);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba($dark-color, 0.2);
-      }
-
-      &:active {
-        transform: translateY(0);
-        box-shadow: 0 2px 4px rgba($dark-color, 0.1);
-      }
-    }
-
     .article-header {
       margin-bottom: $spacing-xl;
+      padding-top: $spacing-lg;
 
       h1 {
         font-size: $font-size-hero;
@@ -144,11 +86,22 @@
       margin-bottom: $spacing-xl;
       border-radius: $border-radius-md;
       overflow: hidden;
+      width: 100%;
+      height: 400px;
+      position: relative;
+      background-color: $gray-color;
 
       img {
         width: 100%;
-        height: auto;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
         display: block;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.02);
+        }
       }
     }
 
@@ -167,6 +120,7 @@
     .article-footer {
       border-top: 1px solid rgba($dark-color, 0.1);
       padding-top: $spacing-xl;
+      margin-bottom: $spacing-xl;
 
       .share-buttons {
         h3 {
@@ -220,6 +174,19 @@
         }
       }
     }
+
+    .bottom-navigation {
+      display: flex;
+      justify-content: center;
+      margin-top: $spacing-xxl;
+      margin-bottom: 0;
+      padding-top: $spacing-xl;
+      border-top: 1px solid rgba($dark-color, 0.1);
+
+      .back-button {
+        @include modern-button;
+      }
+    }
   }
 }
 
@@ -231,9 +198,12 @@
 @media (max-width: $breakpoint-md) {
   .news-detail-container {
     padding: $spacing-md;
+    padding-top: calc(#{$spacing-lg} + 80px);
 
     .news-article {
       .article-header {
+        padding-top: $spacing-md;
+        
         h1 {
           font-size: $font-size-xxl;
         }

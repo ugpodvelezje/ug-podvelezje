@@ -50,7 +50,7 @@ export class NewsDetailComponent implements OnInit {
   }
 
   formatDate(date: Date): string {
-    return new Date(date).toLocaleDateString('en-US', {
+    return new Date(date).toLocaleDateString('bs', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
