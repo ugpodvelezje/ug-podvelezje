@@ -1,0 +1,96 @@
+<form [formGroup]="membershipForm" (ngSubmit)="onSubmit()" class="membership-form">
+  <div class="form-group">
+    <label for="name">Ime i Prezime *</label>
+    <input 
+      id="name"
+      type="text"
+      formControlName="name"
+      [class.is-invalid]="submitted && f['name'].errors"
+      placeholder="Unesite vaše ime i prezime">
+    <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+      <div *ngIf="f['name'].errors['required']">Ime je obavezno</div>
+      <div *ngIf="f['name'].errors['minlength']">Ime mora imati najmanje 2 karaktera</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email Adresa *</label>
+    <input 
+      id="email"
+      type="email"
+      formControlName="email"
+      [class.is-invalid]="submitted && f['email'].errors"
+      placeholder="Unesite vašu email adresu">
+    <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+      <div *ngIf="f['email'].errors['required']">Email je obavezan</div>
+      <div *ngIf="f['email'].errors['email']">Unesite validnu email adresu</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Broj Telefona *</label>
+    <input 
+      id="phone"
+      type="tel"
+      formControlName="phone"
+      [class.is-invalid]="submitted && f['phone'].errors"
+      placeholder="Unesite vaš broj telefona">
+    <div *ngIf="submitted && f['phone'].errors" class="invalid-feedback">
+      <div *ngIf="f['phone'].errors['required']">Broj telefona je obavezan</div>
+      <div *ngIf="f['phone'].errors['pattern']">Unesite validan broj telefona</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="address">Adresa *</label>
+    <textarea 
+      id="address"
+      formControlName="address"
+      [class.is-invalid]="submitted && f['address'].errors"
+      placeholder="Unesite vašu adresu"></textarea>
+    <div *ngIf="submitted && f['address'].errors" class="invalid-feedback">
+      <div *ngIf="f['address'].errors['required']">Adresa je obavezna</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Područja Interesovanja *</label>
+    <div class="interests-grid">
+      @for (interest of interestOptions; track interest) {
+        <div class="interest-option">
+          <input 
+            type="checkbox"
+            [id]="interest"
+            [checked]="membershipForm.get('interests')?.value.includes(interest)"
+            (change)="toggleInterest(interest)">
+          <label [for]="interest">{{ interest }}</label>
+        </div>
+      }
+    </div>
+    <div *ngIf="submitted && f['interests'].errors" class="invalid-feedback">
+      <div *ngIf="f['interests'].errors['required']">Odaberite barem jedno područje interesovanja</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="motivation">Motivacija za Pristupanje *</label>
+    <textarea 
+      id="motivation"
+      formControlName="motivation"
+      [class.is-invalid]="submitted && f['motivation'].errors"
+      placeholder="Recite nam zašto želite pristupiti našem udruženju (minimum 50 karaktera)"
+      rows="4"></textarea>
+    <div *ngIf="submitted && f['motivation'].errors" class="invalid-feedback">
+      <div *ngIf="f['motivation'].errors['required']">Motivacija je obavezna</div>
+      <div *ngIf="f['motivation'].errors['minlength']">Unesite najmanje 50 karaktera</div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn-submit">Pošalji Prijavu</button>
+  </div>
+
+  <div *ngIf="formSaved" class="success-message">
+    Hvala na prijavi! Kontaktirat ćemo vas uskoro.
+  </div>
+</form>
