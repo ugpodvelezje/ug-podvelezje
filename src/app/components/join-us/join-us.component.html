@@ -1,4 +1,4 @@
-<section class="join-us-section">
+<section class="join-us-section" id="join-us">
   <div class="section-header">
     <h2>Prijatelji Udruženja</h2>
     <p class="section-description">
@@ -18,11 +18,11 @@
       </button>
 
       <div class="carousel-track" [style.transform]="transformValue">
-        @for (partner of partners; track partner) {
+        @for (partner of displayedPartners; track partner.name + $index) {
           <div 
             class="partner-card" 
-            [class.active]="currentSlide === partners.indexOf(partner)"
-            (click)="goToSlide(partners.indexOf(partner))"
+            [class.active]="($index - partners.length) === currentSlide"
+            (click)="goToSlide($index % partners.length)"
             role="button"
             [attr.aria-label]="'View ' + partner.name">
             <img [src]="partner.logo" [alt]="partner.name + ' logo'" class="partner-logo">

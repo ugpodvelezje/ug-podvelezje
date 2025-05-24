@@ -25,6 +25,7 @@ export class JoinUsComponent implements OnInit, OnDestroy {
   public visibleSlides = 3;
   private autoSlideInterval?: number;
   private browserService = inject(BrowserService);
+  private isTransitioning = false;
 
   public benefits: MembershipBenefit[] = [
     {
@@ -59,6 +60,12 @@ export class JoinUsComponent implements OnInit, OnDestroy {
     }
   ];
 
+  // Create a getter for the displayed partners that includes duplicates for infinite scrolling
+  public get displayedPartners(): Partner[] {
+    // Duplicate the partners array to create a seamless infinite scroll effect
+    return [...this.partners, ...this.partners, ...this.partners];
+  }
+
   public partners: Partner[] = [
     {
       name: 'Grad Mostar',
@@ -83,12 +90,13 @@ export class JoinUsComponent implements OnInit, OnDestroy {
   ];
 
   public get totalSlides(): number[] {
-    const total = Math.ceil(this.partners.length / this.visibleSlides);
-    return Array(total).fill(0).map((_, i) => i);
+    return Array(this.partners.length).fill(0).map((_, i) => i);
   }
 
   public get transformValue(): string {
-    return `translateX(-${this.currentSlide * (100 / this.visibleSlides)}%)`;
+    const slideWidth = 100 / this.visibleSlides;
+    const offset = this.partners.length * slideWidth; // One full set of partners
+    return `translateX(-${offset + (this.currentSlide * slideWidth)}%)`;
   }
 
   ngOnInit(): void {
@@ -106,7 +114,6 @@ export class JoinUsComponent implements OnInit, OnDestroy {
 
   private updateVisibleSlides(): void {
     this.visibleSlides = this.browserService.getInnerWidth() < 768 ? 1 : 3;
-    this.currentSlide = 0; // Reset to first slide when changing view
   }
 
   private startAutoSlide(): void {
@@ -119,17 +126,47 @@ export class JoinUsComponent implements OnInit, OnDestroy {
   }
 
   public nextSlide(): void {
-    this.currentSlide = (this.currentSlide + 1) % this.totalSlides.length;
+    if (this.isTransitioning) return;
+    
+    this.isTransitioning = true;
+    this.currentSlide++;
+
+    // If we've reached the end of the middle set, reset to the first set
+    if (this.currentSlide >= this.partners.length) {
+      setTimeout(() => {
+        this.currentSlide = 0;
+        this.isTransitioning = false;
+      }, 500); // Match this with your CSS transition duration
+    } else {
+      setTimeout(() => {
+        this.isTransitioning = false;
+      }, 500);
+    }
+    
+    this.startAutoSlide();
   }
 
   public prevSlide(): void {
-    this.currentSlide = this.currentSlide === 0 
-      ? this.totalSlides.length - 1 
-      : this.currentSlide - 1;
+    if (this.isTransitioning) return;
+    
+    this.isTransitioning = true;
+    this.currentSlide--;
+
+    // If we've reached the start of the middle set, reset to the last set
+    if (this.currentSlide < 0) {
+      this.currentSlide = this.partners.length - 1;
+    }
+    
+    setTimeout(() => {
+      this.isTransitioning = false;
+    }, 500);
+    
+    this.startAutoSlide();
   }
 
   public goToSlide(index: number): void {
+    if (this.isTransitioning) return;
     this.currentSlide = index;
-    this.startAutoSlide(); // Reset the interval
+    this.startAutoSlide();
   }
 }

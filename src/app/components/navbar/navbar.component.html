@@ -50,6 +50,15 @@
             Kontakt
           </a>
         </li>
+        <li class="navbar__nav-item">
+          <a routerLink="/" 
+             fragment="join-us" 
+             [class.navbar__nav-link--active]="isJoinUsActive()"
+             class="navbar__nav-link navbar__nav-link--cta" 
+             (click)="navigateToJoinUs()">
+            Pridruži nam se
+          </a>
+        </li>
       </ul>
     </nav>
     

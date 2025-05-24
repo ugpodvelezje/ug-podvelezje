@@ -40,6 +40,7 @@
     .carousel-track {
       display: flex;
       transition: transform 0.5s ease-in-out;
+      will-change: transform;
     }
 
     .partner-card {
@@ -73,13 +74,13 @@
       }
 
       .partner-logo {
-        width: 180px; // Fixed width
-        height: 120px; // Fixed height
+        width: 180px;
+        height: 120px;
         margin-bottom: 1rem;
         transition: all 0.3s ease;
         filter: grayscale(100%);
-        object-fit: contain; // Maintain aspect ratio
-        background-color: transparent; // Optional: add background
+        object-fit: contain;
+        background-color: transparent;
         display: block;
       }
 
@@ -89,7 +90,7 @@
         color: var(--text-primary, #2c3e50);
         margin: 0;
         font-weight: 600;
-        min-height: 2em; // Ensure consistent height for titles
+        min-height: 2em;
         display: flex;
         align-items: center;
         justify-content: center;

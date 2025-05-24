@@ -61,6 +61,10 @@ export class BrowserService {
     return this.isBrowser ? window.pageYOffset : 0;
   }
 
+  getLocation(): Location | null {
+    return this.isBrowser ? window.location : null;
+  }
+
   setInterval(handler: TimerHandler, timeout?: number): number | undefined {
     if (!this.isBrowser) return undefined;
     return window.setInterval(handler, timeout);
