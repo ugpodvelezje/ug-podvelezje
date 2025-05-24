@@ -1,29 +1,54 @@
 <section class="join-us-section">
   <div class="section-header">
-    <h2>Pridružite Nam Se</h2>
+    <h2>Prijatelji Udruženja</h2>
     <p class="section-description">
-      Postanite dio naše zajednice i pomozite nam da zajedno stvaramo pozitivne promjene.
-      Zajedno možemo postići više i izgraditi bolju budućnost za sve.
+      Zahvaljujemo se našim partnerima koji podržavaju naš rad i pomažu nam u ostvarivanju naših ciljeva.
+      Zajedno gradimo bolju budućnost za našu zajednicu.
     </p>
   </div>
 
-  <div class="benefits-section">
-    <h3>Prednosti Članstva</h3>
-    <div class="benefits-grid">
-      @for (benefit of benefits; track benefit) {
-        <div class="benefit-card">
-          <div class="icon-wrapper">
-            <span class="material-icons">{{ benefit.icon }}</span>
+  <div class="partners-carousel">
+    <div class="carousel-container">
+      <!-- Previous button -->
+      <button 
+        class="carousel-nav carousel-nav--prev" 
+        (click)="prevSlide()"
+        aria-label="Previous slide">
+        <span class="material-icons">chevron_left</span>
+      </button>
+
+      <div class="carousel-track" [style.transform]="transformValue">
+        @for (partner of partners; track partner) {
+          <div 
+            class="partner-card" 
+            [class.active]="currentSlide === partners.indexOf(partner)"
+            (click)="goToSlide(partners.indexOf(partner))"
+            role="button"
+            [attr.aria-label]="'View ' + partner.name">
+            <img [src]="partner.logo" [alt]="partner.name + ' logo'" class="partner-logo">
+            <h4>{{ partner.name }}</h4>
           </div>
-          <h4>{{ benefit.title }}</h4>
-          <p>{{ benefit.description }}</p>
-        </div>
+        }
+      </div>
+
+      <!-- Next button -->
+      <button 
+        class="carousel-nav carousel-nav--next" 
+        (click)="nextSlide()"
+        aria-label="Next slide">
+        <span class="material-icons">chevron_right</span>
+      </button>
+    </div>
+
+    <div class="carousel-indicators">
+      @for (i of totalSlides; track i) {
+        <button 
+          class="indicator" 
+          [class.active]="currentSlide === i"
+          (click)="goToSlide(i)"
+          [attr.aria-label]="'Go to slide ' + (i + 1)">
+        </button>
       }
     </div>
-  </div>
-
-  <div class="membership-section">
-    <h3>Prijava za Članstvo</h3>
-    <app-membership-form></app-membership-form>
   </div>
 </section>

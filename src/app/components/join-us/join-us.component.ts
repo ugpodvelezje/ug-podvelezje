@@ -1,46 +1,96 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MembershipFormComponent } from '../membership-form/membership-form.component';
-import { MembershipBenefit } from '../../interfaces/membership.interface';
+import { BrowserService } from '../../services/browser.service';
+
+interface Partner {
+  name: string;
+  logo: string;
+}
 
 @Component({
   selector: 'app-join-us',
   standalone: true,
-  imports: [CommonModule, MembershipFormComponent],
+  imports: [CommonModule],
   templateUrl: './join-us.component.html',
   styleUrls: ['./join-us.component.scss']
 })
-export class JoinUsComponent {
-  benefits: MembershipBenefit[] = [
+export class JoinUsComponent implements OnInit, OnDestroy {
+  public currentSlide = 0;
+  public visibleSlides = 3;
+  private autoSlideInterval?: number;
+  private browserService = inject(BrowserService);
+
+  public partners: Partner[] = [
     {
-      icon: 'people',
-      title: 'Umrežavanje',
-      description: 'Povežite se sa istomišljenicima i izgradite trajne odnose unutar naše zajednice.'
+      name: 'Montanaro',
+      logo: '/assets/images/partners/montanaro-logo.jpg'
     },
     {
-      icon: 'event',
-      title: 'Ekskluzivni Događaji',
-      description: 'Prioritetni pristup našim događajima, radionicama i okupljanjima zajednice.'
+      name: 'Turistička Zajednica HNK',
+      logo: '/assets/images/partners/turisticka-zajednica-hnk-logo.jpg'
     },
     {
-      icon: 'volunteer_activism',
-      title: 'Stvaranje Promjena',
-      description: 'Direktno učestvujte u projektima razvoja zajednice i budite dio pozitivnih promjena.'
+      name: 'Memic dekor',
+      logo: '/assets/images/partners/memic-dekor-logo.jpg'
     },
     {
-      icon: 'school',
-      title: 'Edukacija',
-      description: 'Pristup radionicama, treninzima i događajima za razmjenu znanja.'
+      name: 'BH Telecom',
+      logo: '/assets/images/partners/bh-telecom-logo.jpg'
     },
     {
-      icon: 'groups',
-      title: 'Liderske Pozicije',
-      description: 'Mogućnost preuzimanja liderskih uloga i vođenja inicijativa u zajednici.'
-    },
-    {
-      icon: 'diversity_3',
-      title: 'Raznolike Aktivnosti',
-      description: 'Učestvujte u različitim kulturnim, obrazovnim i društvenim aktivnostima tokom cijele godine.'
+      name: 'Federalno Ministarstvo Okoliša i Turizma',
+      logo: '/assets/images/partners/fedministartstvookolisa-logo.jpg' 
     }
   ];
+
+  public get totalSlides(): number[] {
+    const total = Math.ceil(this.partners.length / this.visibleSlides);
+    return Array(total).fill(0).map((_, i) => i);
+  }
+
+  public get transformValue(): string {
+    return `translateX(-${this.currentSlide * (100 / this.visibleSlides)}%)`;
+  }
+
+  ngOnInit(): void {
+    this.updateVisibleSlides();
+    this.startAutoSlide();
+    this.browserService.addEventListener('resize', this.updateVisibleSlides.bind(this));
+  }
+
+  ngOnDestroy(): void {
+    if (this.autoSlideInterval) {
+      this.browserService.clearInterval(this.autoSlideInterval);
+    }
+    this.browserService.removeEventListener('resize', this.updateVisibleSlides.bind(this));
+  }
+
+  private updateVisibleSlides(): void {
+    this.visibleSlides = this.browserService.getInnerWidth() < 768 ? 1 : 3;
+    this.currentSlide = 0; // Reset to first slide when changing view
+  }
+
+  private startAutoSlide(): void {
+    if (this.autoSlideInterval) {
+      this.browserService.clearInterval(this.autoSlideInterval);
+    }
+    this.autoSlideInterval = this.browserService.setInterval(() => {
+      this.nextSlide();
+    }, 5000);
+  }
+
+  public nextSlide(): void {
+    this.currentSlide = (this.currentSlide + 1) % this.totalSlides.length;
+  }
+
+  public prevSlide(): void {
+    this.currentSlide = this.currentSlide === 0 
+      ? this.totalSlides.length - 1 
+      : this.currentSlide - 1;
+  }
+
+  public goToSlide(index: number): void {
+    this.currentSlide = index;
+    this.startAutoSlide(); // Reset the interval
+  }
 }

@@ -1,3 +1,5 @@
+@use '../../../styles/abstracts' as abstracts;
+
 .join-us-section {
   padding: 4rem 2rem;
   background-color: var(--bg-light, #f8f9fa);
@@ -23,95 +25,138 @@
     }
   }
 
-  .benefits-section {
-    margin-bottom: 4rem;
+  .partners-carousel {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
 
-    h3 {
-      text-align: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      color: var(--text-primary, #2c3e50);
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
       margin-bottom: 2rem;
-      font-weight: 700;
+      padding: 0 2rem; // Make room for navigation buttons
     }
 
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
 
-      .benefit-card {
-        background: white;
-        padding: 2rem;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        text-align: center;
-        transition: all 0.3s ease;
-        border: 1px solid rgba(0, 0, 0, 0.05);
-        overflow: hidden;
-        position: relative;
+    .partner-card {
+      flex: 0 0 calc(100% / 3);
+      padding: 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      
+      @media (max-width: 768px) {
+        flex: 0 0 100%;
+      }
 
-        &:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+      &:hover {
+        transform: translateY(-5px);
 
-          .icon-wrapper {
-            background-color: #043c33;
-            
-            .material-icons {
-              color: white;
-              transform: scale(1.1);
-            }
-          }
-        }
-
-        .icon-wrapper {
-          width: 80px;
-          height: 80px;
-          border-radius: 50%;
-          background-color: rgba(4, 60, 51, 0.1);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin: 0 auto 1.5rem;
-          transition: all 0.3s ease;
-
-          .material-icons {
-            font-size: 2.5rem;
-            color: #043c33;
-            transition: all 0.3s ease;
-          }
-        }
-
-        h4 {
-          font-family: 'Playfair Display', serif;
-          font-size: 1.25rem;
-          color: var(--text-primary, #2c3e50);
-          margin-bottom: 1rem;
-          font-weight: 700;
-        }
-
-        p {
-          font-family: 'Roboto', sans-serif;
-          color: var(--text-secondary, #6c757d);
-          line-height: 1.5;
-          margin: 0;
-          font-size: 1rem;
+        .partner-logo {
+          transform: scale(1.05);
+          filter: grayscale(0%);
         }
       }
-    }
-  }
 
-  .membership-section {
-    h3 {
-      text-align: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      color: var(--text-primary, #2c3e50);
-      margin-bottom: 2rem;
-      font-weight: 700;
+      &.active {
+        .partner-logo {
+          filter: grayscale(0%);
+        }
+      }
+
+      .partner-logo {
+        width: 180px; // Fixed width
+        height: 120px; // Fixed height
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+        filter: grayscale(100%);
+        object-fit: contain; // Maintain aspect ratio
+        background-color: transparent; // Optional: add background
+        display: block;
+      }
+
+      h4 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.25rem;
+        color: var(--text-primary, #2c3e50);
+        margin: 0;
+        font-weight: 600;
+        min-height: 2em; // Ensure consistent height for titles
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #043c33;
+      border: none;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      z-index: 2;
+
+      &:hover {
+        background-color: darken(#043c33, 10%);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      &--prev {
+        left: 0;
+      }
+
+      &--next {
+        right: 0;
+      }
+
+      .material-icons {
+        font-size: 24px;
+      }
+    }
+
+    .carousel-indicators {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+
+      .indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #ccc;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: #999;
+          transform: scale(1.1);
+        }
+
+        &.active {
+          background-color: #043c33;
+          transform: scale(1.2);
+        }
+      }
     }
   }
 }
@@ -127,10 +172,21 @@
       }
     }
 
-    .benefits-section {
-      .benefits-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+    .partners-carousel {
+      .partner-card {
+        .partner-logo {
+          width: 160px; // Slightly smaller on mobile
+          height: 100px;
+        }
+      }
+
+      .carousel-nav {
+        width: 32px;
+        height: 32px;
+
+        .material-icons {
+          font-size: 20px;
+        }
       }
     }
   }
