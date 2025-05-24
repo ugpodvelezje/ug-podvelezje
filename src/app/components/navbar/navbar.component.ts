@@ -6,6 +6,7 @@ import { filter, Subscription } from 'rxjs';
 interface NavItem {
   label: string;
   route: string;
+  exact?: boolean;
 }
 
 @Component({
@@ -37,7 +38,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   
   // Define navigation items
   navItems: NavItem[] = [
-    { label: 'Početna', route: '/' },
+    { label: 'Početna', route: '/', exact: true },
     { label: 'O nama', route: '/#about' },
     { label: 'Projekti', route: '/projects' },
     { label: 'Novosti', route: '/news' },

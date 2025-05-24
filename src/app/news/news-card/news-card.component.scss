@@ -1,0 +1,121 @@
+@import '../../../styles/abstracts/variables';
+
+.news-card {
+  background: $light-color;
+  border-radius: $border-radius-md;
+  box-shadow: 0 2px 4px rgba($dark-color, 0.1);
+  overflow: hidden;
+  transition: transform $transition-medium;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba($dark-color, 0.15);
+  }
+
+  &.featured {
+    border: 2px solid $primary-color;
+  }
+
+  .news-image {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform $transition-medium;
+    }
+
+    .tags {
+      position: absolute;
+      bottom: $spacing-sm;
+      left: $spacing-sm;
+      display: flex;
+      gap: $spacing-xs;
+      flex-wrap: wrap;
+
+      .tag {
+        background: rgba($primary-color, 0.9);
+        color: $light-color;
+        padding: $spacing-xs $spacing-sm;
+        border-radius: $border-radius-sm;
+        font-size: $font-size-sm;
+        font-family: $font-family-primary;
+      }
+    }
+  }
+
+  .news-content {
+    padding: $spacing-lg;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    .title {
+      margin: 0 0 $spacing-sm;
+      font-size: $font-size-lg;
+      color: $dark-color;
+      line-height: 1.4;
+      font-family: $font-family-secondary;
+    }
+
+    .meta {
+      display: flex;
+      gap: $spacing-md;
+      margin-bottom: $spacing-md;
+      font-size: $font-size-sm;
+      color: $text-color;
+      font-family: $font-family-primary;
+
+      .date, .author {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    .excerpt {
+      margin: 0 0 $spacing-lg;
+      color: $text-color;
+      line-height: 1.6;
+      flex-grow: 1;
+      font-family: $font-family-primary;
+      font-size: $font-size-md;
+    }
+
+    .read-more {
+      color: $primary-color;
+      text-decoration: none;
+      font-weight: 500;
+      align-self: flex-start;
+      font-family: $font-family-primary;
+      transition: color $transition-fast;
+
+      &:hover {
+        color: darken($primary-color, 10%);
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .news-card {
+    .news-image {
+      height: 160px;
+    }
+
+    .news-content {
+      padding: $spacing-md;
+
+      .title {
+        font-size: $font-size-md;
+      }
+    }
+  }
+}

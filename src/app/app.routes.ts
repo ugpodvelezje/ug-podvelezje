@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
-import { NewsComponent } from './pages/news/news.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { ProjectDetailComponent } from './components/project-detail/project-detail.component';
@@ -19,7 +18,7 @@ export const routes: Routes = [
   },
   {
     path: 'news',
-    component: NewsComponent,
+    loadChildren: () => import('./news/news.module').then(m => m.NewsModule),
     title: 'UG Podvelezje - Novosti'
   },
   {

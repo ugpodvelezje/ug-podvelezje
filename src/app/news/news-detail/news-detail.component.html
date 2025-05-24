@@ -1,0 +1,50 @@
+<div class="news-detail-container">
+  <div class="loading-spinner" *ngIf="loading">
+    <div class="spinner"></div>
+  </div>
+
+  <div class="error-message" *ngIf="error">
+    <h2>Article Not Found</h2>
+    <p>Sorry, we couldn't find the news article you're looking for.</p>
+    <button (click)="goBack()">Back to News</button>
+  </div>
+
+  <article class="news-article" *ngIf="!loading && !error && news">
+    <button class="back-button" (click)="goBack()">
+      ← Back to News
+    </button>
+
+    <header class="article-header">
+      <h1>{{news.title}}</h1>
+      <div class="meta">
+        <span class="date">{{formatDate(news.publishDate)}}</span>
+        <span class="author">By {{news.author}}</span>
+      </div>
+      <div class="tags">
+        <span class="tag" *ngFor="let tag of news.tags">{{tag}}</span>
+      </div>
+    </header>
+
+    <div class="article-image">
+      <img [src]="news.imageUrl" [alt]="news.title">
+    </div>
+
+    <div class="article-content">
+      <p>{{news.content}}</p>
+    </div>
+
+    <footer class="article-footer">
+      <div class="share-buttons">
+        <h3>Share this article</h3>
+        <div class="social-buttons">
+          <a href="https://facebook.com/sharer/sharer.php" target="_blank" class="facebook">
+            Share on Facebook
+          </a>
+          <a href="https://twitter.com/intent/tweet" target="_blank" class="twitter">
+            Share on Twitter
+          </a>
+        </div>
+      </div>
+    </footer>
+  </article>
+</div>

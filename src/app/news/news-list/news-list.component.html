@@ -1,0 +1,52 @@
+<div class="news-list-container">
+  <section class="featured-news" *ngIf="featuredNews.length > 0">
+    <h2>Featured News</h2>
+    <div class="featured-grid">
+      <app-news-card 
+        *ngFor="let news of featuredNews" 
+        [news]="news">
+      </app-news-card>
+    </div>
+  </section>
+
+  <section class="all-news">
+    <div class="news-header">
+      <h2>Latest News</h2>
+      <div class="search-box">
+        <input 
+          type="text" 
+          [formControl]="searchControl"
+          placeholder="Search news...">
+      </div>
+    </div>
+
+    <div class="loading-spinner" *ngIf="loading">
+      <div class="spinner"></div>
+    </div>
+
+    <div class="news-grid" *ngIf="!loading">
+      <app-news-card 
+        *ngFor="let news of news" 
+        [news]="news">
+      </app-news-card>
+    </div>
+
+    <div class="no-results" *ngIf="!loading && news.length === 0">
+      No news articles found.
+    </div>
+
+    <div class="pagination" *ngIf="totalPages > 1">
+      <button 
+        [disabled]="currentPage === 1"
+        (click)="onPageChange(currentPage - 1)">
+        Previous
+      </button>
+      <span>Page {{currentPage}} of {{totalPages}}</span>
+      <button 
+        [disabled]="currentPage === totalPages"
+        (click)="onPageChange(currentPage + 1)">
+        Next
+      </button>
+    </div>
+  </section>
+</div>

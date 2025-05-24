@@ -1,0 +1,140 @@
+@import '../../../styles/abstracts/variables';
+
+.news-list-container {
+  max-width: $breakpoint-xl;
+  margin: 0 auto;
+  padding: $spacing-lg;
+
+  h2 {
+    color: $dark-color;
+    margin-bottom: $spacing-lg;
+    font-family: $font-family-secondary;
+    font-size: $font-size-xxl;
+  }
+
+  .featured-news {
+    margin-bottom: $spacing-xxl;
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: $spacing-lg;
+    }
+  }
+
+  .all-news {
+    .news-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: $spacing-lg;
+      flex-wrap: wrap;
+      gap: $spacing-lg;
+
+      .search-box {
+        input {
+          padding: $spacing-sm $spacing-md;
+          border: 1px solid rgba($dark-color, 0.1);
+          border-radius: $border-radius-md;
+          width: 250px;
+          font-size: $font-size-md;
+          font-family: $font-family-primary;
+
+          &:focus {
+            outline: none;
+            border-color: $primary-color;
+            box-shadow: 0 0 0 2px rgba($primary-color, 0.25);
+          }
+        }
+      }
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: $spacing-lg;
+      margin-bottom: $spacing-xl;
+    }
+
+    .loading-spinner {
+      display: flex;
+      justify-content: center;
+      padding: $spacing-xxl 0;
+
+      .spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid $gray-color;
+        border-top: 4px solid $primary-color;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+    }
+
+    .no-results {
+      text-align: center;
+      padding: $spacing-xxl 0;
+      color: $text-color;
+      font-size: $font-size-lg;
+      font-family: $font-family-primary;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: $spacing-lg;
+      margin-top: $spacing-xl;
+
+      button {
+        padding: $spacing-sm $spacing-md;
+        background: $primary-color;
+        color: $light-color;
+        border: none;
+        border-radius: $border-radius-md;
+        cursor: pointer;
+        transition: background-color $transition-medium;
+        font-family: $font-family-primary;
+        font-size: $font-size-md;
+
+        &:hover:not(:disabled) {
+          background: darken($primary-color, 10%);
+        }
+
+        &:disabled {
+          background: $gray-color;
+          cursor: not-allowed;
+        }
+      }
+
+      span {
+        color: $text-color;
+        font-family: $font-family-primary;
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: $breakpoint-md) {
+  .news-list-container {
+    padding: $spacing-md;
+
+    .news-header {
+      flex-direction: column;
+      align-items: stretch;
+
+      .search-box input {
+        width: 100%;
+      }
+    }
+
+    .news-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
