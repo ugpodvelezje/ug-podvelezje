@@ -39,6 +39,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   navItems: NavItem[] = [
     { label: 'Početna', route: '/' },
     { label: 'O nama', route: '/#about' },
+    { label: 'Projekti', route: '/projects' },
     { label: 'Novosti', route: '/news' },
     { label: 'Kontakt', route: '/contact' }
   ];
