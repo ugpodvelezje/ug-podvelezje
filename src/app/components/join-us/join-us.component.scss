@@ -161,6 +161,85 @@
   }
 }
 
+.benefits-section {
+  margin-top: 4rem;
+  padding: 2rem 0;
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 576px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .benefit-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+
+      .benefit-icon {
+        background-color: #043c33;
+        
+        .material-icons {
+          color: white;
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    .benefit-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: rgba(4, 60, 51, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      transition: background-color 0.3s ease;
+
+      .material-icons {
+        font-size: 36px;
+        color: #043c33;
+        transition: all 0.3s ease;
+      }
+    }
+
+    h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--text-primary, #2c3e50);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    p {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      color: var(--text-secondary, #6c757d);
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+}
+
 // Responsive styles
 @media (max-width: 768px) {
   .join-us-section {
@@ -186,6 +265,33 @@
 
         .material-icons {
           font-size: 20px;
+        }
+      }
+    }
+
+    .benefits-section {
+      margin-top: 2rem;
+
+      .benefits-grid {
+        gap: 1.5rem;
+        padding: 0 1rem;
+      }
+
+      .benefit-card {
+        padding: 1.5rem;
+
+        .benefit-icon {
+          width: 60px;
+          height: 60px;
+          margin-bottom: 1rem;
+
+          .material-icons {
+            font-size: 28px;
+          }
+        }
+
+        h3 {
+          font-size: 1.25rem;
         }
       }
     }

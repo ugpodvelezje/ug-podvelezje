@@ -7,6 +7,12 @@ interface Partner {
   logo: string;
 }
 
+interface MembershipBenefit {
+  icon: string;
+  title: string;
+  description: string;
+}
+
 @Component({
   selector: 'app-join-us',
   standalone: true,
@@ -20,14 +26,47 @@ export class JoinUsComponent implements OnInit, OnDestroy {
   private autoSlideInterval?: number;
   private browserService = inject(BrowserService);
 
+  public benefits: MembershipBenefit[] = [
+    {
+      icon: 'diversity_3',
+      title: 'Zajednica',
+      description: 'Postanite dio aktivne zajednice koja radi na očuvanju i unapređenju našeg kraja.'
+    },
+    {
+      icon: 'volunteer_activism',
+      title: 'Volontiranje',
+      description: 'Prilike za volontiranje i direktno učešće u projektima koji mijenjaju našu zajednicu.'
+    },
+    {
+      icon: 'event',
+      title: 'Događaji',
+      description: 'Pristup ekskluzivnim događajima, radionicama i kulturnim manifestacijama.'
+    },
+    {
+      icon: 'school',
+      title: 'Edukacija',
+      description: 'Mogućnosti za učenje, razmjenu znanja i profesionalni razvoj.'
+    },
+    {
+      icon: 'groups',
+      title: 'Networking',
+      description: 'Povezivanje sa drugim članovima i stvaranje vrijednih kontakata.'
+    },
+    {
+      icon: 'eco',
+      title: 'Održivost',
+      description: 'Doprinos održivom razvoju i očuvanju prirodnih resursa našeg područja.'
+    }
+  ];
+
   public partners: Partner[] = [
     {
-      name: 'Montanaro',
-      logo: '/assets/images/partners/montanaro-logo.jpg'
+      name: 'Grad Mostar',
+      logo: '/assets/images/partners/mostar-logo.png'
     },
     {
       name: 'Turistička Zajednica HNK',
-      logo: '/assets/images/partners/turisticka-zajednica-hnk-logo.jpg'
+      logo: '/assets/images/partners/tz-hnk-logo.png'
     },
     {
       name: 'Memic dekor',
@@ -39,7 +78,7 @@ export class JoinUsComponent implements OnInit, OnDestroy {
     },
     {
       name: 'Federalno Ministarstvo Okoliša i Turizma',
-      logo: '/assets/images/partners/fedministartstvookolisa-logo.jpg' 
+      logo: '/assets/images/partners/fmoit-logo.png'
     }
   ];
 

@@ -1,6 +1,7 @@
-import { Component, HostListener, OnInit, PLATFORM_ID, Inject } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { BrowserService } from '../../services/browser.service';
 
 @Component({
   selector: 'app-scroll-to-top',
@@ -32,31 +33,18 @@ import { trigger, transition, style, animate } from '@angular/animations';
 export class ScrollToTopComponent implements OnInit {
   isVisible = false;
   private scrollThreshold = 400; // Show button after scrolling 400px
-  private isBrowser: boolean;
 
-  constructor(@Inject(PLATFORM_ID) platformId: Object) {
-    this.isBrowser = isPlatformBrowser(platformId);
-  }
+  constructor(private browserService: BrowserService) {}
 
   ngOnInit() {
-    if (this.isBrowser) {
-      this.checkScroll();
-    }
+    this.checkScroll();
   }
 
-  @HostListener('window:scroll')
   checkScroll() {
-    if (this.isBrowser) {
-      this.isVisible = window.pageYOffset > this.scrollThreshold;
-    }
+    this.isVisible = this.browserService.getPageYOffset() > this.scrollThreshold;
   }
 
   scrollToTop() {
-    if (this.isBrowser) {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    }
+    this.browserService.scrollToTop();
   }
 } 
