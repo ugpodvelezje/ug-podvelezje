@@ -21,7 +21,7 @@ The project aimed to create a welcoming space that serves multiple community nee
 
 The renovation has significantly increased the center's capacity to host various community events and has become a model for sustainable community development in the region.`,
       status: 'completed',
-      imageUrl: 'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80',
+      imageUrl: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80',
       completionDate: new Date('2023-12-15'),
       category: 'Infrastruktura'
     },
@@ -46,7 +46,7 @@ The program has already shown positive results in:
 
 We continue to expand the program with new activities and partnerships to reach more young people in our community.`,
       status: 'ongoing',
-      imageUrl: 'https://images.unsplash.com/photo-1526676037777-05a232554f77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80',
+      imageUrl: 'https://images.unsplash.com/photo-1706841533921-518301209b62?auto=format&fit=crop&w=800&q=80',
       category: 'Obrazovanje'
     },
     {
@@ -70,7 +70,7 @@ Expected Outcomes:
 
 The initiative will be implemented in phases over the next two years, with community participation at its core.`,
       status: 'planned',
-      imageUrl: 'https://images.unsplash.com/photo-1492496913980-501348b61469?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80',
+      imageUrl: 'https://images.unsplash.com/photo-1492496913980-501348b61469?auto=format&fit=crop&w=800&q=80',
       category: 'Okoliš'
     }
   ];
