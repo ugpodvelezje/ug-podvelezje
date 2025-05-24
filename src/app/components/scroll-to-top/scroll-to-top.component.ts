@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { BrowserService } from '../../services/browser.service';
@@ -30,14 +30,27 @@ import { BrowserService } from '../../services/browser.service';
     ])
   ]
 })
-export class ScrollToTopComponent implements OnInit {
+export class ScrollToTopComponent implements OnInit, OnDestroy {
   isVisible = false;
   private scrollThreshold = 400; // Show button after scrolling 400px
+  private scrollHandler: any = null;
 
   constructor(private browserService: BrowserService) {}
 
   ngOnInit() {
+    // Initial check
     this.checkScroll();
+    
+    // Add scroll event listener
+    this.scrollHandler = this.checkScroll.bind(this);
+    this.browserService.addEventListener('scroll', this.scrollHandler);
+  }
+
+  ngOnDestroy() {
+    // Clean up scroll event listener
+    if (this.scrollHandler) {
+      this.browserService.removeEventListener('scroll', this.scrollHandler);
+    }
   }
 
   checkScroll() {
