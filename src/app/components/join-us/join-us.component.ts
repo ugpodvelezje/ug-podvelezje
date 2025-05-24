@@ -69,11 +69,11 @@ export class JoinUsComponent implements OnInit, OnDestroy {
   public partners: Partner[] = [
     {
       name: 'Grad Mostar',
-      logo: '/assets/images/partners/mostar-logo.png'
+      logo: '/assets/images/partners/grad-mostar-logo.jpg'
     },
     {
       name: 'Turistička Zajednica HNK',
-      logo: '/assets/images/partners/tz-hnk-logo.png'
+      logo: '/assets/images/partners/turisticka-zajednica-hnk-logo.jpg'
     },
     {
       name: 'Memic dekor',
@@ -85,7 +85,7 @@ export class JoinUsComponent implements OnInit, OnDestroy {
     },
     {
       name: 'Federalno Ministarstvo Okoliša i Turizma',
-      logo: '/assets/images/partners/fmoit-logo.png'
+      logo: '/assets/images/partners/fedministartstvookolisa-logo.jpg'
     }
   ];
 
@@ -131,17 +131,10 @@ export class JoinUsComponent implements OnInit, OnDestroy {
     this.isTransitioning = true;
     this.currentSlide++;
 
-    // If we've reached the end of the middle set, reset to the first set
-    if (this.currentSlide >= this.partners.length) {
-      setTimeout(() => {
-        this.currentSlide = 0;
-        this.isTransitioning = false;
-      }, 500); // Match this with your CSS transition duration
-    } else {
-      setTimeout(() => {
-        this.isTransitioning = false;
-      }, 500);
-    }
+    // Let it continue sliding through all sets
+    setTimeout(() => {
+      this.isTransitioning = false;
+    }, 500);
     
     this.startAutoSlide();
   }
@@ -152,11 +145,7 @@ export class JoinUsComponent implements OnInit, OnDestroy {
     this.isTransitioning = true;
     this.currentSlide--;
 
-    // If we've reached the start of the middle set, reset to the last set
-    if (this.currentSlide < 0) {
-      this.currentSlide = this.partners.length - 1;
-    }
-    
+    // Let it continue sliding through all sets
     setTimeout(() => {
       this.isTransitioning = false;
     }, 500);
