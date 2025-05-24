@@ -1,6 +1,6 @@
 <div class="news-list-container">
   <section class="featured-news" *ngIf="featuredNews.length > 0">
-    <h2>Featured News</h2>
+    <h2>Izdvojene Vijesti</h2>
     <div class="featured-grid">
       <app-news-card 
         *ngFor="let news of featuredNews" 
@@ -11,12 +11,12 @@
 
   <section class="all-news">
     <div class="news-header">
-      <h2>Latest News</h2>
+      <h2>Najnovije Vijesti</h2>
       <div class="search-box">
         <input 
           type="text" 
           [formControl]="searchControl"
-          placeholder="Search news...">
+          placeholder="Pretraži vijesti...">
       </div>
     </div>
 
@@ -32,20 +32,20 @@
     </div>
 
     <div class="no-results" *ngIf="!loading && news.length === 0">
-      No news articles found.
+      Nema pronađenih vijesti.
     </div>
 
     <div class="pagination" *ngIf="totalPages > 1">
       <button 
         [disabled]="currentPage === 1"
         (click)="onPageChange(currentPage - 1)">
-        Previous
+        Prethodna
       </button>
-      <span>Page {{currentPage}} of {{totalPages}}</span>
+      <span>Stranica {{currentPage}} od {{totalPages}}</span>
       <button 
         [disabled]="currentPage === totalPages"
         (click)="onPageChange(currentPage + 1)">
-        Next
+        Sljedeća
       </button>
     </div>
   </section>

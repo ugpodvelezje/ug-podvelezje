@@ -4,6 +4,7 @@
   max-width: 900px;
   margin: 0 auto;
   padding: $spacing-lg;
+  padding-top: calc(#{$spacing-xxl} + 60px);
 
   .loading-spinner {
     display: flex;
@@ -45,12 +46,28 @@
       border: none;
       border-radius: $border-radius-md;
       cursor: pointer;
-      transition: background-color $transition-medium;
       font-family: $font-family-primary;
       font-size: $font-size-md;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 120px;
+      height: 42px;
+      box-shadow: 0 2px 4px rgba($dark-color, 0.1);
 
       &:hover {
         background: darken($primary-color, 10%);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba($dark-color, 0.2);
+      }
+
+      &:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba($dark-color, 0.1);
       }
     }
   }
@@ -59,19 +76,32 @@
     .back-button {
       display: inline-flex;
       align-items: center;
-      padding: $spacing-sm $spacing-md;
-      background: none;
-      border: 1px solid rgba($dark-color, 0.1);
+      padding: $spacing-sm $spacing-lg;
+      background: $primary-color;
+      color: $light-color;
+      border: none;
       border-radius: $border-radius-md;
-      color: $text-color;
       cursor: pointer;
       margin-bottom: $spacing-xl;
-      transition: all $transition-medium;
       font-family: $font-family-primary;
+      font-size: $font-size-md;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      min-width: 120px;
+      height: 42px;
+      box-shadow: 0 2px 4px rgba($dark-color, 0.1);
 
       &:hover {
-        background: $gray-color;
-        color: $dark-color;
+        background: darken($primary-color, 10%);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba($dark-color, 0.2);
+      }
+
+      &:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba($dark-color, 0.1);
       }
     }
 
@@ -155,12 +185,28 @@
             border-radius: $border-radius-md;
             color: $light-color;
             text-decoration: none;
-            transition: opacity $transition-medium;
             font-family: $font-family-primary;
             font-size: $font-size-md;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 120px;
+            height: 42px;
+            box-shadow: 0 2px 4px rgba($dark-color, 0.1);
 
             &:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 4px 8px rgba($dark-color, 0.2);
               opacity: 0.9;
+            }
+
+            &:active {
+              transform: translateY(0);
+              box-shadow: 0 2px 4px rgba($dark-color, 0.1);
             }
 
             &.facebook {
