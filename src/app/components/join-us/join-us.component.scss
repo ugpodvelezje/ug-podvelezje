@@ -9,12 +9,20 @@
     max-width: 800px;
     margin: 0 auto 3rem;
 
-    h2 {
+    h1 {
       font-family: 'Playfair Display', serif;
       font-size: 2.5rem;
       color: var(--text-primary, #2c3e50);
       margin-bottom: 1rem;
       font-weight: 700;
+    }
+
+    .about__divider {
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(to right, #043c33, #0a5c4a);
+      margin: 1rem auto 1.5rem;
+      border-radius: 2px;
     }
 
     .section-description {
@@ -23,6 +31,11 @@
       color: var(--text-secondary, #6c757d);
       line-height: 1.6;
     }
+  }
+
+  .section-spacer {
+    height: 4rem;
+    width: 100%;
   }
 
   .partners-carousel {
@@ -242,8 +255,6 @@
 }
 
 .contact-section {
-  margin-top: 4rem;
-  padding: 2rem 0;
 
   .contact-grid {
     display: grid;
@@ -367,7 +378,7 @@
     padding: 2rem 1rem;
 
     .section-header {
-      h2 {
+      h1 {
         font-size: 2rem;
       }
     }

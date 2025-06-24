@@ -1,6 +1,105 @@
 <section class="join-us-section" id="join-us">
+  <!-- Contact and Join Section -->
+  <div class="contact-section">
+    <div class="section-header">
+      <h1>Pridružite nam se</h1>
+      <div class="about__divider"></div>
+      <p class="section-description">
+        Želite li postati dio naše priče? Postoji više načina na koje možete doprinijeti radu udruženja.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Membership -->
+      <div class="contact-card">
+        <div class="contact-icon">
+          <span class="material-icons">group_add</span>
+        </div>
+        <h3>Postanite član</h3>
+        <p>
+          Učlanite se u naše udruženje i direktno podržite naše aktivnosti. 
+          Godišnja članarina iznosi 20 KM.
+        </p>
+        <div class="contact-details">
+          <a href="mailto:info@ugpodvelezje.ba" class="contact-link">
+            <span class="material-icons">email</span>
+            info&#64;ugpodvelezje.ba
+          </a>
+          <a href="tel:+38761234567" class="contact-link">
+            <span class="material-icons">phone</span>
+            +387 61 234 567
+          </a>
+        </div>
+      </div>
+
+      <!-- Volunteer -->
+      <div class="contact-card">
+        <div class="contact-icon">
+          <span class="material-icons">volunteer_activism</span>
+        </div>
+        <h3>Volontirajte</h3>
+        <p>
+          Pridružite se našim volonterskim akcijama i projektima. 
+          Vaše vrijeme i vještine su dragocjeni za našu zajednicu.
+        </p>
+        <div class="contact-details">
+          <a href="https://chat.whatsapp.com/ugpodvelezje" class="contact-link" target="_blank">
+            <span class="material-icons">whatsapp</span>
+            Pridružite se WhatsApp grupi
+          </a>
+        </div>
+      </div>
+
+      <!-- Donate -->
+      <div class="contact-card">
+        <div class="contact-icon">
+          <span class="material-icons">favorite</span>
+        </div>
+        <h3>Donirajte</h3>
+        <p>
+          Podržite naše projekte finansijski. Svaka donacija je važna i 
+          pomaže nam u realizaciji naših ciljeva.
+        </p>
+        <div class="contact-details">
+          <p class="bank-details">
+            <strong>Račun za donacije:</strong><br>
+            1610000000000011<br>
+            Raiffeisen Bank dd BiH
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Membership Benefits Section -->
+  <div class="benefits-section">
+    <div class="section-header">
+      <h1>Prednosti članstva</h1>
+      <div class="about__divider"></div>
+      <p class="section-description">
+        Pridružite se našoj zajednici i otkrijte brojne pogodnosti koje dolaze s članstvom.
+        Zajedno možemo postići više!
+      </p>
+    </div>
+
+    <div class="benefits-grid">
+      @for (benefit of benefits; track benefit) {
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <span class="material-icons">{{ benefit.icon }}</span>
+          </div>
+          <h3>{{ benefit.title }}</h3>
+          <p>{{ benefit.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="section-spacer"></div>
+
   <div class="section-header">
-    <h2>Prijatelji Udruženja</h2>
+    <h1>Prijatelji udruženja</h1>
+    <div class="about__divider"></div>
     <p class="section-description">
       Zahvaljujemo se našim partnerima koji podržavaju naš rad i pomažu nam u ostvarivanju naših ciljeva.
       Zajedno gradimo bolju budućnost za našu zajednicu.
@@ -49,100 +148,6 @@
           [attr.aria-label]="'Go to slide ' + (i + 1)">
         </button>
       }
-    </div>
-  </div>
-
-  <!-- Membership Benefits Section -->
-  <div class="benefits-section">
-    <div class="section-header">
-      <h2>Prednosti Članstva</h2>
-      <p class="section-description">
-        Pridružite se našoj zajednici i otkrijte brojne pogodnosti koje dolaze s članstvom.
-        Zajedno možemo postići više!
-      </p>
-    </div>
-
-    <div class="benefits-grid">
-      @for (benefit of benefits; track benefit) {
-        <div class="benefit-card">
-          <div class="benefit-icon">
-            <span class="material-icons">{{ benefit.icon }}</span>
-          </div>
-          <h3>{{ benefit.title }}</h3>
-          <p>{{ benefit.description }}</p>
-        </div>
-      }
-    </div>
-  </div>
-
-  <!-- Contact and Join Section -->
-  <div class="contact-section">
-    <div class="section-header">
-      <h2>Pridružite Nam Se</h2>
-      <p class="section-description">
-        Želite li postati dio naše priče? Postoji više načina na koje možete doprinijeti radu udruženja.
-      </p>
-    </div>
-
-    <div class="contact-grid">
-      <!-- Membership -->
-      <div class="contact-card">
-        <div class="contact-icon">
-          <span class="material-icons">group_add</span>
-        </div>
-        <h3>Postanite Član</h3>
-        <p>
-          Učlanite se u naše udruženje i direktno podržite naše aktivnosti. 
-          Godišnja članarina iznosi 20 KM.
-        </p>
-        <div class="contact-details">
-          <a href="mailto:inf@ugpodvelezje.ba" class="contact-link">
-            <span class="material-icons">email</span>
-            info&#64;ugpodvelezje.ba
-          </a>
-          <a href="tel:+38761234567" class="contact-link">
-            <span class="material-icons">phone</span>
-            +387 61 234 567
-          </a>
-        </div>
-      </div>
-
-      <!-- Volunteer -->
-      <div class="contact-card">
-        <div class="contact-icon">
-          <span class="material-icons">volunteer_activism</span>
-        </div>
-        <h3>Volontirajte</h3>
-        <p>
-          Pridružite se našim volonterskim akcijama i projektima. 
-          Vaše vrijeme i vještine su dragocjeni za našu zajednicu.
-        </p>
-        <div class="contact-details">
-          <a href="https://chat.whatsapp.com/ugpodvelezje" class="contact-link" target="_blank">
-            <span class="material-icons">whatsapp</span>
-            Pridružite se WhatsApp grupi
-          </a>
-        </div>
-      </div>
-
-      <!-- Donate -->
-      <div class="contact-card">
-        <div class="contact-icon">
-          <span class="material-icons">favorite</span>
-        </div>
-        <h3>Donirajte</h3>
-        <p>
-          Podržite naše projekte finansijski. Svaka donacija je važna i 
-          pomaže nam u realizaciji naših ciljeva.
-        </p>
-        <div class="contact-details">
-          <p class="bank-details">
-            <strong>Račun za donacije:</strong><br>
-            1610000000000011<br>
-            Raiffeisen Bank dd BiH
-          </p>
-        </div>
-      </div>
     </div>
   </div>
 </section>
