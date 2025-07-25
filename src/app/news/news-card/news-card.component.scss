@@ -1,4 +1,4 @@
-@import '../../../styles/abstracts/variables';
+@use '../../../styles/abstracts/variables' as *;
 
 .news-card {
   background: $light-color;
@@ -101,7 +101,7 @@
       transition: color $transition-fast;
 
       &:hover {
-        color: darken($primary-color, 10%);
+        color: #0c2e21;
         text-decoration: underline;
       }
     }
