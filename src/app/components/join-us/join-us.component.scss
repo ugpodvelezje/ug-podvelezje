@@ -59,17 +59,18 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
+    position: relative;
 
     .carousel-container {
       position: relative;
       overflow: hidden;
       margin-bottom: 2rem;
-      padding: 0 2rem; // Make room for navigation buttons
+      padding: 0 3rem; // More room for navigation buttons with hover effect
     }
 
     .carousel-track {
       display: flex;
-      transition: transform 0.5s ease-in-out;
+      transition: all 0.5s ease-out;
       will-change: transform;
     }
 
@@ -77,29 +78,69 @@
       flex: 0 0 calc(100% / 3);
       padding: 2rem;
       text-align: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease-out;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
+      transform: scale(0.9);
+      opacity: 0.7;
+      min-height: 280px; // Fixed height to prevent layout shifts
+      max-height: 280px; // Ensure consistent height
       
       @media (max-width: 768px) {
         flex: 0 0 100%;
+        transform: scale(1);
+        opacity: 1;
+        min-height: 280px; // Increased for longer text
+        height: auto; // Allow flexible height on mobile
+        max-height: none; // Remove max-height constraint on mobile
       }
 
-      &:hover {
-        transform: translateY(-5px);
+      // Active card (middle card on desktop)
+      &.active {
+        transform: scale(1);
+        opacity: 1;
+        z-index: 2;
 
         .partner-logo {
-          transform: scale(1.05);
-          filter: grayscale(0%);
+          filter: grayscale(0%) brightness(1);
+        }
+
+        h4 {
+          color: #043c33;
+          font-weight: 700;
+        }
+
+        &:hover {
+          transform: scale(1.02);
+
+          .partner-logo {
+            transform: scale(1.05);
+          }
         }
       }
 
-      &.active {
-        .partner-logo {
-          filter: grayscale(0%);
+      // Side cards (inactive on desktop)
+      &.side-card {
+        @media (min-width: 769px) {
+          .partner-logo {
+            filter: grayscale(100%) brightness(0.7);
+          }
+
+          h4 {
+            color: #6c757d;
+            font-weight: 500;
+          }
+
+          &:hover {
+            transform: scale(0.95);
+            opacity: 0.9;
+
+            .partner-logo {
+              filter: grayscale(50%) brightness(0.85);
+            }
+          }
         }
       }
 
@@ -107,8 +148,7 @@
         width: 180px;
         height: 120px;
         margin-bottom: 1rem;
-        transition: all 0.3s ease;
-        filter: grayscale(100%);
+        transition: all 0.4s ease-out;
         object-fit: contain;
         background-color: transparent;
         display: block;
@@ -117,13 +157,26 @@
       h4 {
         font-family: 'Playfair Display', serif;
         font-size: 1.25rem;
-        color: var(--text-primary, #2c3e50);
         margin: 0;
         font-weight: 600;
-        min-height: 2em;
+        min-height: 3em; // Fixed height for text area
+        max-height: 3em;
         display: flex;
         align-items: center;
         justify-content: center;
+        transition: all 0.4s ease-out;
+        overflow: hidden;
+        text-align: center;
+        line-height: 1.2;
+        
+        @media (max-width: 768px) {
+          min-height: auto; // Allow flexible height on mobile
+          max-height: none; // Remove height constraints on mobile
+          overflow: visible; // Show all text on mobile
+          font-size: 1.1rem; // Slightly smaller font for better fit
+          line-height: 1.3; // Better line spacing for multi-line text
+          padding: 0.5rem 0; // Add some padding for breathing room
+        }
       }
     }
 
@@ -147,6 +200,7 @@
       &:hover {
         background-color: #032920;
         transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       }
 
       &--prev {
@@ -609,9 +663,24 @@
 
     .partners-carousel {
       .partner-card {
+        // Reset transforms and opacity on mobile
+        transform: scale(1) !important;
+        opacity: 1 !important;
+        
         .partner-logo {
           width: 160px; // Slightly smaller on mobile
           height: 100px;
+          filter: grayscale(0%) brightness(1) !important; // Always colored on mobile
+        }
+        
+        h4 {
+          color: #043c33 !important; // Always dark color on mobile
+          font-weight: 600 !important;
+          min-height: auto !important; // Remove height constraints
+          max-height: none !important; // Allow text to flow naturally
+          overflow: visible !important; // Ensure all text is visible
+          font-size: 1.1rem !important; // Consistent with main mobile styles
+          line-height: 1.3 !important; // Better spacing for readability
         }
       }
 

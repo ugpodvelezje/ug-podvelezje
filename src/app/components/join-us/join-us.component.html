@@ -173,8 +173,8 @@
         @for (partner of displayedPartners; track partner.name + $index) {
           <div 
             class="partner-card" 
-            [class.active]="($index - partners.length) === currentSlide"
-            (click)="goToSlide($index % partners.length)"
+            [class.active]="isMiddleCard($index)"
+            [class.side-card]="!isMiddleCard($index)"
             role="button"
             [attr.aria-label]="'View ' + partner.name">
             <img [src]="partner.logo" [alt]="partner.name + ' logo'" class="partner-logo">
@@ -193,7 +193,7 @@
     </div>
 
     <div class="carousel-indicators">
-      @for (i of totalSlides; track i) {
+      @for (partner of partners; track partner.name; let i = $index) {
         <button 
           class="indicator" 
           [class.active]="currentSlide === i"
