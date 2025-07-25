@@ -1,4 +1,5 @@
 @use '../../../styles/abstracts' as abstracts;
+@use '../about/about.component.scss';
 
 .home-page {
   width: 100%;
@@ -14,9 +15,4 @@
     padding-bottom: abstracts.$spacing-xxl * 2;
     background-color: abstracts.$light-color;
   }
-}
-
-// Import About section styles but with overrides
-.about {
-  @import '../about/about.component.scss';
 }
