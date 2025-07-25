@@ -1,8 +1,8 @@
 @use '../../../styles/abstracts' as abstracts;
 
 .join-us-section {
-  padding: 4rem 2rem;
-  background-color: var(--bg-light, #f8f9fa);
+  padding: 0;
+  background: transparent;
 
   .section-header {
     text-align: center;
@@ -36,6 +36,23 @@
   .section-spacer {
     height: 4rem;
     width: 100%;
+  }
+}
+
+.partners-section {
+  padding: 4rem 2rem;
+  background: #ffffff;
+  position: relative;
+  
+  // Add subtle borders for section separation
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0,0,0,0.08), transparent);
   }
 
   .partners-carousel {
@@ -176,8 +193,31 @@
 }
 
 .benefits-section {
-  margin-top: 4rem;
-  padding: 2rem 0;
+  margin-top: 0;
+  padding: 4rem 2rem;
+  background: #ffffff;
+  position: relative;
+  
+  // Add subtle borders for section separation
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0,0,0,0.08), transparent);
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0,0,0,0.08), transparent);
+  }
 
   .benefits-grid {
     display: grid;
@@ -255,6 +295,8 @@
 }
 
 .contact-section {
+  padding: 4rem 2rem;
+  background: inherit; // Inherits from parent section
 
   .contact-grid {
     display: grid;
@@ -264,14 +306,14 @@
   }
 
   .contact-card {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 12px;
     padding: 2rem;
     text-align: center;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(4, 60, 51, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
 
     &:hover {
       transform: translateY(-5px);
@@ -373,8 +415,31 @@
 }
 
 .statistics-section {
-  margin-top: 4rem;
-  padding: 2rem 0;
+  margin-top: 0;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #f1f3f4 0%, #e8eaed 100%);
+  position: relative;
+  
+  // Add subtle borders for section separation
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0,0,0,0.06), transparent);
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0,0,0,0.06), transparent);
+  }
 
   .statistics-grid {
     display: grid;
@@ -517,8 +582,24 @@
 
 // Responsive styles
 @media (max-width: 768px) {
-  .join-us-section {
+  .contact-section {
     padding: 2rem 1rem;
+  }
+  
+  .partners-section {
+    padding: 2rem 1rem;
+  }
+  
+  .benefits-section {
+    padding: 2rem 1rem;
+  }
+  
+  .statistics-section {
+    padding: 2rem 1rem;
+  }
+  
+  .join-us-section {
+    padding: 0;
 
     .section-header {
       h1 {
@@ -545,7 +626,7 @@
     }
 
     .benefits-section {
-      margin-top: 2rem;
+      padding: 2rem 1rem;
 
       .benefits-grid {
         gap: 1.5rem;
@@ -572,7 +653,7 @@
     }
 
     .statistics-section {
-      margin-top: 2rem;
+      padding: 2rem 1rem;
 
       .statistics-grid {
         gap: 1.5rem;
