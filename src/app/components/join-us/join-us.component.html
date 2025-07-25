@@ -95,18 +95,71 @@
     </div>
   </div>
 
-  <div class="section-spacer"></div>
+  <!-- Statistics Section -->
+  <div class="statistics-section">
+    <div class="section-header">
+      <h1>Udruženje u brojevima</h1>
+      <div class="about__divider"></div>
+      <p class="section-description">
+        Ove brojke govore o našem radu i posvećenosti zajednici kroz godine.
+      </p>
+    </div>
 
-  <div class="section-header">
-    <h1>Prijatelji udruženja</h1>
-    <div class="about__divider"></div>
-    <p class="section-description">
-      Zahvaljujemo se našim partnerima koji podržavaju naš rad i pomažu nam u ostvarivanju naših ciljeva.
-      Zajedno gradimo bolju budućnost za našu zajednicu.
-    </p>
+    <div class="statistics-grid">
+      <div class="statistic-card">
+        <div class="statistic-icon">
+          <span class="material-icons">schedule</span>
+        </div>
+        <div class="statistic-number" [attr.data-target]="yearsOfWork">
+          {{ animatedYears }}
+        </div>
+        <div class="statistic-label">godina rada</div>
+      </div>
+
+      <div class="statistic-card">
+        <div class="statistic-icon">
+          <span class="material-icons">people</span>
+        </div>
+        <div class="statistic-number" [attr.data-target]="totalMembers">
+          {{ animatedMembers }}
+        </div>
+        <div class="statistic-label">članova</div>
+      </div>
+
+      <div class="statistic-card">
+        <div class="statistic-icon">
+          <span class="material-icons">star</span>
+        </div>
+        <div class="statistic-number" [attr.data-target]="goldSponsors">
+          {{ animatedSponsors }}
+        </div>
+        <div class="statistic-label">zlatnih sponzora</div>
+      </div>
+
+      <div class="statistic-card">
+        <div class="statistic-icon">
+          <span class="material-icons">thumb_up</span>
+        </div>
+        <div class="statistic-number" [attr.data-target]="facebookFollowers">
+          {{ animatedFollowers }}
+        </div>
+        <div class="statistic-label">Facebook pratilaca</div>
+      </div>
+    </div>
   </div>
 
-  <div class="partners-carousel">
+  <!-- Partners Section -->
+  <div class="partners-section">
+    <div class="section-header">
+      <h1>Prijatelji udruženja</h1>
+      <div class="about__divider"></div>
+      <p class="section-description">
+        Zahvaljujemo se našim partnerima koji podržavaju naš rad i pomažu nam u ostvarivanju naših ciljeva.
+        Zajedno gradimo bolju budućnost za našu zajednicu.
+      </p>
+    </div>
+
+    <div class="partners-carousel">
     <div class="carousel-container">
       <!-- Previous button -->
       <button 
@@ -120,8 +173,8 @@
         @for (partner of displayedPartners; track partner.name + $index) {
           <div 
             class="partner-card" 
-            [class.active]="($index - partners.length) === currentSlide"
-            (click)="goToSlide($index % partners.length)"
+            [class.active]="isMiddleCard($index)"
+            [class.side-card]="!isMiddleCard($index)"
             role="button"
             [attr.aria-label]="'View ' + partner.name">
             <img [src]="partner.logo" [alt]="partner.name + ' logo'" class="partner-logo">
@@ -140,7 +193,7 @@
     </div>
 
     <div class="carousel-indicators">
-      @for (i of totalSlides; track i) {
+      @for (partner of partners; track partner.name; let i = $index) {
         <button 
           class="indicator" 
           [class.active]="currentSlide === i"
@@ -148,6 +201,7 @@
           [attr.aria-label]="'Go to slide ' + (i + 1)">
         </button>
       }
+    </div>
     </div>
   </div>
 </section>

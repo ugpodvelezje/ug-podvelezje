@@ -1,8 +1,8 @@
 @use '../../../styles/abstracts' as abstracts;
 
 .join-us-section {
-  padding: 4rem 2rem;
-  background-color: var(--bg-light, #f8f9fa);
+  padding: 0;
+  background: transparent;
 
   .section-header {
     text-align: center;
@@ -37,22 +37,40 @@
     height: 4rem;
     width: 100%;
   }
+}
+
+.partners-section {
+  padding: 4rem 2rem;
+  background: #ffffff;
+  position: relative;
+  
+  // Add subtle borders for section separation
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0,0,0,0.08), transparent);
+  }
 
   .partners-carousel {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
+    position: relative;
 
     .carousel-container {
       position: relative;
       overflow: hidden;
       margin-bottom: 2rem;
-      padding: 0 2rem; // Make room for navigation buttons
+      padding: 0 3rem; // More room for navigation buttons with hover effect
     }
 
     .carousel-track {
       display: flex;
-      transition: transform 0.5s ease-in-out;
+      transition: all 0.5s ease-out;
       will-change: transform;
     }
 
@@ -60,29 +78,69 @@
       flex: 0 0 calc(100% / 3);
       padding: 2rem;
       text-align: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease-out;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
+      transform: scale(0.9);
+      opacity: 0.7;
+      min-height: 280px; // Fixed height to prevent layout shifts
+      max-height: 280px; // Ensure consistent height
       
       @media (max-width: 768px) {
         flex: 0 0 100%;
+        transform: scale(1);
+        opacity: 1;
+        min-height: 280px; // Increased for longer text
+        height: auto; // Allow flexible height on mobile
+        max-height: none; // Remove max-height constraint on mobile
       }
 
-      &:hover {
-        transform: translateY(-5px);
+      // Active card (middle card on desktop)
+      &.active {
+        transform: scale(1);
+        opacity: 1;
+        z-index: 2;
 
         .partner-logo {
-          transform: scale(1.05);
-          filter: grayscale(0%);
+          filter: grayscale(0%) brightness(1);
+        }
+
+        h4 {
+          color: #043c33;
+          font-weight: 700;
+        }
+
+        &:hover {
+          transform: scale(1.02);
+
+          .partner-logo {
+            transform: scale(1.05);
+          }
         }
       }
 
-      &.active {
-        .partner-logo {
-          filter: grayscale(0%);
+      // Side cards (inactive on desktop)
+      &.side-card {
+        @media (min-width: 769px) {
+          .partner-logo {
+            filter: grayscale(100%) brightness(0.7);
+          }
+
+          h4 {
+            color: #6c757d;
+            font-weight: 500;
+          }
+
+          &:hover {
+            transform: scale(0.95);
+            opacity: 0.9;
+
+            .partner-logo {
+              filter: grayscale(50%) brightness(0.85);
+            }
+          }
         }
       }
 
@@ -90,8 +148,7 @@
         width: 180px;
         height: 120px;
         margin-bottom: 1rem;
-        transition: all 0.3s ease;
-        filter: grayscale(100%);
+        transition: all 0.4s ease-out;
         object-fit: contain;
         background-color: transparent;
         display: block;
@@ -100,13 +157,26 @@
       h4 {
         font-family: 'Playfair Display', serif;
         font-size: 1.25rem;
-        color: var(--text-primary, #2c3e50);
         margin: 0;
         font-weight: 600;
-        min-height: 2em;
+        min-height: 3em; // Fixed height for text area
+        max-height: 3em;
         display: flex;
         align-items: center;
         justify-content: center;
+        transition: all 0.4s ease-out;
+        overflow: hidden;
+        text-align: center;
+        line-height: 1.2;
+        
+        @media (max-width: 768px) {
+          min-height: auto; // Allow flexible height on mobile
+          max-height: none; // Remove height constraints on mobile
+          overflow: visible; // Show all text on mobile
+          font-size: 1.1rem; // Slightly smaller font for better fit
+          line-height: 1.3; // Better line spacing for multi-line text
+          padding: 0.5rem 0; // Add some padding for breathing room
+        }
       }
     }
 
@@ -130,6 +200,7 @@
       &:hover {
         background-color: #032920;
         transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       }
 
       &--prev {
@@ -176,8 +247,31 @@
 }
 
 .benefits-section {
-  margin-top: 4rem;
-  padding: 2rem 0;
+  margin-top: 0;
+  padding: 4rem 2rem;
+  background: #ffffff;
+  position: relative;
+  
+  // Add subtle borders for section separation
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0,0,0,0.08), transparent);
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0,0,0,0.08), transparent);
+  }
 
   .benefits-grid {
     display: grid;
@@ -255,6 +349,8 @@
 }
 
 .contact-section {
+  padding: 4rem 2rem;
+  background: inherit; // Inherits from parent section
 
   .contact-grid {
     display: grid;
@@ -264,14 +360,14 @@
   }
 
   .contact-card {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 12px;
     padding: 2rem;
     text-align: center;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(4, 60, 51, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
 
     &:hover {
       transform: translateY(-5px);
@@ -372,10 +468,192 @@
   }
 }
 
+.statistics-section {
+  margin-top: 0;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #f1f3f4 0%, #e8eaed 100%);
+  position: relative;
+  
+  // Add subtle borders for section separation
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0,0,0,0.06), transparent);
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0,0,0,0.06), transparent);
+  }
+
+  .statistics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 576px) {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  .statistic-card {
+    background-color: white;
+    border-radius: 16px;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(to right, #043c33, #0a5c4a);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+
+      &:before {
+        transform: scaleX(1);
+      }
+
+      .statistic-icon {
+        background-color: #043c33;
+        transform: scale(1.1);
+        
+        .material-icons {
+          color: white;
+        }
+      }
+
+      .statistic-number {
+        color: #043c33;
+        transform: scale(1.05);
+      }
+    }
+
+    &:nth-child(1) {
+      &:hover {
+        .statistic-icon {
+          background-color: #4CAF50;
+        }
+      }
+    }
+
+    &:nth-child(2) {
+      &:hover {
+        .statistic-icon {
+          background-color: #2196F3;
+        }
+      }
+    }
+
+    &:nth-child(3) {
+      &:hover {
+        .statistic-icon {
+          background-color: #FF9800;
+        }
+      }
+    }
+
+    &:nth-child(4) {
+      &:hover {
+        .statistic-icon {
+          background-color: #9C27B0;
+        }
+      }
+    }
+
+    .statistic-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: rgba(4, 60, 51, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      transition: all 0.3s ease;
+
+      .material-icons {
+        font-size: 36px;
+        color: #043c33;
+        transition: all 0.3s ease;
+      }
+    }
+
+    .statistic-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+      transition: all 0.3s ease;
+      line-height: 1;
+
+      @media (max-width: 576px) {
+        font-size: 2.5rem;
+      }
+    }
+
+    .statistic-label {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      color: var(--text-secondary, #6c757d);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 0;
+    }
+  }
+}
+
 // Responsive styles
 @media (max-width: 768px) {
-  .join-us-section {
+  .contact-section {
     padding: 2rem 1rem;
+  }
+  
+  .partners-section {
+    padding: 2rem 1rem;
+  }
+  
+  .benefits-section {
+    padding: 2rem 1rem;
+  }
+  
+  .statistics-section {
+    padding: 2rem 1rem;
+  }
+  
+  .join-us-section {
+    padding: 0;
 
     .section-header {
       h1 {
@@ -385,9 +663,24 @@
 
     .partners-carousel {
       .partner-card {
+        // Reset transforms and opacity on mobile
+        transform: scale(1) !important;
+        opacity: 1 !important;
+        
         .partner-logo {
           width: 160px; // Slightly smaller on mobile
           height: 100px;
+          filter: grayscale(0%) brightness(1) !important; // Always colored on mobile
+        }
+        
+        h4 {
+          color: #043c33 !important; // Always dark color on mobile
+          font-weight: 600 !important;
+          min-height: auto !important; // Remove height constraints
+          max-height: none !important; // Allow text to flow naturally
+          overflow: visible !important; // Ensure all text is visible
+          font-size: 1.1rem !important; // Consistent with main mobile styles
+          line-height: 1.3 !important; // Better spacing for readability
         }
       }
 
@@ -402,7 +695,7 @@
     }
 
     .benefits-section {
-      margin-top: 2rem;
+      padding: 2rem 1rem;
 
       .benefits-grid {
         gap: 1.5rem;
@@ -424,6 +717,37 @@
 
         h3 {
           font-size: 1.25rem;
+        }
+      }
+    }
+
+    .statistics-section {
+      padding: 2rem 1rem;
+
+      .statistics-grid {
+        gap: 1.5rem;
+        padding: 0 1rem;
+      }
+
+      .statistic-card {
+        padding: 2rem 1rem;
+
+        .statistic-icon {
+          width: 60px;
+          height: 60px;
+          margin-bottom: 1rem;
+
+          .material-icons {
+            font-size: 28px;
+          }
+        }
+
+        .statistic-number {
+          font-size: 2rem;
+        }
+
+        .statistic-label {
+          font-size: 0.9rem;
         }
       }
     }

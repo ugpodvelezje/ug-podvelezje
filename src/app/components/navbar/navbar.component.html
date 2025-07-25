@@ -5,24 +5,25 @@
       <img src="assets/images/logo.png" alt="UG Podvelezje Logo" class="navbar__logo-image">
     </a>
     
+    <!-- Organization name for smaller devices -->
+    <span class="navbar__title">UG Podvelezje</span>
+    
     <!-- Desktop navigation -->
     <nav class="navbar__nav">
       <ul class="navbar__nav-list">
         <li class="navbar__nav-item">
           <a routerLink="/" 
-             routerLinkActive="navbar__nav-link--active" 
-             [routerLinkActiveOptions]="{exact: true}"
+             [class.navbar__nav-link--active]="isHomeActive()"
              class="navbar__nav-link" 
              (click)="closeMobileMenu()">
             Početna
           </a>
         </li>
         <li class="navbar__nav-item">
-          <a routerLink="/" 
-             fragment="about" 
-             [class.navbar__nav-link--active]="isAboutActive()"
+          <a routerLink="/about" 
+             routerLinkActive="navbar__nav-link--active"
              class="navbar__nav-link" 
-             (click)="navigateToAbout()">
+             (click)="closeMobileMenu()">
             O nama
           </a>
         </li>
@@ -58,7 +59,8 @@
             Heroji Podvelezja
           </a>
         </li>
-        <li class="navbar__nav-item">
+        <!-- Desktop CTA button -->
+        <li class="navbar__nav-item navbar__nav-item--desktop-only">
           <a routerLink="/" 
              fragment="join-us" 
              [class.navbar__nav-link--active]="isJoinUsActive()"
@@ -68,6 +70,17 @@
           </a>
         </li>
       </ul>
+      
+      <!-- Mobile CTA button - separate container -->
+      <div class="navbar__mobile-cta">
+        <a routerLink="/" 
+           fragment="join-us" 
+           [class.navbar__nav-link--active]="isJoinUsActive()"
+           class="navbar__nav-link navbar__nav-link--cta" 
+           (click)="navigateToJoinUs()">
+          Pridruži nam se
+        </a>
+      </div>
     </nav>
     
     <!-- Mobile menu toggle button -->

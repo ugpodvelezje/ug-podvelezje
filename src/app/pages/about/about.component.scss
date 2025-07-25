@@ -4,6 +4,15 @@
   padding: abstracts.$spacing-xxl 0;
   max-width: 1200px;
   margin: 0 auto;
+  margin-top: 80px;
+
+  @media (max-width: 768px) {
+    margin-top: 60px;
+  }
+
+  @media (max-width: 480px) {
+    margin-top: 40px;
+  }
   
   &__header {
     text-align: center;
@@ -14,10 +23,16 @@
     font-size: abstracts.$font-size-xxl;
     color: abstracts.$primary-color;
     margin-bottom: abstracts.$spacing-md;
+    padding-top: abstracts.$spacing-xl;
     @include abstracts.font-secondary;
     
     @include abstracts.respond-to(md) {
       font-size: abstracts.$font-size-hero;
+      padding-top: abstracts.$spacing-lg;
+    }
+
+    @media (max-width: 480px) {
+      padding-top: abstracts.$spacing-md;
     }
   }
   
@@ -154,6 +169,42 @@
     
     &--vision::before {
       content: '🔭';
+    }
+  }
+  
+  // New styles for expanded content
+  &__text-full {
+    width: 100%;
+  }
+  
+  &__goals-list {
+    margin-top: abstracts.$spacing-lg;
+  }
+  
+  &__goal-item {
+    margin-bottom: abstracts.$spacing-lg;
+    padding: abstracts.$spacing-md;
+    border-left: 3px solid abstracts.$primary-color;
+    background-color: rgba(abstracts.$primary-color, 0.05);
+    border-radius: 0 abstracts.$border-radius-md abstracts.$border-radius-md 0;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  &__goal-title {
+    font-size: abstracts.$font-size-lg;
+    color: abstracts.$primary-color;
+    margin-bottom: abstracts.$spacing-sm;
+    @include abstracts.font-secondary;
+    font-weight: 600;
+  }
+  
+  // Specific styles for association history section with reversed layout
+  &__association-history {
+    @include abstracts.respond-to(md) {
+      flex-direction: row-reverse;
     }
   }
 }
