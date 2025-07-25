@@ -91,13 +91,16 @@
     .navbar--mobile-open & {
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      gap: abstracts.$spacing-xl;
+      justify-content: center;
+      gap: abstracts.$spacing-lg;
       width: 100%;
       max-width: 300px;
       margin: 0 auto;
       flex: 1;
-      padding-top: abstracts.$spacing-xl;
+      padding-top: abstracts.$spacing-md;
+      padding-bottom: 90px; // Space for fixed CTA button at bottom
+      overflow-y: auto;
+      height: calc(100vh - 150px); // Account for navbar height and CTA button
     }
   }
 
@@ -114,9 +117,10 @@
       bottom: 0;
       left: 0;
       right: 0;
-      padding: abstracts.$spacing-lg;
-      background: linear-gradient(180deg, transparent 0%, rgba(abstracts.$primary-color, 0.95) 30%, abstracts.$primary-color 100%);
+      padding: abstracts.$spacing-md abstracts.$spacing-lg;
+      background: linear-gradient(180deg, transparent 0%, rgba(abstracts.$primary-color, 0.95) 20%, abstracts.$primary-color 100%);
       z-index: abstracts.$z-index-navbar + 5;
+      height: 80px;
     }
   }
   
@@ -133,13 +137,13 @@
     
     // Add spacing and animation on mobile (excluding desktop-only items)
     .navbar--mobile-open &:not(.navbar__nav-item--desktop-only) {
-      margin: abstracts.$spacing-md 0;
+      margin: abstracts.$spacing-xs 0;
       opacity: 0;
       animation: fadeIn 0.5s ease-out forwards;
       
       @for $i from 1 through 6 {
         &:nth-child(#{$i}) {
-          animation-delay: #{$i * 0.1}s;
+          animation-delay: #{$i * 0.08}s;
         }
       }
       
@@ -181,8 +185,8 @@
     
     // Mobile styles
     .navbar--mobile-open & {
-      font-size: calc(abstracts.$font-size-lg * 1.2);
-      padding: abstracts.$spacing-md abstracts.$spacing-xl;
+      font-size: abstracts.$font-size-lg;
+      padding: abstracts.$spacing-sm abstracts.$spacing-lg;
       display: block;
       width: 100%;
       text-align: center;
@@ -327,22 +331,24 @@ body.mobile-menu-open {
 // Mobile CTA button in separate container with bouncing animation
 .navbar__mobile-cta .navbar__nav-link--cta {
   @include abstracts.button-secondary;
-  padding: 1rem 2.5rem;
+  padding: 0.9rem 1.8rem;
   font-weight: 700;
   border-radius: abstracts.$border-radius-lg;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-size: abstracts.$font-size-lg;
+  letter-spacing: 1.2px;
+  font-size: abstracts.$font-size-md;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   background: linear-gradient(135deg, abstracts.$secondary-color 0%, #f0e7c8 100%);
   color: abstracts.$primary-color;
   border: 2px solid abstracts.$secondary-color;
-  min-width: 250px;
+  width: 100%;
+  max-width: 250px;
   text-align: center;
   position: relative;
   overflow: hidden;
+  display: block;
   
   // Bouncing animation
   animation: gentleBounce 2s ease-in-out infinite;
