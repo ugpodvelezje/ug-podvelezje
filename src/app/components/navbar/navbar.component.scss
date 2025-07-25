@@ -37,6 +37,21 @@
     }
   }
   
+  // Organization title for smaller devices
+  &__title {
+    display: block;
+    color: abstracts.$light-color;
+    font-size: abstracts.$font-size-lg;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    z-index: abstracts.$z-index-navbar + 10;
+    
+    // Hide on desktop
+    @include abstracts.respond-to(lg) {
+      display: none;
+    }
+  }
+  
   // When scrolled or mobile menu is open
   &--scrolled, &--mobile-open {
     background-color: abstracts.$primary-color;
