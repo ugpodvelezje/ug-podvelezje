@@ -93,8 +93,6 @@
         line-height: 1;
         margin: 4px 8px 0 0;
         color: $primary-color;
-
-        @media (max-width: 768px) { font-size: 2.5em; }
       }
     }
   }
@@ -389,7 +387,7 @@
     @media (max-width: 380px) { width: 32px; height: 32px; }
 
     &:hover {
-      background: darken($primary-color, 10%);
+      background: #0c2e21;
       transform: scale(1.1);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
