@@ -54,16 +54,19 @@
     // Show when mobile menu is open
     .navbar--mobile-open & {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
       position: fixed;
       top: 70px;
       left: 0;
       width: 100%;
       height: calc(100vh - 70px);
       background-color: abstracts.$primary-color;
-      padding: abstracts.$spacing-xl 0;
+      padding: abstracts.$spacing-xl abstracts.$spacing-lg;
       @include abstracts.shadow-md;
       animation: slideIn 0.3s ease-out forwards;
+      box-sizing: border-box;
       
       @keyframes slideIn {
         from {
@@ -84,15 +87,36 @@
     padding: 0;
     margin: 0;
     
-    // Stack vertically on mobile
+    // Stack vertically on mobile - only for regular nav items
     .navbar--mobile-open & {
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       gap: abstracts.$spacing-xl;
       width: 100%;
       max-width: 300px;
       margin: 0 auto;
+      flex: 1;
+      padding-top: abstracts.$spacing-xl;
+    }
+  }
+
+  // Mobile CTA container for Join Us button
+  &__mobile-cta {
+    display: none;
+    
+    .navbar--mobile-open & {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: abstracts.$spacing-lg;
+      background: linear-gradient(180deg, transparent 0%, rgba(abstracts.$primary-color, 0.95) 30%, abstracts.$primary-color 100%);
+      z-index: abstracts.$z-index-navbar + 5;
     }
   }
   
@@ -100,13 +124,20 @@
     margin: 0 abstracts.$spacing-md;
     display: inline-block;
     
-    // Add spacing and animation on mobile
-    .navbar--mobile-open & {
+    // Hide desktop CTA on mobile
+    &--desktop-only {
+      .navbar--mobile-open & {
+        display: none;
+      }
+    }
+    
+    // Add spacing and animation on mobile (excluding desktop-only items)
+    .navbar--mobile-open &:not(.navbar__nav-item--desktop-only) {
       margin: abstracts.$spacing-md 0;
       opacity: 0;
       animation: fadeIn 0.5s ease-out forwards;
       
-      @for $i from 1 through 4 {
+      @for $i from 1 through 6 {
         &:nth-child(#{$i}) {
           animation-delay: #{$i * 0.1}s;
         }
@@ -189,23 +220,31 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    background: transparent;
-    border: none;
+    width: 44px;
+    height: 44px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: abstracts.$border-radius-sm;
     cursor: pointer;
     z-index: abstracts.$z-index-navbar + 10;
+    transition: all 0.3s ease;
     
     // Hide on desktop
     @include abstracts.respond-to(lg) {
       display: none;
     }
 
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: scale(1.05);
+    }
+
     &-wrapper {
       position: relative;
-      width: 30px;
-      height: 20px;
+      width: 24px;
+      height: 18px;
     }
     
     // Hamburger bars
@@ -214,49 +253,50 @@
       left: 0;
       width: 100%;
       height: 2px;
-      background-color: #DFD4B8;
-      border-radius: abstracts.$border-radius-sm;
-      transition: transform 0.3s ease,
-                  opacity 0.2s ease;
+      background-color: #ffffff;
+      border-radius: 1px;
+      transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
       
       &:nth-child(1) {
         top: 0;
-        transform-origin: top left;
+        transform-origin: center;
       }
       
       &:nth-child(2) {
         top: 50%;
         transform: translateY(-50%);
+        transform-origin: center;
       }
       
       &:nth-child(3) {
         bottom: 0;
-        transform-origin: bottom left;
+        transform-origin: center;
       }
     }
     
-    // Hover state
-    &:hover .navbar__mobile-toggle-bar {
-      background-color: #ebe4d4;
-    }
-    
-    // Open state animations
+    // Open state animations - transforms hamburger to X
     &--open {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.3);
+      
       .navbar__mobile-toggle-bar {
         &:nth-child(1) {
-          transform: rotate(45deg);
-          width: 120%;
+          transform: translateY(8px) rotate(45deg);
         }
         
         &:nth-child(2) {
           opacity: 0;
-          transform: translateX(-10px);
+          transform: translateY(-50%) scale(0);
         }
         
         &:nth-child(3) {
-          transform: rotate(-45deg);
-          width: 120%;
+          transform: translateY(-8px) rotate(-45deg);
         }
+      }
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: scale(1.05);
       }
     }
   }
@@ -272,30 +312,100 @@
   }
 }
 
-// Add to mobile styles
-@media (max-width: 768px) {
-  .navbar {
-    &__nav-link {
-      &--cta {
-        margin: 1rem auto;
-        padding: 1rem 2rem;
-        width: auto;
-        min-width: 200px;
-        text-align: center;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.1rem;
-        background-color: rgba(223, 212, 184, 0.15);
-        
-        &:hover {
-          background-color: rgba(223, 212, 184, 0.25);
-        }
-        
-        &.navbar__nav-link--active {
-          background-color: #DFD4B8;
-        }
-      }
+// Prevent body scroll when mobile menu is open
+body.mobile-menu-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  
+  @include abstracts.respond-to(lg) {
+    overflow: visible;
+    position: static;
+  }
+}
+
+// Mobile CTA button in separate container with bouncing animation
+.navbar__mobile-cta .navbar__nav-link--cta {
+  @include abstracts.button-secondary;
+  padding: 1rem 2.5rem;
+  font-weight: 700;
+  border-radius: abstracts.$border-radius-lg;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: abstracts.$font-size-lg;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, abstracts.$secondary-color 0%, #f0e7c8 100%);
+  color: abstracts.$primary-color;
+  border: 2px solid abstracts.$secondary-color;
+  min-width: 250px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  
+  // Bouncing animation
+  animation: gentleBounce 2s ease-in-out infinite;
+  
+  @keyframes gentleBounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
     }
+    40% {
+      transform: translateY(-8px);
+    }
+    60% {
+      transform: translateY(-4px);
+    }
+  }
+  
+  // Shimmer effect
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s;
+  }
+  
+  &:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #f0e7c8 0%, abstracts.$secondary-color 100%);
+    animation: none; // Stop bouncing on hover
+    
+    &::before {
+      left: 100%;
+    }
+  }
+  
+  &:active {
+    transform: translateY(-2px) scale(1.02);
+  }
+  
+  // Fade in animation with delay
+  opacity: 0;
+  animation-delay: 0.8s;
+  animation-fill-mode: both;
+  
+  @keyframes fadeInBounce {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .navbar--mobile-open & {
+    animation: fadeInBounce 0.6s ease-out 0.8s both, gentleBounce 2s ease-in-out 1.4s infinite;
   }
 }

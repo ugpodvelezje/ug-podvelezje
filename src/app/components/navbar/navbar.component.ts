@@ -69,13 +69,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
     ).subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.currentRoute.set(event.urlAfterRedirects);
+        // Close mobile menu on route change
+        this.closeMobileMenu();
         // Reset to home section when navigating to home page
         if (event.urlAfterRedirects === '/' || event.urlAfterRedirects === '') {
           // Check for hash fragments
           const hash = this.browserService.getLocation()?.hash;
-          if (hash === '#about') {
-            this.activeSection.set('about');
-          } else if (hash === '#join-us') {
+          if (hash === '#join-us') {
             this.activeSection.set('join-us');
           } else {
             this.activeSection.set('home');
@@ -110,6 +110,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
     if (this.scrollHandler) {
       this.browserService.removeEventListener('scroll', this.scrollHandler);
     }
+
+    // Ensure body scroll is restored on component destroy
+    this.toggleBodyScroll(false);
   }
   
   // Initialize section elements
@@ -205,12 +208,27 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   // Toggle mobile menu
   toggleMobileMenu(): void {
-    this.mobileMenuOpen.set(!this.mobileMenuOpen());
+    const isOpen = !this.mobileMenuOpen();
+    this.mobileMenuOpen.set(isOpen);
+    this.toggleBodyScroll(isOpen);
   }
 
   // Close mobile menu
   closeMobileMenu(): void {
     this.mobileMenuOpen.set(false);
+    this.toggleBodyScroll(false);
+  }
+
+  // Toggle body scroll for mobile menu
+  private toggleBodyScroll(disable: boolean): void {
+    const document = this.browserService.getDocument();
+    if (!document) return;
+
+    if (disable) {
+      document.body.classList.add('mobile-menu-open');
+    } else {
+      document.body.classList.remove('mobile-menu-open');
+    }
   }
 
   isJoinUsActive(): boolean {

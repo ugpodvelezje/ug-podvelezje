@@ -56,7 +56,8 @@
             Heroji Podvelezja
           </a>
         </li>
-        <li class="navbar__nav-item">
+        <!-- Desktop CTA button -->
+        <li class="navbar__nav-item navbar__nav-item--desktop-only">
           <a routerLink="/" 
              fragment="join-us" 
              [class.navbar__nav-link--active]="isJoinUsActive()"
@@ -66,6 +67,17 @@
           </a>
         </li>
       </ul>
+      
+      <!-- Mobile CTA button - separate container -->
+      <div class="navbar__mobile-cta">
+        <a routerLink="/" 
+           fragment="join-us" 
+           [class.navbar__nav-link--active]="isJoinUsActive()"
+           class="navbar__nav-link navbar__nav-link--cta" 
+           (click)="navigateToJoinUs()">
+          Pridruži nam se
+        </a>
+      </div>
     </nav>
     
     <!-- Mobile menu toggle button -->
