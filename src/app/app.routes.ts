@@ -4,6 +4,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { ProjectDetailComponent } from './components/project-detail/project-detail.component';
+import { HeroesComponent } from './pages/heroes/heroes.component';
 
 export const routes: Routes = [
   {
@@ -35,6 +36,10 @@ export const routes: Routes = [
     path: 'projects/:id',
     component: ProjectDetailComponent,
     title: 'UG Podvelezje - Detalji Projekta'
+  },
+  {
+    path: 'heroes',
+    component: HeroesComponent
   },
   {
     path: '**',

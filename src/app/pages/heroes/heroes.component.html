@@ -1,0 +1,106 @@
+<div class="heroes-container">
+  <h1 class="page-title">Heroji Podvelezja</h1>
+  
+  <!-- Heroes Description Section -->
+  <div class="heroes-description">
+    <div class="description-content">
+      <h2 class="description-title">Naši heroji kroz istoriju</h2>
+      <p class="description-text">
+        Na ovoj stranici predstavljamo heroje koji su svojim životom, djelom i žrtvom označili najslavnije stranice historije našeg naroda. 
+        Ovo su ljudi koji su se borili za slobodu, pravdu i dostojanstvo, ostavivši neizbrisiv trag u kolektivnoj memoriji naše zajednice.
+      </p>
+      <p class="description-text">
+        Kroz različite mjesece godine prikazujemo njihove životne priče, hrabrost i posvećenost idealima za koje su se borili. 
+        Njihovo naslijeđe nas podsjeća na važnost očuvanja vrijednosti za koje su se žrtvovali i inspirišu nas da budemo dostojan nastavak njihove borbe.
+      </p>
+    </div>
+  </div>
+  
+  <div class="months-grid">
+    <div *ngFor="let month of months" class="month-section">
+      <h2 class="month-title">{{ month }}</h2>
+      <div class="hero-carousel" *ngIf="getHeroesForMonth(month).length > 0">
+        <div class="carousel-wrapper" [class.mobile]="isMobile">
+          <!-- Mobile: Single card display -->
+          <div *ngIf="isMobile" class="mobile-carousel">
+            <div class="mobile-hero-card">
+              <div class="hero-image">
+                <img [src]="getCurrentHero(month).imageUrl" [alt]="getCurrentHero(month).name">
+              </div>
+              <div class="hero-info">
+                <h3>{{ getCurrentHero(month).name }}</h3>
+                <p>{{ getCurrentHero(month).description }}</p>
+              </div>
+              <div class="circular-timer">
+                <svg viewBox="0 0 36 36">
+                  <path class="circle-bg"
+                    d="M18 2.0845
+                    a 15.9155 15.9155 0 0 1 0 31.831
+                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                  <path class="circle"
+                    [attr.stroke-dasharray]="getCircleProgress(month) + ', 100'"
+                    d="M18 2.0845
+                    a 15.9155 15.9155 0 0 1 0 31.831
+                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                  <text x="18" y="20.35" class="timer-text">{{ getRemainingSeconds(month) }}</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Desktop: Three card display -->
+          <div *ngIf="!isMobile" class="desktop-carousel">
+            <div class="hero-group">
+              <div *ngFor="let hero of getCurrentGroup(month); let i = index" 
+                   class="hero-card" 
+                   [class.middle-card]="i === 1">
+                <div class="hero-image">
+                  <img [src]="hero.imageUrl" [alt]="hero.name">
+                </div>
+                <div class="hero-info">
+                  <h3>{{ hero.name }}</h3>
+                  <p>{{ hero.description }}</p>
+                </div>
+                <div *ngIf="i === 1" class="circular-timer">
+                  <svg viewBox="0 0 36 36">
+                    <path class="circle-bg"
+                      d="M18 2.0845
+                      a 15.9155 15.9155 0 0 1 0 31.831
+                      a 15.9155 15.9155 0 0 1 0 -31.831"
+                    />
+                    <path class="circle"
+                      [attr.stroke-dasharray]="getCircleProgress(month) + ', 100'"
+                      d="M18 2.0845
+                      a 15.9155 15.9155 0 0 1 0 31.831
+                      a 15.9155 15.9155 0 0 1 0 -31.831"
+                    />
+                    <text x="18" y="20.35" class="timer-text">{{ getRemainingSeconds(month) }}</text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carousel controls -->
+        <div class="carousel-controls" *ngIf="getHeroesForMonth(month).length > 1">
+          <button class="control-btn prev" (click)="prevSlide(month)">
+            <span class="arrow">←</span>
+          </button>
+          <div class="carousel-indicators">
+            <span *ngFor="let hero of getHeroesForMonth(month); let idx = index"
+                  class="indicator"
+                  [class.active]="idx === getCurrentSlideIndex(month)"
+                  (click)="goToSlide(month, idx)">
+            </span>
+          </div>
+          <button class="control-btn next" (click)="nextSlide(month)">
+            <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
