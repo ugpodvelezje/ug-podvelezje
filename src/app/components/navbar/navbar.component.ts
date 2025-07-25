@@ -1,5 +1,5 @@
-import { Component, HostListener, signal, PLATFORM_ID, Inject, OnInit, OnDestroy, inject } from '@angular/core';
-import { CommonModule, isPlatformBrowser, Location } from '@angular/common';
+import { Component, signal, OnInit, OnDestroy, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive, Router, NavigationEnd, RouterModule } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
 import { BrowserService } from '../../services/browser.service';
@@ -25,11 +25,18 @@ export class NavbarComponent implements OnInit, OnDestroy {
   // Track scroll state for changing navbar appearance
   isScrolled = signal<boolean>(false);
   
-  // Track About section visibility
-  isAboutVisible = signal<boolean>(false);
+  // Track which section is currently active based on scroll position
+  activeSection = signal<string>('home');
   
   // Track current active route
   currentRoute = signal<string>('');
+  
+  // Define sections with their scroll thresholds
+  private sections = [
+    { id: 'home', element: null as HTMLElement | null },
+    { id: 'about', element: null as HTMLElement | null },
+    { id: 'join-us', element: null as HTMLElement | null }
+  ];
   
   // Subscription for cleanup
   private routerSubscription: Subscription | null = null;
@@ -48,7 +55,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   
   constructor(
     private router: Router,
-    private location: Location,
     private browserService: BrowserService
   ) {}
   
@@ -64,8 +70,23 @@ export class NavbarComponent implements OnInit, OnDestroy {
     ).subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.currentRoute.set(event.urlAfterRedirects);
-        // Check for section visibility after route change
-        setTimeout(() => this.checkSectionVisibility(), 300);
+        // Reset to home section when navigating to home page
+        if (event.urlAfterRedirects === '/' || event.urlAfterRedirects === '') {
+          // Check for hash fragments
+          const hash = this.browserService.getLocation()?.hash;
+          if (hash === '#about') {
+            this.activeSection.set('about');
+          } else if (hash === '#join-us') {
+            this.activeSection.set('join-us');
+          } else {
+            this.activeSection.set('home');
+          }
+        }
+        // Initialize sections and check visibility after route change
+        setTimeout(() => {
+          this.initializeSections();
+          this.checkSectionVisibility();
+        }, 300);
       }
     });
     
@@ -73,8 +94,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.scrollHandler = this.checkSectionVisibility.bind(this);
     this.browserService.addEventListener('scroll', this.scrollHandler);
     
-    // Initial check for section visibility
-    setTimeout(() => this.checkSectionVisibility(), 300);
+    // Initial setup
+    setTimeout(() => {
+      this.initializeSections();
+      this.checkSectionVisibility();
+    }, 300);
   }
   
   ngOnDestroy(): void {
@@ -89,16 +113,71 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
   }
   
-  // Check which section is currently visible
-  private checkSectionVisibility(): void {
+  // Initialize section elements
+  private initializeSections(): void {
     const document = this.browserService.getDocument();
     if (!document) return;
     
-    // Check if about section is in view
-    const aboutSection = document.getElementById('about');
-    if (aboutSection) {
-      const aboutVisible = this.isElementInMiddleOfViewport(aboutSection);
-      this.isAboutVisible.set(aboutVisible);
+    this.sections.forEach(section => {
+      section.element = document.getElementById(section.id);
+    });
+  }
+  
+  // Check which section is currently visible and update active section
+  private checkSectionVisibility(): void {
+    const document = this.browserService.getDocument();
+    if (!document || this.currentRoute() !== '/') return;
+    
+    const scrollY = this.browserService.getPageYOffset();
+    const windowHeight = this.browserService.getInnerHeight();
+    
+    // Find the section that's most visible in the viewport
+    let newActiveSection = 'home';
+    let maxVisibility = 0;
+    
+    this.sections.forEach(section => {
+      if (!section.element) return;
+      
+      const rect = section.element.getBoundingClientRect();
+      const elementTop = rect.top;
+      const elementBottom = rect.bottom;
+      
+      // Calculate how much of the element is visible
+      let visibleHeight = 0;
+      
+      if (elementTop <= 0 && elementBottom >= 0) {
+        // Element starts above viewport but extends into it
+        visibleHeight = Math.min(elementBottom, windowHeight);
+      } else if (elementTop >= 0 && elementTop < windowHeight) {
+        // Element starts within viewport
+        visibleHeight = Math.min(elementBottom - elementTop, windowHeight - elementTop);
+      }
+      
+      // Calculate visibility percentage
+      const elementHeight = rect.height;
+      const visibilityRatio = elementHeight > 0 ? visibleHeight / elementHeight : 0;
+      
+      // Special handling for sections
+      if (section.id === 'home') {
+        // Home is active when at the very top or when hero section is significantly visible
+        if (scrollY < 100 || (elementTop >= -100 && visibilityRatio > 0.3)) {
+          if (scrollY < 100 || visibilityRatio > maxVisibility) {
+            maxVisibility = visibilityRatio;
+            newActiveSection = 'home';
+          }
+        }
+      } else {
+        // Other sections need to be significantly visible
+        if (visibilityRatio > 0.4 && visibilityRatio > maxVisibility) {
+          maxVisibility = visibilityRatio;
+          newActiveSection = section.id;
+        }
+      }
+    });
+    
+    // Update active section if it changed
+    if (newActiveSection !== this.activeSection()) {
+      this.activeSection.set(newActiveSection);
     }
   }
   
@@ -126,27 +205,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
   
   // Check if About section is active
   isAboutActive(): boolean {
-    return this.browserService.getLocation()?.hash === '#about';
+    return this.currentRoute() === '/' && this.activeSection() === 'about';
   }
   
-  // Check if element is in the middle part of the viewport (more accurate for large sections)
-  private isElementInMiddleOfViewport(element: HTMLElement): boolean {
-    if (!element) return false;
-    
-    const rect = element.getBoundingClientRect();
-    const windowHeight = this.browserService.getInnerHeight();
-    
-    // Element takes significant portion of the screen or its middle part is visible
-    const elementHeight = rect.bottom - rect.top;
-    const elementMiddle = rect.top + elementHeight / 2;
-    
-    return (
-      // Either the element is large enough to fill most of the viewport
-      (elementHeight > windowHeight * 0.7) ||
-      // Or the middle of the element is in the middle portion of the viewport
-      (elementMiddle > windowHeight * 0.3 && elementMiddle < windowHeight * 0.7)
-    );
+  // Check if Home section is active
+  isHomeActive(): boolean {
+    // Home is active when on home route and no specific section is active, or when home section is active
+    return this.currentRoute() === '/' && this.activeSection() === 'home';
   }
+  
 
   // Toggle mobile menu
   toggleMobileMenu(): void {
@@ -159,7 +226,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   isJoinUsActive(): boolean {
-    return this.browserService.getLocation()?.hash === '#join-us';
+    return this.currentRoute() === '/' && this.activeSection() === 'join-us';
   }
 
   navigateToJoinUs() {

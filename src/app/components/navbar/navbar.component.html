@@ -10,8 +10,7 @@
       <ul class="navbar__nav-list">
         <li class="navbar__nav-item">
           <a routerLink="/" 
-             routerLinkActive="navbar__nav-link--active" 
-             [routerLinkActiveOptions]="{exact: true}"
+             [class.navbar__nav-link--active]="isHomeActive()"
              class="navbar__nav-link" 
              (click)="closeMobileMenu()">
             Početna
