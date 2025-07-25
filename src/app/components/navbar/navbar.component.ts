@@ -34,7 +34,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   // Define sections with their scroll thresholds
   private sections = [
     { id: 'home', element: null as HTMLElement | null },
-    { id: 'about', element: null as HTMLElement | null },
     { id: 'join-us', element: null as HTMLElement | null }
   ];
   
@@ -45,7 +44,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   // Define navigation items
   navItems: NavItem[] = [
     { label: 'Početna', route: '/', exact: true },
-    { label: 'O nama', route: '/#about' },
+    { label: 'O nama', route: '/about' },
     { label: 'Projekti', route: '/projects' },
     { label: 'Novosti', route: '/news' },
     { label: 'Kontakt', route: '/contact' }
@@ -195,17 +194,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   scrollToElement(elementId: string): void {
     this.closeMobileMenu();
     this.browserService.scrollToElement(elementId);
-  }
-  
-  // Navigate to home page and scroll to about section
-  navigateToAbout(): void {
-    this.closeMobileMenu();
-    this.viewportScroller.scrollToAnchor('about');
-  }
-  
-  // Check if About section is active
-  isAboutActive(): boolean {
-    return this.currentRoute() === '/' && this.activeSection() === 'about';
   }
   
   // Check if Home section is active
