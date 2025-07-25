@@ -95,6 +95,59 @@
     </div>
   </div>
 
+  <!-- Statistics Section -->
+  <div class="statistics-section">
+    <div class="section-header">
+      <h1>Udruženje u brojevima</h1>
+      <div class="about__divider"></div>
+      <p class="section-description">
+        Ove brojke govore o našem radu i posvećenosti zajednici kroz godine.
+      </p>
+    </div>
+
+    <div class="statistics-grid">
+      <div class="statistic-card">
+        <div class="statistic-icon">
+          <span class="material-icons">schedule</span>
+        </div>
+        <div class="statistic-number" [attr.data-target]="yearsOfWork">
+          {{ animatedYears }}
+        </div>
+        <div class="statistic-label">godina rada</div>
+      </div>
+
+      <div class="statistic-card">
+        <div class="statistic-icon">
+          <span class="material-icons">people</span>
+        </div>
+        <div class="statistic-number" [attr.data-target]="totalMembers">
+          {{ animatedMembers }}
+        </div>
+        <div class="statistic-label">članova</div>
+      </div>
+
+      <div class="statistic-card">
+        <div class="statistic-icon">
+          <span class="material-icons">star</span>
+        </div>
+        <div class="statistic-number" [attr.data-target]="goldSponsors">
+          {{ animatedSponsors }}
+        </div>
+        <div class="statistic-label">zlatnih sponzora</div>
+      </div>
+
+      <div class="statistic-card">
+        <div class="statistic-icon">
+          <span class="material-icons">thumb_up</span>
+        </div>
+        <div class="statistic-number" [attr.data-target]="facebookFollowers">
+          {{ animatedFollowers }}
+        </div>
+        <div class="statistic-label">Facebook pratilaca</div>
+      </div>
+    </div>
+  </div>
+
   <div class="section-spacer"></div>
 
   <div class="section-header">

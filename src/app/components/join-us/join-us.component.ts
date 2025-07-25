@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject, AfterViewInit, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserService } from '../../services/browser.service';
 
@@ -20,12 +20,26 @@ interface MembershipBenefit {
   templateUrl: './join-us.component.html',
   styleUrls: ['./join-us.component.scss']
 })
-export class JoinUsComponent implements OnInit, OnDestroy {
+export class JoinUsComponent implements OnInit, OnDestroy, AfterViewInit {
   public currentSlide = 0;
   public visibleSlides = 3;
   private autoSlideInterval?: number;
   private browserService = inject(BrowserService);
   private isTransitioning = false;
+  private elementRef = inject(ElementRef);
+  private statisticsAnimated = false;
+
+  // Statistics data
+  public yearsOfWork = 1; // Founded in 2024
+  public totalMembers = 1500;
+  public goldSponsors = 20;
+  public facebookFollowers = 4100;
+
+  // Animated values
+  public animatedYears = 0;
+  public animatedMembers = 0;
+  public animatedSponsors = 0;
+  public animatedFollowers = 0;
 
   public benefits: MembershipBenefit[] = [
     {
@@ -105,6 +119,13 @@ export class JoinUsComponent implements OnInit, OnDestroy {
     this.browserService.addEventListener('resize', this.updateVisibleSlides.bind(this));
   }
 
+  ngAfterViewInit(): void {
+    // Only setup intersection observer if we're in browser environment
+    if (this.browserService.getWindow()) {
+      this.setupIntersectionObserver();
+    }
+  }
+
   ngOnDestroy(): void {
     if (this.autoSlideInterval) {
       this.browserService.clearInterval(this.autoSlideInterval);
@@ -157,5 +178,52 @@ export class JoinUsComponent implements OnInit, OnDestroy {
     if (this.isTransitioning) return;
     this.currentSlide = index;
     this.startAutoSlide();
+  }
+
+  private setupIntersectionObserver(): void {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !this.statisticsAnimated) {
+          this.animateStatistics();
+          this.statisticsAnimated = true;
+        }
+      });
+    }, options);
+
+    const statisticsSection = this.elementRef.nativeElement.querySelector('.statistics-section');
+    if (statisticsSection) {
+      observer.observe(statisticsSection);
+    }
+  }
+
+  private animateStatistics(): void {
+    this.animateNumber('animatedYears', this.yearsOfWork, 2024);
+    this.animateNumber('animatedMembers', this.totalMembers, 2500);
+    this.animateNumber('animatedSponsors', this.goldSponsors, 1500);
+    this.animateNumber('animatedFollowers', this.facebookFollowers, 3000);
+  }
+
+  private animateNumber(property: keyof this, target: number, duration: number): void {
+    const startValue = 0;
+    const increment = target / (duration / 16); // 16ms per frame (60fps)
+    let currentValue = startValue;
+
+    const animate = () => {
+      currentValue += increment;
+      if (currentValue >= target) {
+        (this as any)[property] = target;
+        return;
+      }
+      (this as any)[property] = Math.floor(currentValue);
+      requestAnimationFrame(animate);
+    };
+
+    requestAnimationFrame(animate);
   }
 }
