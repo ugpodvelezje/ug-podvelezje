@@ -2,8 +2,6 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
-import { ProjectsComponent } from './components/projects/projects.component';
-import { ProjectDetailComponent } from './components/project-detail/project-detail.component';
 import { HeroesComponent } from './pages/heroes/heroes.component';
 
 export const routes: Routes = [
@@ -26,16 +24,6 @@ export const routes: Routes = [
     path: 'contact',
     component: ContactComponent,
     title: 'UG Podvelezje - Kontakt'
-  },
-  {
-    path: 'projects',
-    component: ProjectsComponent,
-    title: 'UG Podvelezje - Projekti'
-  },
-  {
-    path: 'projects/:id',
-    component: ProjectDetailComponent,
-    title: 'UG Podvelezje - Detalji Projekta'
   },
   {
     path: 'heroes',
