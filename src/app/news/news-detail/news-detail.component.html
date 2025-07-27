@@ -32,13 +32,41 @@
     <footer class="article-footer">
       <div class="share-buttons">
         <h3>Podijeli ovu vijest</h3>
-        <div class="social-buttons">
-          <a href="https://facebook.com/sharer/sharer.php" target="_blank" class="facebook">
-            Podijeli na Facebook-u
-          </a>
-          <a href="https://twitter.com/intent/tweet" target="_blank" class="twitter">
-            Podijeli na Twitter-u
-          </a>
+        <div class="share-container">
+          <button class="share-button" (click)="shareArticle()">
+            <i class="fas fa-share-alt"></i>
+            Podijeli
+          </button>
+          
+          <!-- Custom share menu for browsers without Web Share API -->
+          <div class="custom-share-menu" *ngIf="showCustomShareMenu && !canShare()">
+            <div class="share-overlay" (click)="closeCustomShareMenu()"></div>
+            <div class="share-menu-content">
+              <h4>Podijeli preko:</h4>
+              <div class="share-options">
+                <button class="share-option facebook" (click)="shareViaFacebook()">
+                  <i class="fab fa-facebook-f"></i>
+                  Facebook
+                </button>
+                <button class="share-option twitter" (click)="shareViaTwitter()">
+                  <i class="fab fa-twitter"></i>
+                  Twitter
+                </button>
+                <button class="share-option whatsapp" (click)="shareViaWhatsApp()">
+                  <i class="fab fa-whatsapp"></i>
+                  WhatsApp
+                </button>
+                <button class="share-option email" (click)="shareViaEmail()">
+                  <i class="fas fa-envelope"></i>
+                  Email
+                </button>
+                <button class="share-option copy" (click)="copyUrlToClipboard()">
+                  <i class="fas fa-copy"></i>
+                  Kopiraj link
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
