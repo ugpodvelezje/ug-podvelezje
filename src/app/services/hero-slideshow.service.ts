@@ -14,19 +14,19 @@ export class HeroSlideshowService {
   // or replace with your actual image paths
   private heroImages = signal<HeroImage[]>([
     {
-      url: 'assets/images/cover.jpg',
+      url: 'assets/images/hero-section/cover.jpg',
       alt: 'View of Podvelezje landscape'
     },
     {
-      url: 'assets/images/podvelezje-1.jpg',
+      url: 'assets/images/hero-section/podvelezje-1.jpg',
       alt: 'Podvelezje scenery'
     },
     {
-      url: 'assets/images/podvelezje-2.jpg',
+      url: 'assets/images/hero-section/podvelezje-2.jpg',
       alt: 'Podvelezje community'
     },
     {
-      url: 'assets/images/podvelezje-dzamija.jpg',
+      url: 'assets/images/hero-section/podvelezje-dzamija.jpg',
       alt: 'Podvelezje mosque'
     }
   ]);
