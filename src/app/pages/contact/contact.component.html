@@ -1,1 +1,178 @@
-<p>contact works!</p>
+<section class="contact-page">
+  <div class="container">
+    <!-- Header Section -->
+    <div class="section-header">
+      <h1>Kontaktirajte nas</h1>
+      <div class="about__divider"></div>
+      <p class="section-description">
+        Imate pitanja, prijedloge ili želite saznati više o našem radu? 
+        Pošaljite nam poruku i odgovoriće vam u što kraćem roku.
+      </p>
+    </div>
+
+    <div class="contact-content">
+      <!-- Contact Information -->
+      <div class="contact-info">
+        <h2>Informacije za kontakt</h2>
+        
+        <div class="info-card">
+          <div class="info-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="info-content">
+            <h3>Adresa</h3>
+            <p>Podvelezje bb<br>88000 Mostar<br>Bosna i Hercegovina</p>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="info-content">
+            <h3>Email</h3>
+            <a href="mailto:info@ugpodvelezje.ba">info&#64;ugpodvelezje.ba</a>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <div class="info-content">
+            <h3>Telefon</h3>
+            <a href="tel:+38761234567">+387 61 234 567</a>
+          </div>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="social-links">
+          <h3>Pratite nas</h3>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=100064833872953" target="_blank" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/ug_podvelezje/" target="_blank" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://chat.whatsapp.com/ugpodvelezje" target="_blank" aria-label="WhatsApp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-container">
+        <h2>Pošaljite nam poruku</h2>
+        
+        <!-- Success Message -->
+        <div class="success-message" *ngIf="messageSent">
+          <div class="success-icon">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <div class="success-content">
+            <h3>Poruka uspješno poslana!</h3>
+            <p>Otvorit će se vaš email klijent. Hvala vam na kontaktu, odgovoriće vam uskoro.</p>
+          </div>
+        </div>
+
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form" *ngIf="!messageSent">
+          <!-- Name Field -->
+          <div class="form-group">
+            <label for="name" class="form-label">
+              Ime i prezime *
+            </label>
+            <input
+              type="text"
+              id="name"
+              formControlName="name"
+              class="form-control"
+              [class.is-invalid]="submitted && f['name'].errors"
+              placeholder="Unesite vaše ime i prezime"
+            >
+            <div class="invalid-feedback" *ngIf="submitted && f['name'].errors">
+              <span *ngIf="f['name'].errors?.['required']">Ime i prezime je obavezno</span>
+              <span *ngIf="f['name'].errors?.['minlength']">Ime mora imati najmanje 2 karaktera</span>
+            </div>
+          </div>
+
+          <!-- Email Field -->
+          <div class="form-group">
+            <label for="email" class="form-label">
+              Email adresa *
+            </label>
+            <input
+              type="email"
+              id="email"
+              formControlName="email"
+              class="form-control"
+              [class.is-invalid]="submitted && f['email'].errors"
+              placeholder="vaš.email@example.com"
+            >
+            <div class="invalid-feedback" *ngIf="submitted && f['email'].errors">
+              <span *ngIf="f['email'].errors?.['required']">Email adresa je obavezna</span>
+              <span *ngIf="f['email'].errors?.['email']">Unesite ispravnu email adresu</span>
+            </div>
+          </div>
+
+          <!-- Subject Field -->
+          <div class="form-group">
+            <label for="subject" class="form-label">
+              Predmet *
+            </label>
+            <select
+              id="subject"
+              formControlName="subject"
+              class="form-control"
+              [class.is-invalid]="submitted && f['subject'].errors"
+            >
+              <option value="">Izaberite predmet poruke</option>
+              @for (option of subjectOptions; track option) {
+                <option [value]="option">{{ option }}</option>
+              }
+            </select>
+            <div class="invalid-feedback" *ngIf="submitted && f['subject'].errors">
+              <span *ngIf="f['subject'].errors?.['required']">Predmet je obavezan</span>
+            </div>
+          </div>
+
+          <!-- Message Field -->
+          <div class="form-group">
+            <label for="message" class="form-label">
+              Poruka *
+            </label>
+            <textarea
+              id="message"
+              formControlName="message"
+              class="form-control"
+              rows="5"
+              [class.is-invalid]="submitted && f['message'].errors"
+              placeholder="Opišite vaš upit ili poruku..."
+            ></textarea>
+            <div class="invalid-feedback" *ngIf="submitted && f['message'].errors">
+              <span *ngIf="f['message'].errors?.['required']">Poruka je obavezna</span>
+              <span *ngIf="f['message'].errors?.['minlength']">Poruka mora imati najmanje 10 karaktera</span>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="form-actions">
+            <button 
+              type="submit" 
+              class="btn btn-primary"
+              [disabled]="contactForm.invalid && submitted"
+            >
+              <i class="fas fa-paper-plane"></i>
+              Pošalji poruku
+            </button>
+          </div>
+
+          <p class="form-note">
+            * Obavezna polja
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
