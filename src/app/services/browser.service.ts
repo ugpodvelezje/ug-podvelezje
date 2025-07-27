@@ -74,4 +74,8 @@ export class BrowserService {
     if (!this.isBrowser || !id) return;
     window.clearInterval(id);
   }
+
+  getNavigator(): Navigator | null {
+    return this.isBrowser ? window.navigator : null;
+  }
 } 
