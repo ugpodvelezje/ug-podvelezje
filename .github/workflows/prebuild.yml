@@ -26,7 +26,7 @@ jobs:
 
       # 4. Run Angular build
       - name: Build Angular
-        run: ng build --configuration production --base-href /
+        run: npx ng build --configuration production --base-href /
 
       # 5. Upload build as an artifact
       - name: Upload build artifact

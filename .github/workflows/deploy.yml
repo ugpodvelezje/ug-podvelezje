@@ -26,7 +26,7 @@ jobs:
 
       # 4. Build Angular app (with .htaccess included via assets)
       - name: Build Angular
-        run: ng build --configuration production --base-href /
+        run: npx ng build --configuration production --base-href /
 
       # 5. Deploy via FTP
       - name: FTP Deploy
