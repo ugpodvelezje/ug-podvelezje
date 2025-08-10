@@ -36,4 +36,8 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: dist/ug-podvelezje/
-          server-dir: public_html/
+          server-dir: /home/podvelez/public_html/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
