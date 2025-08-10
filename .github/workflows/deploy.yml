@@ -1,4 +1,4 @@
-name: Deploy Angular site
+name: Deploy site
 
 on:
   push:
@@ -36,8 +36,10 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: dist/ug-podvelezje/
-          server-dir: public_html/
+          server-dir: ./
           exclude: |
             **/.git*
             **/.git*/**
             **/node_modules/**
+            **/.DS_Store
+          dry-run: false
