@@ -367,19 +367,11 @@ body.mobile-menu-open {
   
   // Bouncing animation
   animation: gentleBounce 2s ease-in-out infinite;
-  
-  @keyframes gentleBounce {
-    0%, 20%, 50%, 80%, 100% {
-      transform: translateY(0);
-    }
-    40% {
-      transform: translateY(-8px);
-    }
-    60% {
-      transform: translateY(-4px);
-    }
-  }
-  
+  // Fade in animation with delay
+  opacity: 0;
+  animation-delay: 0.8s;
+  animation-fill-mode: both;
+
   // Shimmer effect
   &::before {
     content: '';
@@ -407,11 +399,6 @@ body.mobile-menu-open {
     transform: translateY(-2px) scale(1.02);
   }
   
-  // Fade in animation with delay
-  opacity: 0;
-  animation-delay: 0.8s;
-  animation-fill-mode: both;
-  
   @keyframes fadeInBounce {
     0% {
       opacity: 0;
@@ -428,5 +415,17 @@ body.mobile-menu-open {
   
   .navbar--mobile-open & {
     animation: fadeInBounce 0.6s ease-out 0.8s both, gentleBounce 2s ease-in-out 1.4s infinite;
+  }
+}
+
+@keyframes gentleBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-8px);
+  }
+  60% {
+    transform: translateY(-4px);
   }
 }
