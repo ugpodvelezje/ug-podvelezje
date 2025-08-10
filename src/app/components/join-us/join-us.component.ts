@@ -64,7 +64,7 @@ export class JoinUsComponent implements OnInit, OnDestroy, AfterViewInit {
     },
     {
       icon: 'groups',
-      title: 'Networking',
+      title: 'Povezivanje',
       description: 'Povezivanje sa drugim članovima i stvaranje vrijednih kontakata.'
     },
     {
