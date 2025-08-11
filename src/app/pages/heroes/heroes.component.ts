@@ -19,7 +19,7 @@ interface Hero {
 })
 export class HeroesComponent implements OnInit, OnDestroy {
   months: string[] = [
-    'Januar', 'Februar', 'Mart', 'April', 'Maj', 'Jun',
+    'Januar', 'Februar', 'Maj', 'Jun',
     'Juli', 'Avgust', 'Septembar', 'Oktobar', 'Novembar', 'Decembar'
   ];
 
@@ -27,35 +27,35 @@ export class HeroesComponent implements OnInit, OnDestroy {
     // January
     {
       id: 1,
-      name: 'Crnomerovic (Camil) Nezir',
+      name: 'Crnomerović (Ćamil) Nezir',
       description: '6.1.1969 - 3.1.1994.',
       imageUrl: 'https://podvelezje.ba/assets/images/heroes/jan/crnomerovic-nezir.jpg',
       month: 'Januar'
     },
     {
       id: 2,
-      name: 'Pobric (Mustafa) Saudin',
+      name: 'Pobrić (Mustafa) Saudin',
       description: '3.12.1968 - 14.1.1994.',
       imageUrl: 'https://podvelezje.ba/assets/images/heroes/jan/pobric-saudin.jpg',
       month: 'Januar'
     },
     {
       id: 3,
-      name: 'Kolicic (Alija) Sefik',
+      name: 'Količić (Alija) Šefik',
       description: '27.2.1972 - 22.1.1994.',
       imageUrl: 'https://podvelezje.ba/assets/images/heroes/jan/kolicic-sefik.jpg',
       month: 'Januar'
     },
     {
       id: 4,
-      name: 'Dzafic (Alija) Saban',
+      name: 'Džafic (Alija) Šaban',
       description: '11.2.1961 - 24.1.1994.',
       imageUrl: 'https://podvelezje.ba/assets/images/heroes/jan/dzafic-saban.jpg',
       month: 'Januar'
     },
     {
       id: 5,
-      name: 'Zlomuzica (Osman) Asad',
+      name: 'Zlomužica (Osman) Asad',
       description: '28.7.1976 - 31.1.1994.',
       imageUrl: 'https://podvelezje.ba/assets/images/heroes/jan/zlomuzica-asad.jpg',
       month: 'Januar'
@@ -64,182 +64,199 @@ export class HeroesComponent implements OnInit, OnDestroy {
     // February
     {
       id: 6,
-      name: 'Husein Gradaščević',
-      description: '1802 - 1834.',
-      imageUrl: 'assets/images/heroes/husein-gradascevic.jpg',
+      name: 'Husnić (Mehmed) Adem',
+      description: '30.01.1961 - 12.02.1994.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/feb/husnic-adem.jpg',
       month: 'Februar'
     },
     {
       id: 7,
-      name: 'Ali-paša Rizvanbegović',
-      description: '1783 - 1851.',
-      imageUrl: 'assets/images/heroes/ali-pasa-rizvanovic.jpg',
+      name: 'Husnić (Mujo) Dervo',
+      description: '01.08.1950 - 12.02.1994.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/feb/husnic-dervo.jpg',
       month: 'Februar'
     },
     {
       id: 8,
-      name: 'Mehmed Spaho',
-      description: '1883 - 1939.',
-      imageUrl: 'assets/images/heroes/mehmed-spaho.jpg',
+      name: 'Nožić (Huso) Salko',
+      description: '22.01.1949 - 14.02.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/feb/nozic-salko.jpg',
       month: 'Februar'
-    },
-    {
-      id: 9,
-      name: 'Safvet-beg Bašagić',
-      description: '1870 - 1934.',
-      imageUrl: 'assets/images/heroes/safvet-beg-basagic.jpg',
-      month: 'Februar'
-    },
-    {
-      id: 10,
-      name: 'Musa Ćazim Ćatić',
-      description: '1878 - 1915.',
-      imageUrl: 'assets/images/heroes/musa-cazim-catic.jpg',
-      month: 'Februar'
-    },
-
-    // March
-    {
-      id: 11,
-      name: 'Derviš-paša Bajezidagić',
-      description: '16. stoljeće',
-      imageUrl: 'assets/images/heroes/dervis-pasa.jpg',
-      month: 'Mart'
-    },
-    {
-      id: 12,
-      name: 'Hamza Humo',
-      description: '1895 - 1970.',
-      imageUrl: 'assets/images/heroes/hamza-humo.jpg',
-      month: 'Mart'
-    },
-    {
-      id: 13,
-      name: 'Zulfikar Džumhur',
-      description: '1920 - 1989.',
-      imageUrl: 'assets/images/heroes/zulfikar-dzumhur.jpg',
-      month: 'Mart'
-    },
-    {
-      id: 14,
-      name: 'Hasan Kikić',
-      description: '1905 - 1942.',
-      imageUrl: 'assets/images/heroes/hasan-kikic.jpg',
-      month: 'Mart'
-    },
-    {
-      id: 15,
-      name: 'Edhem Mulabdić',
-      description: '1862 - 1954.',
-      imageUrl: 'assets/images/heroes/edhem-mulabdic.jpg',
-      month: 'Mart'
-    },
-
-    // April
-    {
-      id: 16,
-      name: 'Mehmedalija Mak Dizdar',
-      description: '1917 - 1971.',
-      imageUrl: 'assets/images/heroes/mak-dizdar.jpg',
-      month: 'April'
-    },
-    {
-      id: 17,
-      name: 'Aleksa Šantić',
-      description: '1868 - 1924.',
-      imageUrl: 'assets/images/heroes/aleksa-santic.jpg',
-      month: 'April'
-    },
-    {
-      id: 18,
-      name: 'Silvije Strahimir Kranjčević',
-      description: '1865 - 1908.',
-      imageUrl: 'assets/images/heroes/silvije-kranjcevic.jpg',
-      month: 'April'
-    },
-    {
-      id: 19,
-      name: 'Antun Branko Šimić',
-      description: '1898 - 1925.',
-      imageUrl: 'assets/images/heroes/antun-simic.jpg',
-      month: 'April'
-    },
-    {
-      id: 20,
-      name: 'Skender Kulenović',
-      description: '1910 - 1978.',
-      imageUrl: 'assets/images/heroes/skender-kulenovic.jpg',
-      month: 'April'
     },
 
     // May
     {
-      id: 21,
-      name: 'Muhamed Hevaji Uskufi',
-      description: '17. stoljeće.',
-      imageUrl: 'assets/images/heroes/muhamed-uskufi.jpg',
+      id: 9,
+      name: 'Husić (Mehmed) Esad',
+      description: '02.06.1958 - 11.05.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/may/husic-mehmed-esad.jpg',
       month: 'Maj'
     },
     {
-      id: 22,
-      name: 'Matija Divković',
-      description: '1563 - 1631.',
-      imageUrl: 'assets/images/heroes/matija-divkovic.jpg',
+      id: 10,
+      name: 'Husić (Omer) Dževad',
+      description: '30.04.1975 - 10.05.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/may/husic-omer-dzevad.jpg',
       month: 'Maj'
     },
     {
-      id: 23,
-      name: 'Ivan Frano Jukić',
-      description: '1818 - 1857.',
-      imageUrl: 'assets/images/heroes/ivan-jukic.jpg',
+      id: 11,
+      name: 'Husnić (Meho) Halil',
+      description: '12.05.1962 - 04.05.1995.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/may/husnic-meho-halil.jpg',
       month: 'Maj'
     },
     {
-      id: 24,
-      name: 'Grga Martić',
-      description: '1822 - 1905.',
-      imageUrl: 'assets/images/heroes/grga-martic.jpg',
+      id: 12,
+      name: 'Pintul (Murat) Izet',
+      description: '11.03.1964 - 30.05.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/may/pintul-murat-izet.jpg',
       month: 'Maj'
     },
     {
-      id: 25,
-      name: 'Muhamed Hadžijahić',
-      description: '1918 - 1986.',
-      imageUrl: 'assets/images/heroes/muhamed-hadzijahic.jpg',
+      id: 13,
+      name: 'Pobrić (Mehmed) Šefik',
+      description: '25.01.1966 - 10.05.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/may/pobric-mehmed-sefik.jpg',
+      month: 'Maj'
+    },
+    {
+      id: 14,
+      name: 'Puce (Bešir) Mehmed',
+      description: '12.04.1959 - 11.05.1993',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/may/puce-besir-mehmed.jpg',
       month: 'Maj'
     },
 
     // June
     {
-      id: 26,
+      id: 15,
       name: 'Enver Čolaković',
       description: '1913 - 1976.',
       imageUrl: 'assets/images/heroes/enver-colakovic.jpg',
       month: 'Jun'
     },
     {
-      id: 27,
+      id: 16,
       name: 'Alija Isaković',
       description: '1932 - 1997.',
       imageUrl: 'assets/images/heroes/alija-isakovic.jpg',
       month: 'Jun'
     },
     {
-      id: 28,
+      id: 17,
       name: 'Husein Đogo',
       description: '1886 - 1952.',
       imageUrl: 'assets/images/heroes/husein-dogo.jpg',
       month: 'Jun'
     },
     {
-      id: 29,
+      id: 18,
       name: 'Muhamed Filipović',
       description: '1929 - 2020.',
       imageUrl: 'assets/images/heroes/muhamed-filipovic.jpg',
       month: 'Jun'
     },
     {
-      id: 30,
+      id: 19,
+      name: 'Derviš Sušić',
+      description: '1925 - 1990.',
+      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      month: 'Jun'
+    },
+    {
+      id: 19,
+      name: 'Derviš Sušić',
+      description: '1925 - 1990.',
+      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      month: 'Jun'
+    },
+    {
+      id: 19,
+      name: 'Derviš Sušić',
+      description: '1925 - 1990.',
+      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      month: 'Jun'
+    },
+    {
+      id: 19,
+      name: 'Derviš Sušić',
+      description: '1925 - 1990.',
+      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      month: 'Jun'
+    },
+    {
+      id: 19,
+      name: 'Derviš Sušić',
+      description: '1925 - 1990.',
+      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      month: 'Jun'
+    },
+    {
+      id: 19,
+      name: 'Derviš Sušić',
+      description: '1925 - 1990.',
+      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      month: 'Jun'
+    },
+    {
+      id: 19,
+      name: 'Derviš Sušić',
+      description: '1925 - 1990.',
+      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      month: 'Jun'
+    },
+    {
+      id: 19,
+      name: 'Derviš Sušić',
+      description: '1925 - 1990.',
+      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      month: 'Jun'
+    },
+    {
+      id: 19,
+      name: 'Derviš Sušić',
+      description: '1925 - 1990.',
+      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      month: 'Jun'
+    },
+    {
+      id: 19,
+      name: 'Derviš Sušić',
+      description: '1925 - 1990.',
+      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      month: 'Jun'
+    },
+    {
+      id: 19,
+      name: 'Derviš Sušić',
+      description: '1925 - 1990.',
+      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      month: 'Jun'
+    },
+    {
+      id: 19,
+      name: 'Derviš Sušić',
+      description: '1925 - 1990.',
+      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      month: 'Jun'
+    },
+    {
+      id: 19,
+      name: 'Derviš Sušić',
+      description: '1925 - 1990.',
+      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      month: 'Jun'
+    },
+    {
+      id: 19,
+      name: 'Derviš Sušić',
+      description: '1925 - 1990.',
+      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      month: 'Jun'
+    },
+    {
+      id: 19,
       name: 'Derviš Sušić',
       description: '1925 - 1990.',
       imageUrl: 'assets/images/heroes/dervis-susic.jpg',
@@ -282,6 +299,118 @@ export class HeroesComponent implements OnInit, OnDestroy {
       imageUrl: 'assets/images/heroes/nedzad-ibrisimovic.jpg',
       month: 'Juli'
     },
+    {
+      id: 32,
+      name: 'Ahmed Muradbegović',
+      description: '1898 - 1972.',
+      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      month: 'Juli'
+    },
+    {
+      id: 32,
+      name: 'Ahmed Muradbegović',
+      description: '1898 - 1972.',
+      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      month: 'Juli'
+    },
+    {
+      id: 32,
+      name: 'Ahmed Muradbegović',
+      description: '1898 - 1972.',
+      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      month: 'Juli'
+    },
+    {
+      id: 32,
+      name: 'Ahmed Muradbegović',
+      description: '1898 - 1972.',
+      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      month: 'Juli'
+    },
+    {
+      id: 32,
+      name: 'Ahmed Muradbegović',
+      description: '1898 - 1972.',
+      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      month: 'Juli'
+    },
+    {
+      id: 32,
+      name: 'Ahmed Muradbegović',
+      description: '1898 - 1972.',
+      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      month: 'Juli'
+    },
+    {
+      id: 32,
+      name: 'Ahmed Muradbegović',
+      description: '1898 - 1972.',
+      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      month: 'Juli'
+    },
+    {
+      id: 32,
+      name: 'Ahmed Muradbegović',
+      description: '1898 - 1972.',
+      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      month: 'Juli'
+    },
+    {
+      id: 32,
+      name: 'Ahmed Muradbegović',
+      description: '1898 - 1972.',
+      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      month: 'Juli'
+    },
+    {
+      id: 32,
+      name: 'Ahmed Muradbegović',
+      description: '1898 - 1972.',
+      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      month: 'Juli'
+    },
+    {
+      id: 32,
+      name: 'Ahmed Muradbegović',
+      description: '1898 - 1972.',
+      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      month: 'Juli'
+    },
+    {
+      id: 32,
+      name: 'Ahmed Muradbegović',
+      description: '1898 - 1972.',
+      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      month: 'Juli'
+    },
+    {
+      id: 32,
+      name: 'Ahmed Muradbegović',
+      description: '1898 - 1972.',
+      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      month: 'Juli'
+    },
+    {
+      id: 32,
+      name: 'Ahmed Muradbegović',
+      description: '1898 - 1972.',
+      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      month: 'Juli'
+    },
+    {
+      id: 32,
+      name: 'Ahmed Muradbegović',
+      description: '1898 - 1972.',
+      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      month: 'Juli'
+    },
+    {
+      id: 32,
+      name: 'Ahmed Muradbegović',
+      description: '1898 - 1972.',
+      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      month: 'Juli'
+    },
 
     // August
     {
@@ -319,6 +448,41 @@ export class HeroesComponent implements OnInit, OnDestroy {
       imageUrl: 'assets/images/heroes/husein-lamekani.jpg',
       month: 'Avgust'
     },
+    {
+      id: 37,
+      name: 'Nafija Sarajlić',
+      description: '1893 - 1970.',
+      imageUrl: 'assets/images/heroes/nafija-sarajlic.jpg',
+      month: 'Avgust'
+    },
+    {
+      id: 37,
+      name: 'Nafija Sarajlić',
+      description: '1893 - 1970.',
+      imageUrl: 'assets/images/heroes/nafija-sarajlic.jpg',
+      month: 'Avgust'
+    },
+    {
+      id: 37,
+      name: 'Nafija Sarajlić',
+      description: '1893 - 1970.',
+      imageUrl: 'assets/images/heroes/nafija-sarajlic.jpg',
+      month: 'Avgust'
+    },
+    {
+      id: 37,
+      name: 'Nafija Sarajlić',
+      description: '1893 - 1970.',
+      imageUrl: 'assets/images/heroes/nafija-sarajlic.jpg',
+      month: 'Avgust'
+    },
+    {
+      id: 37,
+      name: 'Nafija Sarajlić',
+      description: '1893 - 1970.',
+      imageUrl: 'assets/images/heroes/nafija-sarajlic.jpg',
+      month: 'Avgust'
+    },
 
     // September
     {
@@ -354,6 +518,69 @@ export class HeroesComponent implements OnInit, OnDestroy {
       name: 'Muhamed Nerkesi',
       description: '1584 - 1635.',
       imageUrl: 'assets/images/heroes/muhamed-nerkesi.jpg',
+      month: 'Septembar'
+    },
+    {
+      id: 42,
+      name: 'Salih Ugljanin',
+      description: '1870 - 1935.',
+      imageUrl: 'assets/images/heroes/salih-ugljanin.jpg',
+      month: 'Septembar'
+    },
+    {
+      id: 42,
+      name: 'Salih Ugljanin',
+      description: '1870 - 1935.',
+      imageUrl: 'assets/images/heroes/salih-ugljanin.jpg',
+      month: 'Septembar'
+    },
+    {
+      id: 42,
+      name: 'Salih Ugljanin',
+      description: '1870 - 1935.',
+      imageUrl: 'assets/images/heroes/salih-ugljanin.jpg',
+      month: 'Septembar'
+    },
+    {
+      id: 42,
+      name: 'Salih Ugljanin',
+      description: '1870 - 1935.',
+      imageUrl: 'assets/images/heroes/salih-ugljanin.jpg',
+      month: 'Septembar'
+    },
+    {
+      id: 42,
+      name: 'Salih Ugljanin',
+      description: '1870 - 1935.',
+      imageUrl: 'assets/images/heroes/salih-ugljanin.jpg',
+      month: 'Septembar'
+    },
+    {
+      id: 42,
+      name: 'Salih Ugljanin',
+      description: '1870 - 1935.',
+      imageUrl: 'assets/images/heroes/salih-ugljanin.jpg',
+      month: 'Septembar'
+    },
+    {
+      id: 42,
+      name: 'Salih Ugljanin',
+      description: '1870 - 1935.',
+      imageUrl: 'assets/images/heroes/salih-ugljanin.jpg',
+      month: 'Septembar'
+    },
+    {
+      id: 42,
+      name: 'Salih Ugljanin',
+      description: '1870 - 1935.',
+      imageUrl: 'assets/images/heroes/salih-ugljanin.jpg',
+      month: 'Septembar'
+    },
+    {
+      id: 42,
+      name: 'Salih Ugljanin',
+      description: '1870 - 1935.',
+      imageUrl: 'assets/images/heroes/salih-ugljanin.jpg',
       month: 'Septembar'
     },
 
@@ -430,6 +657,83 @@ export class HeroesComponent implements OnInit, OnDestroy {
       imageUrl: 'assets/images/heroes/mustafa-ejubovic.jpg',
       month: 'Novembar'
     },
+    {
+      id: 52,
+      name: 'Abdurahman Sirri',
+      description: '19. stoljeće.',
+      imageUrl: 'assets/images/heroes/abdurahman-sirri.jpg',
+      month: 'Novembar'
+    },
+    {
+      id: 52,
+      name: 'Abdurahman Sirri',
+      description: '19. stoljeće.',
+      imageUrl: 'assets/images/heroes/abdurahman-sirri.jpg',
+      month: 'Novembar'
+    },
+    {
+      id: 52,
+      name: 'Abdurahman Sirri',
+      description: '19. stoljeće.',
+      imageUrl: 'assets/images/heroes/abdurahman-sirri.jpg',
+      month: 'Novembar'
+    },
+    {
+      id: 52,
+      name: 'Abdurahman Sirri',
+      description: '19. stoljeće.',
+      imageUrl: 'assets/images/heroes/abdurahman-sirri.jpg',
+      month: 'Novembar'
+    },
+    {
+      id: 52,
+      name: 'Abdurahman Sirri',
+      description: '19. stoljeće.',
+      imageUrl: 'assets/images/heroes/abdurahman-sirri.jpg',
+      month: 'Novembar'
+    },
+    {
+      id: 52,
+      name: 'Abdurahman Sirri',
+      description: '19. stoljeće.',
+      imageUrl: 'assets/images/heroes/abdurahman-sirri.jpg',
+      month: 'Novembar'
+    },
+    {
+      id: 52,
+      name: 'Abdurahman Sirri',
+      description: '19. stoljeće.',
+      imageUrl: 'assets/images/heroes/abdurahman-sirri.jpg',
+      month: 'Novembar'
+    },
+    {
+      id: 52,
+      name: 'Abdurahman Sirri',
+      description: '19. stoljeće.',
+      imageUrl: 'assets/images/heroes/abdurahman-sirri.jpg',
+      month: 'Novembar'
+    },
+    {
+      id: 52,
+      name: 'Abdurahman Sirri',
+      description: '19. stoljeće.',
+      imageUrl: 'assets/images/heroes/abdurahman-sirri.jpg',
+      month: 'Novembar'
+    },
+    {
+      id: 52,
+      name: 'Abdurahman Sirri',
+      description: '19. stoljeće.',
+      imageUrl: 'assets/images/heroes/abdurahman-sirri.jpg',
+      month: 'Novembar'
+    },
+    {
+      id: 52,
+      name: 'Abdurahman Sirri',
+      description: '19. stoljeće.',
+      imageUrl: 'assets/images/heroes/abdurahman-sirri.jpg',
+      month: 'Novembar'
+    },
 
     // December
     {
@@ -458,6 +762,48 @@ export class HeroesComponent implements OnInit, OnDestroy {
       name: 'Alija Bejtić',
       description: '1920 - 1981.',
       imageUrl: 'assets/images/heroes/alija-bejtic.jpg',
+      month: 'Decembar'
+    },
+    {
+      id: 60,
+      name: 'Hamdija Kreševljaković',
+      description: '1888 - 1959.',
+      imageUrl: 'assets/images/heroes/hamdija-kresevljakovic.jpg',
+      month: 'Decembar'
+    },
+    {
+      id: 60,
+      name: 'Hamdija Kreševljaković',
+      description: '1888 - 1959.',
+      imageUrl: 'assets/images/heroes/hamdija-kresevljakovic.jpg',
+      month: 'Decembar'
+    },
+    {
+      id: 60,
+      name: 'Hamdija Kreševljaković',
+      description: '1888 - 1959.',
+      imageUrl: 'assets/images/heroes/hamdija-kresevljakovic.jpg',
+      month: 'Decembar'
+    },
+    {
+      id: 60,
+      name: 'Hamdija Kreševljaković',
+      description: '1888 - 1959.',
+      imageUrl: 'assets/images/heroes/hamdija-kresevljakovic.jpg',
+      month: 'Decembar'
+    },
+    {
+      id: 60,
+      name: 'Hamdija Kreševljaković',
+      description: '1888 - 1959.',
+      imageUrl: 'assets/images/heroes/hamdija-kresevljakovic.jpg',
+      month: 'Decembar'
+    },
+    {
+      id: 60,
+      name: 'Hamdija Kreševljaković',
+      description: '1888 - 1959.',
+      imageUrl: 'assets/images/heroes/hamdija-kresevljakovic.jpg',
       month: 'Decembar'
     },
     {
