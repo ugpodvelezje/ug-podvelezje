@@ -31,8 +31,8 @@ export class JoinUsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   // Statistics data
   public yearsOfWork = 1; // Founded in 2024
-  public totalMembers = 1500;
-  public goldSponsors = 20;
+  public totalMembers = 126;
+  public goldSponsors = 51;
   public facebookFollowers = 4100;
 
   // Animated values
