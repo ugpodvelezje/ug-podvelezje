@@ -31,6 +31,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
   // Track current active route
   currentRoute = signal<string>('');
   
+  // Store scroll position when menu opens
+  private scrollPosition = 0;
+  
   // Define sections with their scroll thresholds
   private sections = [
     { id: 'home', element: null as HTMLElement | null },
@@ -221,12 +224,30 @@ export class NavbarComponent implements OnInit, OnDestroy {
   // Toggle body scroll for mobile menu
   private toggleBodyScroll(disable: boolean): void {
     const document = this.browserService.getDocument();
-    if (!document) return;
+    const window = this.browserService.getWindow();
+    if (!document || !window) return;
 
     if (disable) {
+      // Store current scroll position
+      this.scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+      // Add class to prevent scrolling
       document.body.classList.add('mobile-menu-open');
+      // Set body position to prevent scroll jump
+      document.body.style.top = `-${this.scrollPosition}px`;
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
     } else {
+      // Remove class and styles
       document.body.classList.remove('mobile-menu-open');
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      // Restore scroll position instantly without animation
+      window.scrollTo({
+        top: this.scrollPosition,
+        left: 0,
+        behavior: 'instant'
+      });
     }
   }
 
