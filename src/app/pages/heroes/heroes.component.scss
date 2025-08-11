@@ -1,6 +1,27 @@
 @use '../../../styles/abstracts/variables' as *;
 @use '../../../styles/abstracts/mixins' as *;
 
+// Golden lily watermark background for entire page
+:host {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://podvelezje.ba/assets/images/heroes/pattern/golden-lily.png');
+    background-size: 120px 120px;
+    background-repeat: repeat;
+    background-position: 0 0;
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
 .heroes-container {
   padding: $spacing-xxl $spacing-xl $spacing-xl $spacing-xl;
   max-width: 1200px;
