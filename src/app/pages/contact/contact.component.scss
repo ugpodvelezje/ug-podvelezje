@@ -3,10 +3,18 @@
 @use 'sass:color';
 
 .contact-page {
-  padding: calc($spacing-xxl * 2) 0 $spacing-xxl 0;
+  padding: $spacing-xxl 0;
   background: linear-gradient(135deg, rgba(15, 55, 39, 0.03) 0%, rgba(229, 221, 189, 0.1) 100%);
   min-height: 80vh;
-  margin-top: $spacing-xl;
+  margin-top: 80px;
+
+  @media (max-width: 768px) {
+    margin-top: 60px;
+  }
+
+  @media (max-width: 480px) {
+    margin-top: 40px;
+  }
 
   .container {
     max-width: 1200px;
@@ -28,13 +36,16 @@
     color: $primary-color;
     margin-bottom: $spacing-md;
     font-weight: 700;
+    padding-top: $spacing-xl;
 
     @media (max-width: $breakpoint-md) {
       font-size: $font-size-xxl;
+      padding-top: $spacing-lg;
     }
 
     @media (max-width: $breakpoint-sm) {
       font-size: $font-size-xl;
+      padding-top: $spacing-xxl;
     }
   }
 
