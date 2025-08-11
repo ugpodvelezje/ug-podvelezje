@@ -29,35 +29,35 @@ export class HeroesComponent implements OnInit, OnDestroy {
       id: 1,
       name: 'Crnomerovic (Camil) Nezir',
       description: '6.1.1969 - 3.1.1994.',
-      imageUrl: 'assets/images/heroes/jan/crnomerovic-nezir.jpg',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jan/crnomerovic-nezir.jpg',
       month: 'Januar'
     },
     {
       id: 2,
       name: 'Pobric (Mustafa) Saudin',
       description: '3.12.1968 - 14.1.1994.',
-      imageUrl: 'assets/images/heroes/jan/pobric-saudin.jpg',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jan/pobric-saudin.jpg',
       month: 'Januar'
     },
     {
       id: 3,
       name: 'Kolicic (Alija) Sefik',
       description: '27.2.1972 - 22.1.1994.',
-      imageUrl: 'assets/images/heroes/jan/kolicic-sefik.jpg',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jan/kolicic-sefik.jpg',
       month: 'Januar'
     },
     {
       id: 4,
       name: 'Dzafic (Alija) Saban',
       description: '11.2.1961 - 24.1.1994.',
-      imageUrl: 'assets/images/heroes/jan/dzafic-saban.jpg',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jan/dzafic-saban.jpg',
       month: 'Januar'
     },
     {
       id: 5,
       name: 'Zlomuzica (Osman) Asad',
       description: '28.7.1976 - 31.1.1994.',
-      imageUrl: 'assets/images/heroes/jan/zlomuzica-asad.jpg',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jan/zlomuzica-asad.jpg',
       month: 'Januar'
     },
     
