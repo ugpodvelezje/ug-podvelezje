@@ -42,4 +42,5 @@ jobs:
             **/.git*/**
             **/node_modules/**
             **/.DS_Store
+            **/assets/**
           dry-run: false
