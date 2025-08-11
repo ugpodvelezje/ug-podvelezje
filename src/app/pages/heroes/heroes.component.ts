@@ -822,6 +822,9 @@ export class HeroesComponent implements OnInit, OnDestroy {
   private slideTimers: { [month: string]: Subscription } = {};
   private progressTimers: { [month: string]: Subscription } = {};
   private progress: { [month: string]: number } = {};
+  private userInteractionTimers: { [month: string]: any } = {};
+  private isUserInteracting: { [month: string]: boolean } = {};
+  private readonly RESUME_DELAY = 3000; // Resume auto-slide after 3 seconds of no interaction
 
   isMobile = false;
   private readonly MOBILE_BREAKPOINT = 768;
@@ -835,6 +838,7 @@ export class HeroesComponent implements OnInit, OnDestroy {
     this.checkScreenSize();
     this.months.forEach(month => {
       this.activeSlideIndices.set(month, 0);
+      this.isUserInteracting[month] = false;
     });
   }
 
@@ -855,6 +859,7 @@ export class HeroesComponent implements OnInit, OnDestroy {
     // Cleanup timers
     Object.values(this.slideTimers).forEach(timer => timer?.unsubscribe());
     Object.values(this.progressTimers).forEach(timer => timer?.unsubscribe());
+    Object.values(this.userInteractionTimers).forEach(timer => clearTimeout(timer));
   }
 
   getHeroesForMonth(month: string): Hero[] {
@@ -892,15 +897,19 @@ export class HeroesComponent implements OnInit, OnDestroy {
     // Initialize progress
     this.progress[month] = 0;
 
-    // Create progress timer (updates every 50ms)
+    // Create progress timer (updates every 50ms) - only if not user interacting
     this.progressTimers[month] = interval(50).subscribe(() => {
-      this.progress[month] = (this.progress[month] + (50 / this.autoSlideInterval) * 100) % 100;
+      if (!this.isUserInteracting[month]) {
+        this.progress[month] = (this.progress[month] + (50 / this.autoSlideInterval) * 100) % 100;
+      }
     });
 
-    // Create slide timer
+    // Create slide timer - only advance if not user interacting
     this.slideTimers[month] = interval(this.autoSlideInterval).subscribe(() => {
-      this.nextSlide(month);
-      this.progress[month] = 0; // Reset progress after slide
+      if (!this.isUserInteracting[month]) {
+        this.nextSlide(month);
+        this.progress[month] = 0; // Reset progress after slide
+      }
     });
   }
 
@@ -921,7 +930,23 @@ export class HeroesComponent implements OnInit, OnDestroy {
     return this.progress[month] || 0;
   }
 
-  // Modify existing slide methods to reset timers
+  private handleUserInteraction(month: string) {
+    // Set user interaction flag
+    this.isUserInteracting[month] = true;
+    
+    // Clear any existing resume timer
+    if (this.userInteractionTimers[month]) {
+      clearTimeout(this.userInteractionTimers[month]);
+    }
+    
+    // Set timer to resume auto-slide after delay
+    this.userInteractionTimers[month] = setTimeout(() => {
+      this.isUserInteracting[month] = false;
+      this.resetProgress(month);
+    }, this.RESUME_DELAY);
+  }
+
+  // Modify existing slide methods to handle user interaction
   nextSlide(month: string) {
     const heroes = this.getHeroesForMonth(month);
     if (heroes.length === 0) return;
@@ -929,7 +954,7 @@ export class HeroesComponent implements OnInit, OnDestroy {
     let currentIndex = this.activeSlideIndices.get(month) || 0;
     currentIndex = (currentIndex + 1) % heroes.length;
     this.activeSlideIndices.set(month, currentIndex);
-    this.resetProgress(month);
+    this.handleUserInteraction(month);
   }
 
   prevSlide(month: string) {
@@ -939,7 +964,7 @@ export class HeroesComponent implements OnInit, OnDestroy {
     let currentIndex = this.activeSlideIndices.get(month) || 0;
     currentIndex = (currentIndex - 1 + heroes.length) % heroes.length;
     this.activeSlideIndices.set(month, currentIndex);
-    this.resetProgress(month);
+    this.handleUserInteraction(month);
   }
 
   getNumberOfGroups(month: string): number {
@@ -964,14 +989,16 @@ export class HeroesComponent implements OnInit, OnDestroy {
 
   goToSlide(month: string, index: number) {
     this.activeSlideIndices.set(month, index);
-    this.resetProgress(month);
+    this.handleUserInteraction(month);
   }
 
   private resetProgress(month: string) {
     this.progressTimers[month]?.unsubscribe();
     this.progress[month] = 0;
     this.progressTimers[month] = interval(50).subscribe(() => {
-      this.progress[month] = (this.progress[month] + (50 / this.autoSlideInterval) * 100) % 100;
+      if (!this.isUserInteracting[month]) {
+        this.progress[month] = (this.progress[month] + (50 / this.autoSlideInterval) * 100) % 100;
+      }
     });
   }
 } 
