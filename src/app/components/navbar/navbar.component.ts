@@ -242,8 +242,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.width = '';
-      // Restore scroll position
-      window.scrollTo(0, this.scrollPosition);
+      // Restore scroll position instantly without animation
+      window.scrollTo({
+        top: this.scrollPosition,
+        left: 0,
+        behavior: 'instant'
+      });
     }
   }
 
