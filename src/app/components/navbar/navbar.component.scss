@@ -334,13 +334,13 @@
 
 // Prevent body scroll when mobile menu is open
 body.mobile-menu-open {
-  overflow: hidden;
-  position: fixed;
-  width: 100%;
+  overflow: hidden !important;
   
   @include abstracts.respond-to(lg) {
-    overflow: visible;
-    position: static;
+    overflow: visible !important;
+    position: static !important;
+    top: auto !important;
+    width: auto !important;
   }
 }
 
