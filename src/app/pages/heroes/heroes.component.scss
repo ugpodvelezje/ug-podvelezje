@@ -4,6 +4,16 @@
 // Golden lily watermark background for entire page
 :host {
   position: relative;
+  margin-top: 80px;
+  display: block;
+
+  @media (max-width: 768px) {
+    margin-top: 60px;
+  }
+
+  @media (max-width: 480px) {
+    margin-top: 40px;
+  }
 
   &::before {
     content: '';
@@ -26,21 +36,13 @@
   padding: $spacing-xxl $spacing-xl $spacing-xl $spacing-xl;
   max-width: 1200px;
   margin: 0 auto;
-  margin-top: 80px;
 
   @media (max-width: 768px) {
-    padding: $spacing-lg $spacing-md;
-    margin-top: 60px;
+    padding: $spacing-xxl $spacing-md $spacing-lg $spacing-md;
   }
 
   @media (max-width: 480px) {
-    padding: $spacing-md $spacing-xs;
-    margin-top: 40px;
-  }
-
-  @media (max-width: 380px) {
-    padding: $spacing-sm $spacing-xs;
-    margin-top: 30px;
+    padding: $spacing-xxl $spacing-xs $spacing-md $spacing-xs;
   }
 
   .heroes-header {
@@ -60,9 +62,9 @@
       padding-top: $spacing-lg;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 576px) {
       font-size: $font-size-xl;
-      padding-top: $spacing-xxl;
+      padding-top: $spacing-md;
     }
   }
 
