@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive, Router, NavigationEnd, RouterModule } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
 import { BrowserService } from '../../services/browser.service';
-import { ViewportScroller } from '@angular/common';
 
 interface NavItem {
   label: string;
@@ -52,7 +51,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     { label: 'Kontakt', route: '/contact' }
   ];
   
-  private viewportScroller = inject(ViewportScroller);
   
   constructor(
     private router: Router,
@@ -257,6 +255,29 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   navigateToJoinUs() {
     this.closeMobileMenu();
-    this.viewportScroller.scrollToAnchor('join-us');
+    
+    // Custom scroll logic to ensure previous section is hidden
+    setTimeout(() => {
+      const joinUsElement = document.getElementById('join-us');
+      if (joinUsElement) {
+        const elementTop = joinUsElement.offsetTop;
+        const navbarHeight = 70;
+        
+        // Calculate position that ensures About section is completely hidden
+        const aboutElement = document.getElementById('about');
+        let targetPosition = elementTop - navbarHeight;
+        
+        if (aboutElement) {
+          const aboutBottom = aboutElement.offsetTop + aboutElement.offsetHeight;
+          // Ensure we scroll to at least past the about section
+          targetPosition = Math.max(targetPosition, aboutBottom - navbarHeight + 20);
+        }
+        
+        window.scrollTo({
+          top: Math.max(0, targetPosition),
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
   }
 }

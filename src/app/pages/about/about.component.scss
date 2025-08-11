@@ -20,18 +20,19 @@
   }
   
   &__title {
-    font-size: abstracts.$font-size-xxl;
+    font-size: abstracts.$font-size-hero;
     color: abstracts.$primary-color;
     margin-bottom: abstracts.$spacing-md;
     padding-top: abstracts.$spacing-xl;
     @include abstracts.font-secondary;
     
-    @include abstracts.respond-to(md) {
-      font-size: abstracts.$font-size-hero;
+    @media (max-width: 768px) {
+      font-size: abstracts.$font-size-xxl;
       padding-top: abstracts.$spacing-lg;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 576px) {
+      font-size: abstracts.$font-size-xl;
       padding-top: abstracts.$spacing-md;
     }
   }

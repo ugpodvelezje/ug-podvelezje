@@ -51,7 +51,23 @@ export class HeroComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       const element = document.getElementById(sectionId);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        // Check if it's a mobile device (screen width < 768px)
+        const isMobile = window.innerWidth < 768;
+        
+        if (isMobile) {
+          // On mobile, scroll to a position that hides the hero section completely
+          const elementTop = element.offsetTop;
+          const heroHeight = window.innerHeight - 70; // Full viewport minus navbar
+          const targetPosition = Math.max(elementTop - 70, heroHeight);
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        } else {
+          // On desktop, use normal scroll behavior
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     }, 100);
   }
