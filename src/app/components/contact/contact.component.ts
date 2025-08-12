@@ -24,21 +24,6 @@ export class ContactComponent {
     if (this.contactForm.valid) {
       const formData = this.contactForm.value;
       const mailtoUrl = this.generateMailtoUrl(formData);
-      
-      // Debug: Log the mailto URL to console
-      console.log('=== EMAIL DEBUG INFO ===');
-      console.log('Generated mailto URL:', mailtoUrl);
-      console.log('Form data:', formData);
-      console.log('========================');
-      
-      // Optional: Show alert instead of opening email client
-      // Uncomment the next 6 lines and comment out window.location.href to test without email client
-      // const subject = `Kontakt sa web sajta - ${formData.name}`;
-      // const body = `Ime i prezime: ${formData.name}\nEmail: ${formData.email}\n\nPoruka:\n${formData.message}`;
-      // alert(`EMAIL WOULD BE SENT TO: info@podvelezje.ba\n\nSUBJECT: ${subject}\n\nBODY:\n${body}`);
-      // console.log('Email sending simulated - check alert above');
-      // return; // Stop here to prevent email client from opening
-      
       window.location.href = mailtoUrl;
     }
   }
