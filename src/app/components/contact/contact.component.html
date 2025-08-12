@@ -1,18 +1,47 @@
 <section class="contact-section">
   <h2>Kontaktirajte nas</h2>
-  <form>
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="name">Ime i prezime</label>
-      <input type="text" id="name" name="name" required>
+      <input 
+        type="text" 
+        id="name" 
+        formControlName="name" 
+        [class.invalid]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
+      <div class="error-message" *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
+        <span *ngIf="contactForm.get('name')?.errors?.['required']">Ime i prezime je obavezno.</span>
+        <span *ngIf="contactForm.get('name')?.errors?.['minlength']">Ime i prezime mora imati najmanje 2 karaktera.</span>
+      </div>
     </div>
+    
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
+      <input 
+        type="email" 
+        id="email" 
+        formControlName="email"
+        [class.invalid]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+      <div class="error-message" *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+        <span *ngIf="contactForm.get('email')?.errors?.['required']">Email je obavezan.</span>
+        <span *ngIf="contactForm.get('email')?.errors?.['email']">Unesite valjan email.</span>
+      </div>
     </div>
+    
     <div class="form-group">
       <label for="message">Poruka</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
+      <textarea 
+        id="message" 
+        formControlName="message" 
+        rows="5"
+        [class.invalid]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"></textarea>
+      <div class="error-message" *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
+        <span *ngIf="contactForm.get('message')?.errors?.['required']">Poruka je obavezna.</span>
+        <span *ngIf="contactForm.get('message')?.errors?.['minlength']">Poruka mora imati najmanje 10 karaktera.</span>
+      </div>
     </div>
-    <button type="submit" class="submit-button">Pošalji</button>
+    
+    <button type="submit" class="submit-button" [disabled]="contactForm.invalid">
+      Pošalji
+    </button>
   </form>
 </section> 
