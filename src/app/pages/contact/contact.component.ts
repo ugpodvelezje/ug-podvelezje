@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BrowserService } from '../../services/browser.service';
+import { EmailService } from '../../services/email.service';
 
 @Component({
   selector: 'app-contact',
@@ -14,6 +15,8 @@ export class ContactComponent implements OnInit {
   contactForm: FormGroup;
   submitted = false;
   messageSent = false;
+  sending = false;
+  errorMessage = '';
 
   subjectOptions = [
     'Opće informacije',
@@ -27,7 +30,8 @@ export class ContactComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private browserService: BrowserService
+    private browserService: BrowserService,
+    private emailService: EmailService
   ) {
     this.contactForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
@@ -53,22 +57,39 @@ export class ContactComponent implements OnInit {
 
   onSubmit(): void {
     this.submitted = true;
+    this.errorMessage = '';
 
     if (this.contactForm.valid) {
-      this.messageSent = true;
+      this.sending = true;
       
-      // Clear saved form data
-      const localStorage = this.browserService.getLocalStorage();
-      if (localStorage) {
-        localStorage.removeItem('contactFormData');
-      }
-      
-      // Reset form after delay
-      setTimeout(() => {
-        this.contactForm.reset();
-        this.submitted = false;
-        this.messageSent = false;
-      }, 3000);
+      this.emailService.sendEmail(this.contactForm.value).subscribe({
+        next: (response) => {
+          this.sending = false;
+          if (response.success) {
+            this.messageSent = true;
+            
+            // Clear saved form data
+            const localStorage = this.browserService.getLocalStorage();
+            if (localStorage) {
+              localStorage.removeItem('contactFormData');
+            }
+            
+            // Reset form after delay
+            setTimeout(() => {
+              this.contactForm.reset();
+              this.submitted = false;
+              this.messageSent = false;
+            }, 5000);
+          } else {
+            this.errorMessage = response.error || 'Greška prilikom slanja poruke';
+          }
+        },
+        error: (error) => {
+          this.sending = false;
+          console.error('Email sending failed:', error);
+          this.errorMessage = 'Greška prilikom slanja poruke. Pokušajte ponovo.';
+        }
+      });
     }
   }
 
