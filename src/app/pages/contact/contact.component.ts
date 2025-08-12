@@ -3,13 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BrowserService } from '../../services/browser.service';
 
-interface ContactForm {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-}
-
 @Component({
   selector: 'app-contact',
   standalone: true,
@@ -62,25 +55,6 @@ export class ContactComponent implements OnInit {
     this.submitted = true;
 
     if (this.contactForm.valid) {
-      const formData: ContactForm = this.contactForm.value;
-      
-      // Create mailto link
-      const subject = encodeURIComponent(`[UG Podvelezje] ${formData.subject} - ${formData.name}`);
-      const body = encodeURIComponent(
-        `Ime: ${formData.name}\n` +
-        `Email: ${formData.email}\n` +
-        `Predmet: ${formData.subject}\n\n` +
-        `Poruka:\n${formData.message}\n\n` +
-        `---\nPoslano putem kontakt forme na ugpodvelezje.ba`
-      );
-      
-      const mailtoUrl = `mailto:info@ugpodvelezje.ba?subject=${subject}&body=${body}`;
-      
-      // Open email client
-      if (this.browserService.getWindow()) {
-        this.browserService.getWindow()!.location.href = mailtoUrl;
-      }
-
       this.messageSent = true;
       
       // Clear saved form data
