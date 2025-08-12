@@ -71,10 +71,10 @@ export class ContactComponent implements OnInit {
         `Email: ${formData.email}\n` +
         `Predmet: ${formData.subject}\n\n` +
         `Poruka:\n${formData.message}\n\n` +
-        `---\nPoslano putem kontakt forme na ugpodvelezje.ba`
+        `---\nPoslano putem kontakt forme na info@podvelezje.ba`
       );
       
-      const mailtoUrl = `mailto:info@ugpodvelezje.ba?subject=${subject}&body=${body}`;
+      const mailtoUrl = `mailto:info@podvelezje.ba?subject=${subject}&body=${body}`;
       
       // Open email client
       if (this.browserService.getWindow()) {
