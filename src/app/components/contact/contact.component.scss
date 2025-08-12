@@ -35,13 +35,19 @@
       padding: 0.75rem;
       border: 1px solid #ccc;
       border-radius: 4px;
-      box-sizing: border-box; /* Include padding and border in element's total width and height */
+      box-sizing: border-box;
       font-size: 1rem;
+      transition: border-color 0.3s ease;
 
       &:focus {
         outline: none;
-        border-color: var(--bright-blue); // Example: using a CSS variable defined elsewhere
-        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); // Example focus style
+        border-color: #0f3727;
+        box-shadow: 0 0 0 2px rgba(15, 55, 39, 0.25);
+      }
+
+      &.invalid {
+        border-color: #dc3545;
+        box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.25);
       }
     }
 
@@ -53,7 +59,7 @@
   .submit-button {
     display: inline-block;
     padding: 0.75rem 1.5rem;
-    background-color: var(--bright-blue); // Example: using a CSS variable
+    background-color: #0f3727;
     color: white;
     border: none;
     border-radius: 4px;
@@ -62,13 +68,23 @@
     font-weight: bold;
     transition: background-color 0.3s ease;
 
-    &:hover {
-      background-color: color-mix(in srgb, var(--bright-blue) 85%, black); // Darken the button on hover
+    &:hover:not(:disabled) {
+      background-color: #0a2a1c;
     }
 
     &:disabled {
       background-color: #ccc;
       cursor: not-allowed;
+    }
+  }
+
+  .error-message {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    
+    span {
+      display: block;
     }
   }
 } 
