@@ -77,6 +77,17 @@
           </div>
         </div>
 
+        <!-- Error Message -->
+        <div class="error-message" *ngIf="errorMessage && !messageSent">
+          <div class="error-icon">
+            <i class="fas fa-exclamation-circle"></i>
+          </div>
+          <div class="error-content">
+            <h3>Greška</h3>
+            <p>{{ errorMessage }}</p>
+          </div>
+        </div>
+
         <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form" *ngIf="!messageSent">
           <!-- Name Field -->
           <div class="form-group">
@@ -161,10 +172,10 @@
             <button 
               type="submit" 
               class="btn btn-primary"
-              [disabled]="contactForm.invalid && submitted"
+              [disabled]="(contactForm.invalid && submitted) || sending"
             >
-              <i class="fas fa-paper-plane"></i>
-              Pošalji poruku
+              <i class="fas" [class.fa-paper-plane]="!sending" [class.fa-spinner]="sending" [class.fa-spin]="sending"></i>
+              {{ sending ? 'Šalje se...' : 'Pošalji poruku' }}
             </button>
           </div>
 
