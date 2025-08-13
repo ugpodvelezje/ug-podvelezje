@@ -546,4 +546,97 @@
       }
     }
   }
+}
+
+// Quranic Quote Section
+.quranic-quote-section {
+  margin: $spacing-xxl auto 0;
+  max-width: 900px;
+
+  @media (max-width: 768px) { 
+    margin-top: $spacing-xl; 
+  }
+
+  .quote-content {
+    background: rgba($primary-color, 0.03);
+    border: 1px solid rgba($primary-color, 0.1);
+    border-radius: $border-radius-lg;
+    padding: $spacing-xl $spacing-xl;
+    border-top: 4px solid $primary-color;
+    text-align: center;
+
+    @media (max-width: 768px) {
+      padding: $spacing-lg $spacing-lg;
+      border-radius: $border-radius-md;
+    }
+
+    .quote-text {
+      line-height: 1.6;
+      margin-bottom: $spacing-md;
+
+      @media (max-width: 768px) {
+        line-height: 1.5;
+        margin-bottom: $spacing-sm;
+      }
+
+      &.bosnian {
+        color: $primary-color;
+        font-size: $font-size-lg;
+        font-style: italic;
+        margin-bottom: $spacing-lg;
+        font-weight: 500;
+
+        @media (max-width: 768px) {
+          font-size: $font-size-md;
+          margin-bottom: $spacing-md;
+        }
+      }
+
+      &.arabic {
+        color: $text-color;
+        font-family: 'Amiri', 'Times New Roman', serif;
+        font-size: $font-size-xl;
+        line-height: 2;
+        direction: rtl;
+        text-align: center;
+        margin-bottom: $spacing-lg;
+        font-weight: 400;
+
+        @media (max-width: 768px) {
+          font-size: $font-size-lg;
+          line-height: 1.9;
+        }
+
+        @media (max-width: 480px) {
+          font-size: $font-size-md;
+          line-height: 1.8;
+        }
+      }
+
+      &:last-child { 
+        margin-bottom: 0; 
+      }
+    }
+
+    .quote-reference {
+      color: rgba($text-color, 0.8);
+      font-size: $font-size-sm;
+      text-align: center;
+      margin-top: $spacing-md;
+      margin-bottom: 0;
+      padding-top: $spacing-sm;
+      border-top: 1px solid rgba($primary-color, 0.1);
+      
+      @media (max-width: 768px) {
+        font-size: $font-size-xs;
+        margin-top: $spacing-sm;
+        padding-top: $spacing-xs;
+      }
+
+      em {
+        font-style: italic;
+        color: rgba($primary-color, 0.7);
+      }
+    }
+  }
 } 
