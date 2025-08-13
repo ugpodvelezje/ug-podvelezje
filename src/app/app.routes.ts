@@ -3,6 +3,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { HeroesComponent } from './pages/heroes/heroes.component';
+import { MembershipPricingComponent } from './pages/membership-pricing/membership-pricing.component';
 
 export const routes: Routes = [
   {
@@ -28,6 +29,11 @@ export const routes: Routes = [
   {
     path: 'heroes',
     component: HeroesComponent
+  },
+  {
+    path: 'membership',
+    component: MembershipPricingComponent,
+    title: 'UG Podvelezje - Članstvo'
   },
   {
     path: '**',
