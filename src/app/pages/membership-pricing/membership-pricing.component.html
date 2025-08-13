@@ -1,0 +1,106 @@
+<section class="membership">
+  <div class="membership__header">
+    <h1 class="membership__title">Članstvo</h1>
+    <div class="membership__divider"></div>
+    <p class="membership__subtitle">Odaberite paket članstva koji najbolje odgovara vašim potrebama</p>
+  </div>
+
+  <div class="membership__content">
+    <div class="membership__cards">
+      
+      <!-- Basic Membership Card -->
+      <div class="membership__card membership__card--basic">
+        <div class="membership__card-header">
+          <h2 class="membership__card-title">Osnovno članstvo</h2>
+          <div class="membership__card-price">
+            <span class="membership__card-amount">20</span>
+            <span class="membership__card-currency">KM</span>
+            <span class="membership__card-period">/godišnje</span>
+          </div>
+        </div>
+        
+        <div class="membership__card-body">
+          <ul class="membership__features">
+            <li class="membership__feature">
+              <span class="membership__feature-icon">✓</span>
+              <span class="membership__feature-text">Pristup svim kulturnim događanjima</span>
+            </li>
+            <li class="membership__feature">
+              <span class="membership__feature-icon">✓</span>
+              <span class="membership__feature-text">Mjesečni newsletter s novostima</span>
+            </li>
+            <li class="membership__feature">
+              <span class="membership__feature-icon">✓</span>
+              <span class="membership__feature-text">Članstvo važi 12 mjeseci</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="membership__card-footer">
+          <button class="membership__cta-button membership__cta-button--basic" (click)="navigateToContact()">
+            Odaberi osnovno članstvo
+          </button>
+        </div>
+      </div>
+
+      <!-- Gold Membership Card -->
+      <div class="membership__card membership__card--gold">
+        <div class="membership__card-badge">Budite sponzor</div>
+        <div class="membership__card-header">
+          <h2 class="membership__card-title">Gold članstvo</h2>
+          <div class="membership__card-price">
+            <span class="membership__card-amount">100</span>
+            <span class="membership__card-currency">KM</span>
+            <span class="membership__card-period">/godišnje</span>
+          </div>
+        </div>
+        
+        <div class="membership__card-body">
+          <ul class="membership__features">
+            <li class="membership__feature">
+              <span class="membership__feature-icon">✓</span>
+              <span class="membership__feature-text">Sve pogodnosti osnovnog članstva</span>
+            </li>
+            <li class="membership__feature">
+              <span class="membership__feature-icon">✓</span>
+              <span class="membership__feature-text">VIP pristup ekskluzivnim događanjima</span>
+            </li>
+            <li class="membership__feature">
+              <span class="membership__feature-icon">✓</span>
+              <span class="membership__feature-text">Prioritetno rezervisanje na izlete</span>
+            </li>
+            <li class="membership__feature">
+              <span class="membership__feature-icon">✓</span>
+              <span class="membership__feature-text">Personalizovani sertifikat članstva</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="membership__card-footer">
+          <button class="membership__cta-button membership__cta-button--gold" (click)="navigateToContact()">
+            Odaberi Gold članstvo
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="membership__info">
+      <div class="membership__info-section">
+        <h3 class="membership__info-title">Način plaćanja</h3>
+        <p class="membership__info-text">
+          Članarine možete platiti direktnim uplatom na račun udruženja ili prilikom posjete našoj kancelariji. 
+          Svi članovi dobijaju potvrdu o plaćenoj članarini i člansku karticu.
+        </p>
+      </div>
+      
+      <div class="membership__info-section">
+        <h3 class="membership__info-title">Obnavljanje članstva</h3>
+        <p class="membership__info-text">
+          Članstvo se automatski obnavlja svake godine. Članovi će biti obaviješteni mjesec dana prije isteka 
+          članstva s instrukcijama za obnovu.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

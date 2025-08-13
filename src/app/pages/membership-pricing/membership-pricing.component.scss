@@ -1,0 +1,300 @@
+@use '../../../styles/abstracts' as abstracts;
+@use 'sass:color';
+
+.membership {
+  padding: abstracts.$spacing-xxl 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 80px;
+
+  @media (max-width: 768px) {
+    margin-top: 60px;
+  }
+
+  @media (max-width: 480px) {
+    margin-top: 40px;
+  }
+  
+  &__header {
+    text-align: center;
+    margin-bottom: abstracts.$spacing-xxl;
+  }
+  
+  &__title {
+    font-size: abstracts.$font-size-hero;
+    color: abstracts.$primary-color;
+    margin-bottom: abstracts.$spacing-md;
+    padding-top: abstracts.$spacing-xl;
+    @include abstracts.font-secondary;
+    
+    @media (max-width: 768px) {
+      font-size: abstracts.$font-size-xxl;
+      padding-top: abstracts.$spacing-lg;
+    }
+
+    @media (max-width: 576px) {
+      font-size: abstracts.$font-size-xl;
+      padding-top: abstracts.$spacing-md;
+    }
+  }
+
+  &__subtitle {
+    font-size: abstracts.$font-size-lg;
+    color: abstracts.$text-color;
+    margin-top: abstracts.$spacing-md;
+    font-weight: 300;
+    
+    @media (max-width: 576px) {
+      font-size: abstracts.$font-size-md;
+    }
+  }
+  
+  &__divider {
+    height: 4px;
+    width: 80px;
+    background: linear-gradient(to right, abstracts.$primary-color, abstracts.$secondary-color);
+    margin: 0 auto;
+    border-radius: 2px;
+  }
+  
+  &__content {
+    padding: 0 abstracts.$spacing-lg;
+    
+    @include abstracts.respond-to(md) {
+      padding: 0 abstracts.$spacing-xl;
+    }
+  }
+  
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    gap: abstracts.$spacing-xl;
+    margin-bottom: abstracts.$spacing-xxl;
+    
+    @include abstracts.respond-to(md) {
+      flex-direction: row;
+      gap: abstracts.$spacing-lg;
+    }
+  }
+  
+  &__card {
+    background: white;
+    border-radius: abstracts.$border-radius-lg;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    @include abstracts.shadow-md;
+    
+    @include abstracts.respond-to(md) {
+      flex: 1;
+    }
+    
+    &:hover {
+      transform: translateY(-8px);
+      @include abstracts.shadow-lg;
+    }
+    
+    &--basic {
+      border-top: 5px solid #043C2F;
+      
+      .membership__card-header {
+        background: linear-gradient(135deg, #043C2F 0%, rgba(4, 60, 47, 0.8) 100%);
+      }
+
+      .membership__card-title,
+      .membership__card-amount,
+      .membership__card-currency,
+      .membership__card-period {
+        color: #DFD5BA !important;
+      }
+      
+      .membership__feature-icon {
+        color: #043C2F;
+        background: rgba(4, 60, 47, 0.1);
+      }
+    }
+    
+    &--gold {
+      border-top: 5px solid #DFD5BA;
+      position: relative;
+      
+      .membership__card-header {
+        background: linear-gradient(135deg, #DFD5BA 0%, rgba(223, 213, 186, 0.9) 100%);
+        color: #333;
+      }
+      
+      .membership__card-title,
+      .membership__card-amount,
+      .membership__card-currency {
+        color: #333 !important;
+      }
+      
+      .membership__feature-icon {
+        color: #8B7355;
+        background: rgba(223, 213, 186, 0.3);
+      }
+    }
+  }
+  
+  &__card-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #FF6B35;
+    color: white;
+    padding: abstracts.$spacing-sm abstracts.$spacing-md;
+    font-size: abstracts.$font-size-sm;
+    font-weight: 600;
+    border-bottom-left-radius: abstracts.$border-radius-md;
+    z-index: 1;
+  }
+  
+  &__card-header {
+    padding: abstracts.$spacing-xl;
+    color: white;
+    text-align: center;
+  }
+  
+  &__card-title {
+    font-size: abstracts.$font-size-xl;
+    margin-bottom: abstracts.$spacing-lg;
+    @include abstracts.font-secondary;
+    font-weight: 600;
+  }
+  
+  &__card-price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: abstracts.$spacing-xs;
+  }
+  
+  &__card-amount {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    
+    @media (max-width: 576px) {
+      font-size: 2.5rem;
+    }
+  }
+  
+  &__card-currency {
+    font-size: abstracts.$font-size-xl;
+    font-weight: 600;
+  }
+  
+  &__card-period {
+    font-size: abstracts.$font-size-md;
+    opacity: 0.9;
+  }
+  
+  &__card-body {
+    padding: abstracts.$spacing-xl;
+  }
+  
+  &__features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  &__feature {
+    display: flex;
+    align-items: flex-start;
+    gap: abstracts.$spacing-md;
+    margin-bottom: abstracts.$spacing-md;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  &__feature-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: abstracts.$font-size-sm;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  
+  &__feature-text {
+    font-size: abstracts.$font-size-md;
+    line-height: 1.5;
+    color: abstracts.$text-color;
+  }
+  
+  &__card-footer {
+    padding: abstracts.$spacing-xl;
+    padding-top: 0;
+  }
+  
+  &__cta-button {
+    width: 100%;
+    padding: abstracts.$spacing-md abstracts.$spacing-lg;
+    border: none;
+    border-radius: abstracts.$border-radius-md;
+    font-size: abstracts.$font-size-md;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    
+    &--basic {
+      background: #043C2F;
+      color: white;
+      
+      &:hover {
+        background: color.adjust(#043C2F, $lightness: -10%);
+        transform: translateY(-2px);
+      }
+    }
+    
+    &--gold {
+      background: #DFD5BA;
+      color: #333;
+      
+      &:hover {
+        background: color.adjust(#DFD5BA, $lightness: -10%);
+        transform: translateY(-2px);
+      }
+    }
+  }
+  
+  &__info {
+    display: grid;
+    gap: abstracts.$spacing-xl;
+    
+    @include abstracts.respond-to(md) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  &__info-section {
+    background: rgba(abstracts.$primary-color, 0.05);
+    padding: abstracts.$spacing-xl;
+    border-radius: abstracts.$border-radius-md;
+    border-left: 4px solid abstracts.$primary-color;
+  }
+  
+  &__info-title {
+    font-size: abstracts.$font-size-lg;
+    color: abstracts.$primary-color;
+    margin-bottom: abstracts.$spacing-md;
+    @include abstracts.font-secondary;
+    font-weight: 600;
+  }
+  
+  &__info-text {
+    font-size: abstracts.$font-size-md;
+    line-height: 1.6;
+    color: abstracts.$text-color;
+    margin: 0;
+  }
+}
