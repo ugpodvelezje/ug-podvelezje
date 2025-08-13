@@ -43,6 +43,7 @@
     color: abstracts.$text-color;
     margin-top: abstracts.$spacing-md;
     font-weight: 300;
+    @include abstracts.font-primary;
     
     @media (max-width: 576px) {
       font-size: abstracts.$font-size-md;
@@ -84,6 +85,8 @@
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     @include abstracts.shadow-md;
+    display: flex;
+    flex-direction: column;
     
     @include abstracts.respond-to(md) {
       flex: 1;
@@ -191,6 +194,7 @@
   
   &__card-body {
     padding: abstracts.$spacing-xl;
+    flex-grow: 1;
   }
   
   &__features {
