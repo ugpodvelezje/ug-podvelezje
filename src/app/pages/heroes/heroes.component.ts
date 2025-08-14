@@ -20,7 +20,7 @@ interface Hero {
 export class HeroesComponent implements OnInit, OnDestroy {
   months: string[] = [
     'Januar', 'Februar', 'Maj', 'Jun',
-    'Juli', 'Avgust', 'Septembar', 'Oktobar', 'Novembar', 'Decembar'
+    'Juli', 'August', 'Septembar', 'Oktobar', 'Novembar', 'Decembar'
   ];
 
   heroes: Hero[] = [
@@ -422,70 +422,70 @@ export class HeroesComponent implements OnInit, OnDestroy {
       name: 'Džafić (Meho) Hasan',
       description: '11.02.1950 - 03.08.1993.',
       imageUrl: 'https://podvelezje.ba/assets/images/heroes/aug/dzafic-meho-hasan.jpg',
-      month: 'Avgust'
+      month: 'August'
     },
     {
       id: 56,
       name: 'Špago (Halil) Selim',
       description: '20.01.1967 - 07.08.1993.',
       imageUrl: 'https://podvelezje.ba/assets/images/heroes/aug/spago-halil-selim.jpg',
-      month: 'Avgust'
+      month: 'August'
     },
     {
       id: 57,
       name: 'Puce (Hadže) Murat',
       description: '15.08.1958 - 09.08.1993.',
       imageUrl: 'https://podvelezje.ba/assets/images/heroes/aug/puce-hadze-murat.jpg',
-      month: 'Avgust'
+      month: 'August'
     },
     {
       id: 58,
       name: 'Ćorić (Ibro) Halil',
       description: '11.03.1973 - 12.08.1995.',
       imageUrl: 'https://podvelezje.ba/assets/images/heroes/aug/coric-ibro-halil.jpg',
-      month: 'Avgust'
+      month: 'August'
     },
     {
       id: 59,
       name: 'Dedić (Omer) Nurif',
       description: '16.01.1958 - 12.08.1995.',
       imageUrl: 'https://podvelezje.ba/assets/images/heroes/aug/dedic-omer-nurif.jpg',
-      month: 'Avgust'
+      month: 'August'
     },
     {
       id: 60,
       name: 'Džiho (Salko) Ramiz',
       description: '07.06.1959 - 12.08.1995.',
       imageUrl: 'https://podvelezje.ba/assets/images/heroes/aug/dziho-salko-ramiz.jpg',
-      month: 'Avgust'
+      month: 'August'
     },
     {
       id: 61,
       name: 'Marić (Hajdar) Huso',
       description: '05.08.1974 - 21.08.1993.',
       imageUrl: 'https://podvelezje.ba/assets/images/heroes/aug/maric-hajdar-huso.jpg',
-      month: 'Avgust'
+      month: 'August'
     },
     {
       id: 62,
       name: 'Marić (Mujo) Zukan',
       description: '01.04.1962 - 22.08.1993.',
       imageUrl: 'https://podvelezje.ba/assets/images/heroes/aug/maric-mujo-zukan.jpg',
-      month: 'Avgust'
+      month: 'August'
     },
     {
       id: 63,
       name: 'Husnić (Mehmed) Omer',
       description: '29.09.1965 - 26.08.1993.',
       imageUrl: 'https://podvelezje.ba/assets/images/heroes/aug/husnic-mehmed-omer.jpg',
-      month: 'Avgust'
+      month: 'August'
     },
     {
       id: 64,
       name: 'Isić (Ibrahim) Mumin',
       description: '10.04.1968 - 29.08.1995.',
       imageUrl: 'https://podvelezje.ba/assets/images/heroes/aug/isic-ibrahim-mumin.jpg',
-      month: 'Avgust'
+      month: 'August'
     },
 
     // September
@@ -656,9 +656,9 @@ export class HeroesComponent implements OnInit, OnDestroy {
     },
     {
       id: 88,
-      name: 'Marić (Bajre) Adis',
+      name: 'Marić (Bajro) Adis',
       description: '04.02.1974 - 11.11.1994.',
-      imageUrl: 'https://podvelezje.ba/assets/images/heroes/nov/maric-bajre-adis.jpg',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/nov/maric-bajro-adis.jpg',
       month: 'Novembar'
     },
     {
