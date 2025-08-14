@@ -28,68 +28,72 @@ export class HeroesComponent implements OnInit, OnDestroy {
     {
       id: 1,
       name: 'Crnomerović (Ćamil) Nezir',
-      description: '6.1.1969 - 3.1.1994.',
-      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jan/crnomerovic-nezir.jpg',
+      description: '06.01.1969 - 03.01.1994.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jan/crnomerovic-camil-nezir.jpg',
       month: 'Januar'
     },
     {
       id: 2,
       name: 'Pobrić (Mustafa) Saudin',
-      description: '3.12.1968 - 14.1.1994.',
-      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jan/pobric-saudin.jpg',
+      description: '03.12.1968 - 14.01.1994.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jan/pobric-mustafa-saudin.jpg',
       month: 'Januar'
     },
     {
       id: 3,
-      name: 'Količić (Alija) Šefik',
-      description: '27.2.1972 - 22.1.1994.',
-      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jan/kolicic-sefik.jpg',
+      name: 'Kolčić (Alija) Šefik',
+      description: '27.02.1972 - 22.01.1994.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jan/kolcic-alija-sefik.jpg',
       month: 'Januar'
     },
     {
       id: 4,
-      name: 'Džafic (Alija) Šaban',
-      description: '11.2.1961 - 24.1.1994.',
-      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jan/dzafic-saban.jpg',
+      name: 'Džafić (Alija) Šaban',
+      description: '11.02.1961 - 25.01.1994.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jan/dzafic-alija-saban.jpg',
       month: 'Januar'
     },
     {
       id: 5,
       name: 'Zlomužica (Osman) Asad',
-      description: '28.7.1976 - 31.1.1994.',
-      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jan/zlomuzica-asad.jpg',
+      description: '28.07.1976 - 31.01.1994.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jan/zlomuzica-osman-asad.jpg',
       month: 'Januar'
     },
-    
+
     // February
     {
       id: 6,
       name: 'Husnić (Mehmed) Adem',
       description: '30.01.1961 - 12.02.1994.',
-      imageUrl: 'https://podvelezje.ba/assets/images/heroes/feb/husnic-adem.jpg',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/feb/husnic-mehmed-adem.jpg',
       month: 'Februar'
     },
     {
       id: 7,
       name: 'Husnić (Mujo) Dervo',
       description: '01.08.1950 - 12.02.1994.',
-      imageUrl: 'https://podvelezje.ba/assets/images/heroes/feb/husnic-dervo.jpg',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/feb/husnic-mujo-dervo.jpg',
       month: 'Februar'
     },
     {
       id: 8,
       name: 'Nožić (Huso) Salko',
       description: '22.01.1949 - 14.02.1993.',
-      imageUrl: 'https://podvelezje.ba/assets/images/heroes/feb/nozic-salko.jpg',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/feb/nozic-huso-salko.jpg',
       month: 'Februar'
     },
+
+    // March - currently no heroes in the data
+
+    // April - currently no heroes in the data
 
     // May
     {
       id: 9,
-      name: 'Husić (Mehmed) Esad',
-      description: '02.06.1958 - 11.05.1993.',
-      imageUrl: 'https://podvelezje.ba/assets/images/heroes/may/husic-mehmed-esad.jpg',
+      name: 'Husnić (Meho) Halil',
+      description: '12.05.1962 - 04.05.1995.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/may/husnic-meho-halil.jpg',
       month: 'Maj'
     },
     {
@@ -101,716 +105,716 @@ export class HeroesComponent implements OnInit, OnDestroy {
     },
     {
       id: 11,
-      name: 'Husnić (Meho) Halil',
-      description: '12.05.1962 - 04.05.1995.',
-      imageUrl: 'https://podvelezje.ba/assets/images/heroes/may/husnic-meho-halil.jpg',
-      month: 'Maj'
-    },
-    {
-      id: 12,
-      name: 'Pintul (Murat) Izet',
-      description: '11.03.1964 - 30.05.1993.',
-      imageUrl: 'https://podvelezje.ba/assets/images/heroes/may/pintul-murat-izet.jpg',
-      month: 'Maj'
-    },
-    {
-      id: 13,
       name: 'Pobrić (Mehmed) Šefik',
       description: '25.01.1966 - 10.05.1993.',
       imageUrl: 'https://podvelezje.ba/assets/images/heroes/may/pobric-mehmed-sefik.jpg',
       month: 'Maj'
     },
     {
-      id: 14,
+      id: 12,
+      name: 'Husić (Mehmed) Esad',
+      description: '02.06.1958 - 11.05.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/may/husic-mehmed-esad.jpg',
+      month: 'Maj'
+    },
+    {
+      id: 13,
       name: 'Puce (Bešir) Mehmed',
-      description: '12.04.1959 - 11.05.1993',
+      description: '12.04.1959 - 11.05.1993.',
       imageUrl: 'https://podvelezje.ba/assets/images/heroes/may/puce-besir-mehmed.jpg',
+      month: 'Maj'
+    },
+    {
+      id: 14,
+      name: 'Pintul (Murat) Izet',
+      description: '11.03.1964 - 30.05.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/may/pintul-murat-izet.jpg',
       month: 'Maj'
     },
 
     // June
     {
       id: 15,
-      name: 'Enver Čolaković',
-      description: '1913 - 1976.',
-      imageUrl: 'assets/images/heroes/enver-colakovic.jpg',
+      name: 'Gosto (Avdo) Salko',
+      description: '25.05.1960 - 07.06.1995.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jun/gosto-avdo-salko.jpg',
       month: 'Jun'
     },
     {
       id: 16,
-      name: 'Alija Isaković',
-      description: '1932 - 1997.',
-      imageUrl: 'assets/images/heroes/alija-isakovic.jpg',
+      name: 'Memić (Murat) Osman',
+      description: '13.03.1957 - 09.06.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jun/memic-murat-osman.jpg',
       month: 'Jun'
     },
     {
       id: 17,
-      name: 'Husein Đogo',
-      description: '1886 - 1952.',
-      imageUrl: 'assets/images/heroes/husein-dogo.jpg',
+      name: 'Husnić (Alija) Šefik',
+      description: '22.02.1965 - 09.06.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jun/husnic-alija-sefik.jpg',
       month: 'Jun'
     },
     {
       id: 18,
-      name: 'Muhamed Filipović',
-      description: '1929 - 2020.',
-      imageUrl: 'assets/images/heroes/muhamed-filipovic.jpg',
+      name: 'Isić (Osman) Safet',
+      description: '11.12.1953 - 13.06.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jun/isic-osman-safet.jpg',
       month: 'Jun'
     },
     {
       id: 19,
-      name: 'Derviš Sušić',
-      description: '1925 - 1990.',
-      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      name: 'Juklo (Ibro) Enez',
+      description: '03.08.1968 - 13.06.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jun/juklo-ibro-enez.jpg',
       month: 'Jun'
     },
     {
-      id: 19,
-      name: 'Derviš Sušić',
-      description: '1925 - 1990.',
-      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      id: 20,
+      name: 'Juklo (Ibro) Jasminko',
+      description: '21.04.1975 - 13.06.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jun/juklo-ibro-jasminko.jpg',
       month: 'Jun'
     },
     {
-      id: 19,
-      name: 'Derviš Sušić',
-      description: '1925 - 1990.',
-      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      id: 21,
+      name: 'Juklo (Adem) Mirzo',
+      description: '25.08.1965 - 13.06.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jun/juklo-adem-mirzo.jpg',
       month: 'Jun'
     },
     {
-      id: 19,
-      name: 'Derviš Sušić',
-      description: '1925 - 1990.',
-      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      id: 22,
+      name: 'Marić (Osman) Ramo',
+      description: '24.01.1966 - 13.06.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jun/maric-osman-ramo.jpg',
       month: 'Jun'
     },
     {
-      id: 19,
-      name: 'Derviš Sušić',
-      description: '1925 - 1990.',
-      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      id: 23,
+      name: 'Puce (Salko) Mustafa',
+      description: '20.04.1961 - 13.06.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jun/puce-salko-mustafa.jpg',
       month: 'Jun'
     },
     {
-      id: 19,
-      name: 'Derviš Sušić',
-      description: '1925 - 1990.',
-      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      id: 24,
+      name: 'Ačkar (Mujo) Himzo',
+      description: '09.11.1964 - 16.06.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jun/ackar-mujo-himzo.jpg',
       month: 'Jun'
     },
     {
-      id: 19,
-      name: 'Derviš Sušić',
-      description: '1925 - 1990.',
-      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      id: 25,
+      name: 'Pobrić (Alija) Ramo',
+      description: '03.06.1952 - 16.06.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jun/pobric-alija-ramo.jpg',
       month: 'Jun'
     },
     {
-      id: 19,
-      name: 'Derviš Sušić',
-      description: '1925 - 1990.',
-      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      id: 26,
+      name: 'Gosto (Avdo) Huso',
+      description: '14.01.1971 - 16.06.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jun/gosto-avdo-huso.jpg',
       month: 'Jun'
     },
     {
-      id: 19,
-      name: 'Derviš Sušić',
-      description: '1925 - 1990.',
-      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      id: 27,
+      name: 'Husnić (Bećir) Meho',
+      description: '27.02.1949 - 16.06.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jun/husnic-becir-meho.jpg',
       month: 'Jun'
     },
     {
-      id: 19,
-      name: 'Derviš Sušić',
-      description: '1925 - 1990.',
-      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      id: 28,
+      name: 'Zlomužica (Ibro) Merkes',
+      description: '10.12.1962 - 18.06.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jun/zlomuzica-ibro-merkes.jpg',
       month: 'Jun'
     },
     {
-      id: 19,
-      name: 'Derviš Sušić',
-      description: '1925 - 1990.',
-      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      id: 29,
+      name: 'Nožić (Mustafa) Narcis',
+      description: '28.04.1972 - 23.06.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jun/nozic-mustafa-narcis.jpg',
       month: 'Jun'
     },
     {
-      id: 19,
-      name: 'Derviš Sušić',
-      description: '1925 - 1990.',
-      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      id: 30,
+      name: 'Smajkić (Murat) Ibrahim',
+      description: '03.03.1958 - 23.06.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jun/smajkic-murat-ibrahim.jpg',
       month: 'Jun'
     },
     {
-      id: 19,
-      name: 'Derviš Sušić',
-      description: '1925 - 1990.',
-      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      id: 31,
+      name: 'Voljevica (Ibro) Mujo',
+      description: '20.04.1962 - 25.06.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jun/voljevica-ibro-mujo.jpg',
       month: 'Jun'
     },
     {
-      id: 19,
-      name: 'Derviš Sušić',
-      description: '1925 - 1990.',
-      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      id: 32,
+      name: 'Maksumić (Mujo) Alija',
+      description: '06.02.1955 - 26.06.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jun/maksumic-mujo-alija.jpg',
       month: 'Jun'
     },
     {
-      id: 19,
-      name: 'Derviš Sušić',
-      description: '1925 - 1990.',
-      imageUrl: 'assets/images/heroes/dervis-susic.jpg',
+      id: 33,
+      name: 'Husnić (Huso) Selim',
+      description: '04.01.1946 - 30.06.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jun/husnic-huso-selim.jpg',
       month: 'Jun'
     },
 
     // July
     {
-      id: 31,
-      name: 'Hasan Kaimija',
-      description: '17. stoljeće.',
-      imageUrl: 'assets/images/heroes/hasan-kaimija.jpg',
-      month: 'Juli'
-    },
-    {
-      id: 32,
-      name: 'Ahmed Muradbegović',
-      description: '1898 - 1972.',
-      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
-      month: 'Juli'
-    },
-    {
-      id: 33,
-      name: 'Fadil Hadžić',
-      description: '1922 - 2011.',
-      imageUrl: 'assets/images/heroes/fadil-hadzic.jpg',
-      month: 'Juli'
-    },
-    {
       id: 34,
-      name: 'Izet Sarajlić',
-      description: '1930 - 2002.',
-      imageUrl: 'assets/images/heroes/izet-sarajlic.jpg',
+      name: 'Dedić (Ahmet) Ramiz',
+      description: '15.05.1953 - 01.07.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jul/dedic-ahmet-ramiz.jpg',
       month: 'Juli'
     },
     {
       id: 35,
-      name: 'Nedžad Ibrišimović',
-      description: '1940 - 2011.',
-      imageUrl: 'assets/images/heroes/nedzad-ibrisimovic.jpg',
+      name: 'Husnić (Selim) Ramiz',
+      description: '27.05.1956 - 01.07.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jul/husnic-selim-ramiz.jpg',
       month: 'Juli'
     },
     {
-      id: 32,
-      name: 'Ahmed Muradbegović',
-      description: '1898 - 1972.',
-      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      id: 36,
+      name: 'Jelovac (Meho) Mujo',
+      description: '10.10.1953 - 01.07.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jul/jelovac-meho-mujo.jpg',
       month: 'Juli'
     },
     {
-      id: 32,
-      name: 'Ahmed Muradbegović',
-      description: '1898 - 1972.',
-      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      id: 37,
+      name: 'Dedić (Mustafa) Džemil',
+      description: '19.08.1973 - 02.07.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jul/dedic-mustafa-dzemil.jpg',
       month: 'Juli'
     },
     {
-      id: 32,
-      name: 'Ahmed Muradbegović',
-      description: '1898 - 1972.',
-      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      id: 38,
+      name: 'Zlomušica (Omer) Seno',
+      description: '01.02.1965 - 02.07.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jul/zlomusica-omer-seno.jpg',
       month: 'Juli'
     },
     {
-      id: 32,
-      name: 'Ahmed Muradbegović',
-      description: '1898 - 1972.',
-      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      id: 39,
+      name: 'Marić (Ibro) Osman',
+      description: '13.04.1963 - 02.07.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jul/maric-ibro-osman.jpg',
       month: 'Juli'
     },
     {
-      id: 32,
-      name: 'Ahmed Muradbegović',
-      description: '1898 - 1972.',
-      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      id: 40,
+      name: 'Marić (Mujo) Smajo',
+      description: '28.03.1967 - 03.07.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jul/maric-mujo-smajo.jpg',
       month: 'Juli'
     },
     {
-      id: 32,
-      name: 'Ahmed Muradbegović',
-      description: '1898 - 1972.',
-      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      id: 41,
+      name: 'Ačkar (Salko) Zulfo',
+      description: '15.03.1970 - 07.07.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jul/ackar-salko-zulfo.jpg',
       month: 'Juli'
     },
     {
-      id: 32,
-      name: 'Ahmed Muradbegović',
-      description: '1898 - 1972.',
-      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      id: 42,
+      name: 'Pekušić (Ibro) Meho',
+      description: '15.05.1947 - 10.07.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jul/pekusic-ibro-meho.jpg',
       month: 'Juli'
     },
     {
-      id: 32,
-      name: 'Ahmed Muradbegović',
-      description: '1898 - 1972.',
-      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      id: 43,
+      name: 'Crnomerović (Omer) Emin',
+      description: '01.06.1971 - 13.07.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jul/crnomerovic-omer-emin.jpg',
       month: 'Juli'
     },
     {
-      id: 32,
-      name: 'Ahmed Muradbegović',
-      description: '1898 - 1972.',
-      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      id: 44,
+      name: 'Džiho (Ćamil) Ekrem',
+      description: '20.05.1972 - 13.07.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jul/dziho-camil-ekrem.jpg',
       month: 'Juli'
     },
     {
-      id: 32,
-      name: 'Ahmed Muradbegović',
-      description: '1898 - 1972.',
-      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      id: 45,
+      name: 'Husnić (Alija) Ahmet',
+      description: '26.09.1956 - 13.07.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jul/husnic-alija-ahmet.jpg',
       month: 'Juli'
     },
     {
-      id: 32,
-      name: 'Ahmed Muradbegović',
-      description: '1898 - 1972.',
-      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      id: 46,
+      name: 'Husnić (Alija) Himzo',
+      description: '01.02.1963 - 13.07.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jul/husnic-alija-himzo.jpg',
       month: 'Juli'
     },
     {
-      id: 32,
-      name: 'Ahmed Muradbegović',
-      description: '1898 - 1972.',
-      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      id: 47,
+      name: 'Brkan (Mumin) Duran',
+      description: '03.01.1959 - 15.07.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jul/brkan-mumin-duran.jpg',
       month: 'Juli'
     },
     {
-      id: 32,
-      name: 'Ahmed Muradbegović',
-      description: '1898 - 1972.',
-      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      id: 48,
+      name: 'Marić (Salko) Fadil',
+      description: '20.02.1960 - 15.07.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jul/maric-salko-fadil.jpg',
       month: 'Juli'
     },
     {
-      id: 32,
-      name: 'Ahmed Muradbegović',
-      description: '1898 - 1972.',
-      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      id: 49,
+      name: 'Husić (Mumin) Arif',
+      description: '23.10.1955 - 15.07.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jul/husic-mumin-arif.jpg',
       month: 'Juli'
     },
     {
-      id: 32,
-      name: 'Ahmed Muradbegović',
-      description: '1898 - 1972.',
-      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      id: 50,
+      name: 'Brkan (Mumin) Meho',
+      description: '01.03.1954 - 16.07.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jul/brkan-mumin-meho.jpg',
       month: 'Juli'
     },
     {
-      id: 32,
-      name: 'Ahmed Muradbegović',
-      description: '1898 - 1972.',
-      imageUrl: 'assets/images/heroes/ahmed-muradbegovic.jpg',
+      id: 51,
+      name: 'Memić (Salko) Kasim',
+      description: '09.02.1975 - 23.07.1995.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jul/memic-salko-kasim.jpg',
+      month: 'Juli'
+    },
+    {
+      id: 52,
+      name: 'Maksumić (Murat) Osman',
+      description: '10.03.1941 - 26.07.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jul/maksumic-murat-osman.jpg',
+      month: 'Juli'
+    },
+    {
+      id: 53,
+      name: 'Ćorić (Selim) Rasim',
+      description: '03.09.1960 - 27.07.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jul/coric-selim-rasim.jpg',
+      month: 'Juli'
+    },
+    {
+      id: 54,
+      name: 'Količić (Zulfo) Adnan',
+      description: '20.05.1978 - 30.07.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/jul/kolicic-zulfo-adnan.jpg',
       month: 'Juli'
     },
 
     // August
     {
-      id: 36,
-      name: 'Abdulvehab Ilhamija',
-      description: '1773 - 1821.',
-      imageUrl: 'assets/images/heroes/abdulvehab-ilhamija.jpg',
+      id: 55,
+      name: 'Džafić (Meho) Hasan',
+      description: '11.02.1950 - 03.08.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/aug/dzafic-meho-hasan.jpg',
       month: 'Avgust'
     },
     {
-      id: 37,
-      name: 'Nafija Sarajlić',
-      description: '1893 - 1970.',
-      imageUrl: 'assets/images/heroes/nafija-sarajlic.jpg',
+      id: 56,
+      name: 'Špago (Halil) Selim',
+      description: '20.01.1967 - 07.08.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/aug/spago-halil-selim.jpg',
       month: 'Avgust'
     },
     {
-      id: 38,
-      name: 'Hamid Dizdar',
-      description: '1907 - 1967.',
-      imageUrl: 'assets/images/heroes/hamid-dizdar.jpg',
+      id: 57,
+      name: 'Puce (Hadže) Murat',
+      description: '15.08.1958 - 09.08.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/aug/puce-hadze-murat.jpg',
       month: 'Avgust'
     },
     {
-      id: 39,
-      name: 'Rizo Ramić',
-      description: '1943 - 1994.',
-      imageUrl: 'assets/images/heroes/rizo-ramic.jpg',
+      id: 58,
+      name: 'Ćorić (Ibro) Halil',
+      description: '11.03.1973 - 12.08.1995.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/aug/coric-ibro-halil.jpg',
       month: 'Avgust'
     },
     {
-      id: 40,
-      name: 'Husein Lamekani',
-      description: '16. stoljeće.',
-      imageUrl: 'assets/images/heroes/husein-lamekani.jpg',
+      id: 59,
+      name: 'Dedić (Omer) Nurif',
+      description: '16.01.1958 - 12.08.1995.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/aug/dedic-omer-nurif.jpg',
       month: 'Avgust'
     },
     {
-      id: 37,
-      name: 'Nafija Sarajlić',
-      description: '1893 - 1970.',
-      imageUrl: 'assets/images/heroes/nafija-sarajlic.jpg',
+      id: 60,
+      name: 'Džiho (Salko) Ramiz',
+      description: '07.06.1959 - 12.08.1995.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/aug/dziho-salko-ramiz.jpg',
       month: 'Avgust'
     },
     {
-      id: 37,
-      name: 'Nafija Sarajlić',
-      description: '1893 - 1970.',
-      imageUrl: 'assets/images/heroes/nafija-sarajlic.jpg',
+      id: 61,
+      name: 'Marić (Hajdar) Huso',
+      description: '05.08.1974 - 21.08.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/aug/maric-hajdar-huso.jpg',
       month: 'Avgust'
     },
     {
-      id: 37,
-      name: 'Nafija Sarajlić',
-      description: '1893 - 1970.',
-      imageUrl: 'assets/images/heroes/nafija-sarajlic.jpg',
+      id: 62,
+      name: 'Marić (Mujo) Zukan',
+      description: '01.04.1962 - 22.08.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/aug/maric-mujo-zukan.jpg',
       month: 'Avgust'
     },
     {
-      id: 37,
-      name: 'Nafija Sarajlić',
-      description: '1893 - 1970.',
-      imageUrl: 'assets/images/heroes/nafija-sarajlic.jpg',
+      id: 63,
+      name: 'Husnić (Mehmed) Omer',
+      description: '29.09.1965 - 26.08.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/aug/husnic-mehmed-omer.jpg',
       month: 'Avgust'
     },
     {
-      id: 37,
-      name: 'Nafija Sarajlić',
-      description: '1893 - 1970.',
-      imageUrl: 'assets/images/heroes/nafija-sarajlic.jpg',
+      id: 64,
+      name: 'Isić (Ibrahim) Mumin',
+      description: '10.04.1968 - 29.08.1995.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/aug/isic-ibrahim-mumin.jpg',
       month: 'Avgust'
     },
 
     // September
     {
-      id: 41,
-      name: 'Muhsin Rizvić',
-      description: '1930 - 1994.',
-      imageUrl: 'assets/images/heroes/muhsin-rizvic.jpg',
+      id: 65,
+      name: 'Špago (Osman) Mumin',
+      description: '21.05.1971 - 07.09.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/sep/spago-osman-mumin.jpg',
       month: 'Septembar'
     },
     {
-      id: 42,
-      name: 'Salih Ugljanin',
-      description: '1870 - 1935.',
-      imageUrl: 'assets/images/heroes/salih-ugljanin.jpg',
+      id: 66,
+      name: 'Krhan (Derviš) Selim',
+      description: '29.05.1965 - 07.09.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/sep/krhan-dervis-selim.jpg',
       month: 'Septembar'
     },
     {
-      id: 43,
-      name: 'Avdo Međedović',
-      description: '1875 - 1953.',
-      imageUrl: 'assets/images/heroes/avdo-medjedovic.jpg',
+      id: 67,
+      name: 'Marić (Mumin) Ćamil',
+      description: '01.04.1964 - 10.09.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/sep/maric-mumin-camil.jpg',
       month: 'Septembar'
     },
     {
-      id: 44,
-      name: 'Hamza Bey Biščević',
-      description: '19. stoljeće.',
-      imageUrl: 'assets/images/heroes/hamza-biscevic.jpg',
+      id: 68,
+      name: 'Marić (Smajo) Bećir',
+      description: '28.11.1963 - 11.09.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/sep/maric-smajo-becir.jpg',
       month: 'Septembar'
     },
     {
-      id: 45,
-      name: 'Muhamed Nerkesi',
-      description: '1584 - 1635.',
-      imageUrl: 'assets/images/heroes/muhamed-nerkesi.jpg',
+      id: 69,
+      name: 'Pekušić (Ibro) Šaban',
+      description: '15.08.1949 - 14.09.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/sep/pekusic-ibro-saban.jpg',
       month: 'Septembar'
     },
     {
-      id: 42,
-      name: 'Salih Ugljanin',
-      description: '1870 - 1935.',
-      imageUrl: 'assets/images/heroes/salih-ugljanin.jpg',
+      id: 70,
+      name: 'Puce (Meho) Mustafa',
+      description: '02.01.1963 - 18.09.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/sep/puce-meho-mustafa.jpg',
       month: 'Septembar'
     },
     {
-      id: 42,
-      name: 'Salih Ugljanin',
-      description: '1870 - 1935.',
-      imageUrl: 'assets/images/heroes/salih-ugljanin.jpg',
+      id: 71,
+      name: 'Pobrić (Huso) Elvir',
+      description: '27.05.1973 - 19.09.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/sep/pobric-huso-elvir.jpg',
       month: 'Septembar'
     },
     {
-      id: 42,
-      name: 'Salih Ugljanin',
-      description: '1870 - 1935.',
-      imageUrl: 'assets/images/heroes/salih-ugljanin.jpg',
+      id: 72,
+      name: 'Zuhrić (Halil) Enes',
+      description: '21.09.1973 - 19.09.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/sep/zuhric-halil-enes.jpg',
       month: 'Septembar'
     },
     {
-      id: 42,
-      name: 'Salih Ugljanin',
-      description: '1870 - 1935.',
-      imageUrl: 'assets/images/heroes/salih-ugljanin.jpg',
+      id: 73,
+      name: 'Nožić (Ramiz) Nedžad',
+      description: '11.01.1972 - 21.09.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/sep/nozic-ramiz-nedzad.jpg',
       month: 'Septembar'
     },
     {
-      id: 42,
-      name: 'Salih Ugljanin',
-      description: '1870 - 1935.',
-      imageUrl: 'assets/images/heroes/salih-ugljanin.jpg',
+      id: 74,
+      name: 'Brkan (Alija) Edin',
+      description: '15.07.1973 - 23.09.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/sep/brkan-alija-edin.jpg',
       month: 'Septembar'
     },
     {
-      id: 42,
-      name: 'Salih Ugljanin',
-      description: '1870 - 1935.',
-      imageUrl: 'assets/images/heroes/salih-ugljanin.jpg',
+      id: 75,
+      name: 'Pobrić (Šaban) Enez',
+      description: '10.01.1971 - 23.09.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/sep/pobric-saban-enez.jpg',
       month: 'Septembar'
     },
     {
-      id: 42,
-      name: 'Salih Ugljanin',
-      description: '1870 - 1935.',
-      imageUrl: 'assets/images/heroes/salih-ugljanin.jpg',
+      id: 76,
+      name: 'Dedić (Osman) Alija',
+      description: '10.01.1950 - 23.09.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/sep/dedic-osman-alija.jpg',
       month: 'Septembar'
     },
     {
-      id: 42,
-      name: 'Salih Ugljanin',
-      description: '1870 - 1935.',
-      imageUrl: 'assets/images/heroes/salih-ugljanin.jpg',
+      id: 77,
+      name: 'Maksumić (Alija) Rasim',
+      description: '17.02.1964 - 23.09.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/sep/maksumic-alija-rasim.jpg',
       month: 'Septembar'
     },
     {
-      id: 42,
-      name: 'Salih Ugljanin',
-      description: '1870 - 1935.',
-      imageUrl: 'assets/images/heroes/salih-ugljanin.jpg',
+      id: 78,
+      name: 'Crnalić (Meho) Junuz',
+      description: '15.08.1968 - 25.09.1995.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/sep/crnalic-meho-junuz.jpg',
       month: 'Septembar'
     },
 
     // October
     {
-      id: 46,
-      name: 'Hasan Kafija Pruščak',
-      description: '1544 - 1615.',
-      imageUrl: 'assets/images/heroes/hasan-kafija.jpg',
+      id: 79,
+      name: 'Jelovac (Šaban) Tarik',
+      description: '02.03.1973 - 12.10.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/oct/jelovac-saban-tarik.jpg',
       month: 'Oktobar'
     },
     {
-      id: 47,
-      name: 'Ahmed Vali',
-      description: '17. stoljeće.',
-      imageUrl: 'assets/images/heroes/ahmed-vali.jpg',
+      id: 80,
+      name: 'Jelovac (Salko) Mustafa',
+      description: '04.01.1954 - 12.10.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/oct/jelovac-salko-mustafa.jpg',
       month: 'Oktobar'
     },
     {
-      id: 48,
-      name: 'Fejzo Softa',
-      description: '19. stoljeće.',
-      imageUrl: 'assets/images/heroes/fejzo-softa.jpg',
+      id: 81,
+      name: 'Džafić (Alija) Mirsad',
+      description: '07.01.1971 - 14.10.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/oct/dzafic-alija-mirsad.jpg',
       month: 'Oktobar'
     },
     {
-      id: 49,
-      name: 'Muhamed Hadžijamaković',
-      description: '1916 - 1986.',
-      imageUrl: 'assets/images/heroes/muhamed-hadzijamaković.jpg',
+      id: 82,
+      name: 'Dedić (Salih) Esad',
+      description: '19.02.1964 - 15.10.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/oct/dedic-salih-esad.jpg',
       month: 'Oktobar'
     },
     {
-      id: 50,
-      name: 'Ibrahim Krzović',
-      description: '1924 - 2021.',
-      imageUrl: 'assets/images/heroes/ibrahim-krzovic.jpg',
+      id: 83,
+      name: 'Juklo (Salko) Arif',
+      description: '30.05.1950 - 18.10.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/oct/juklo-salko-arif.jpg',
       month: 'Oktobar'
     },
 
     // November
     {
-      id: 51,
-      name: 'Osman Đikić',
-      description: '1879 - 1912.',
-      imageUrl: 'assets/images/heroes/osman-djikic.jpg',
+      id: 84,
+      name: 'Mušinović (Hasan) Adem',
+      description: '11.01.1955 - 04.11.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/nov/musinovic-hasan-adem.jpg',
       month: 'Novembar'
     },
     {
-      id: 52,
-      name: 'Abdurahman Sirri',
-      description: '19. stoljeće.',
-      imageUrl: 'assets/images/heroes/abdurahman-sirri.jpg',
+      id: 85,
+      name: 'Marić (Salih) Halil',
+      description: '06.04.1960 - 07.11.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/nov/maric-salih-halil.jpg',
       month: 'Novembar'
     },
     {
-      id: 53,
-      name: 'Muhamed Šefket Kurt',
-      description: '1879 - 1963.',
-      imageUrl: 'assets/images/heroes/muhamed-kurt.jpg',
+      id: 86,
+      name: 'Husnić (Meho) Izedin',
+      description: '01.04.1969 - 11.11.1994.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/nov/husnic-meho-izedin.jpg',
       month: 'Novembar'
     },
     {
-      id: 54,
-      name: 'Safvet Halilović',
-      description: '1940 - 2021.',
-      imageUrl: 'assets/images/heroes/safvet-halilovic.jpg',
+      id: 87,
+      name: 'Husnić (Alija) Nusret',
+      description: '16.04.1968 - 11.11.1994.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/nov/husnic-alija-nusret.jpg',
       month: 'Novembar'
     },
     {
-      id: 55,
-      name: 'Mustafa Ejubović',
-      description: '1651 - 1707.',
-      imageUrl: 'assets/images/heroes/mustafa-ejubovic.jpg',
+      id: 88,
+      name: 'Marić (Bajre) Adis',
+      description: '04.02.1974 - 11.11.1994.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/nov/maric-bajre-adis.jpg',
       month: 'Novembar'
     },
     {
-      id: 52,
-      name: 'Abdurahman Sirri',
-      description: '19. stoljeće.',
-      imageUrl: 'assets/images/heroes/abdurahman-sirri.jpg',
+      id: 89,
+      name: 'Mrndžić (Salko) Miralem',
+      description: '23.09.1966 - 11.11.1994.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/nov/mrndzic-salko-miralem.jpg',
       month: 'Novembar'
     },
     {
-      id: 52,
-      name: 'Abdurahman Sirri',
-      description: '19. stoljeće.',
-      imageUrl: 'assets/images/heroes/abdurahman-sirri.jpg',
+      id: 90,
+      name: 'Pekušić (Mumin) Osman',
+      description: '20.08.1967 - 11.11.1994.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/nov/pekusic-mumin-osman.jpg',
       month: 'Novembar'
     },
     {
-      id: 52,
-      name: 'Abdurahman Sirri',
-      description: '19. stoljeće.',
-      imageUrl: 'assets/images/heroes/abdurahman-sirri.jpg',
+      id: 91,
+      name: 'Pobrić (Halil) Ismet',
+      description: '10.02.1954 - 11.11.1994.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/nov/pobric-halil-ismet.jpg',
       month: 'Novembar'
     },
     {
-      id: 52,
-      name: 'Abdurahman Sirri',
-      description: '19. stoljeće.',
-      imageUrl: 'assets/images/heroes/abdurahman-sirri.jpg',
+      id: 92,
+      name: 'Špago (Ibrahim) Adem',
+      description: '04.11.1958 - 11.11.1994.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/nov/spago-ibrahim-adem.jpg',
       month: 'Novembar'
     },
     {
-      id: 52,
-      name: 'Abdurahman Sirri',
-      description: '19. stoljeće.',
-      imageUrl: 'assets/images/heroes/abdurahman-sirri.jpg',
+      id: 93,
+      name: 'Tojaga (Salih) Rasim',
+      description: '14.07.1968 - 11.11.1994.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/nov/tojaga-salih-rasim.jpg',
       month: 'Novembar'
     },
     {
-      id: 52,
-      name: 'Abdurahman Sirri',
-      description: '19. stoljeće.',
-      imageUrl: 'assets/images/heroes/abdurahman-sirri.jpg',
+      id: 94,
+      name: 'Ćorić (Alija) Ramo',
+      description: '26.10.1955 - 17.11.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/nov/coric-alija-ramo.jpg',
       month: 'Novembar'
     },
     {
-      id: 52,
-      name: 'Abdurahman Sirri',
-      description: '19. stoljeće.',
-      imageUrl: 'assets/images/heroes/abdurahman-sirri.jpg',
+      id: 95,
+      name: 'Voljevica (Huso) Salko',
+      description: '19.10.1951 - 20.11.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/nov/voljevica-huso-salko.jpg',
       month: 'Novembar'
     },
     {
-      id: 52,
-      name: 'Abdurahman Sirri',
-      description: '19. stoljeće.',
-      imageUrl: 'assets/images/heroes/abdurahman-sirri.jpg',
+      id: 96,
+      name: 'Fazlić (Ramo) Mirsad',
+      description: '12.05.1967 - 20.11.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/nov/fazlic-ramo-mirsad.jpg',
       month: 'Novembar'
     },
     {
-      id: 52,
-      name: 'Abdurahman Sirri',
-      description: '19. stoljeće.',
-      imageUrl: 'assets/images/heroes/abdurahman-sirri.jpg',
+      id: 97,
+      name: 'Husić (Mumin) Junuz',
+      description: '26.04.1958 - 21.11.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/nov/husic-mumin-junuz.jpg',
       month: 'Novembar'
     },
     {
-      id: 52,
-      name: 'Abdurahman Sirri',
-      description: '19. stoljeće.',
-      imageUrl: 'assets/images/heroes/abdurahman-sirri.jpg',
+      id: 98,
+      name: 'Pobrić (Osman) Alija',
+      description: '28.09.1964 - 22.11.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/nov/pobric-osman-alija.jpg',
       month: 'Novembar'
     },
     {
-      id: 52,
-      name: 'Abdurahman Sirri',
-      description: '19. stoljeće.',
-      imageUrl: 'assets/images/heroes/abdurahman-sirri.jpg',
+      id: 99,
+      name: 'Crnomerović (Ramo) Rasim',
+      description: '23.02.1964 - 25.11.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/nov/crnomerovic-ramo-rasim.jpg',
       month: 'Novembar'
     },
 
     // December
     {
-      id: 56,
-      name: 'Ahmed Karabegović',
-      description: '1908 - 1967.',
-      imageUrl: 'assets/images/heroes/ahmed-karabegovic.jpg',
+      id: 100,
+      name: 'Marić (Arif) Safet',
+      description: '18.07.1966 - 02.12.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/dec/maric-arif-safet.jpg',
       month: 'Decembar'
     },
     {
-      id: 57,
-      name: 'Mustafa Muhibbi',
-      description: '17. stoljeće.',
-      imageUrl: 'assets/images/heroes/mustafa-muhibbi.jpg',
+      id: 101,
+      name: 'Brkan (Bešir) Salko',
+      description: '27.01.1954 - 12.12.1994.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/dec/brkan-besir-salko.jpg',
       month: 'Decembar'
     },
     {
-      id: 58,
-      name: 'Fadil Maglajlić',
-      description: '1945 - 2016.',
-      imageUrl: 'assets/images/heroes/fadil-maglajlic.jpg',
+      id: 102,
+      name: 'Zuhrić (Omer) Osman',
+      description: '18.05.1949 - 12.12.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/dec/zuhric-omer-osman.jpg',
       month: 'Decembar'
     },
     {
-      id: 59,
-      name: 'Alija Bejtić',
-      description: '1920 - 1981.',
-      imageUrl: 'assets/images/heroes/alija-bejtic.jpg',
+      id: 103,
+      name: 'Špago (Ibro) Zijo',
+      description: '13.01.1967 - 20.12.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/dec/spago-ibro-zijo.jpg',
       month: 'Decembar'
     },
     {
-      id: 60,
-      name: 'Hamdija Kreševljaković',
-      description: '1888 - 1959.',
-      imageUrl: 'assets/images/heroes/hamdija-kresevljakovic.jpg',
+      id: 104,
+      name: 'Voljevica (Selim) Ramiz',
+      description: '10.05.1962 - 20.12.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/dec/voljevica-selim-ramiz.jpg',
       month: 'Decembar'
     },
     {
-      id: 60,
-      name: 'Hamdija Kreševljaković',
-      description: '1888 - 1959.',
-      imageUrl: 'assets/images/heroes/hamdija-kresevljakovic.jpg',
+      id: 105,
+      name: 'Jelovac (Meho) Ismet',
+      description: '02.07.1969 - 20.12.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/dec/jelovac-meho-ismet.jpg',
       month: 'Decembar'
     },
     {
-      id: 60,
-      name: 'Hamdija Kreševljaković',
-      description: '1888 - 1959.',
-      imageUrl: 'assets/images/heroes/hamdija-kresevljakovic.jpg',
+      id: 106,
+      name: 'Jelovac (Alija) Meho',
+      description: '20.01.1972 - 20.12.1992.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/dec/jelovac-alija-meho.jpg',
       month: 'Decembar'
     },
     {
-      id: 60,
-      name: 'Hamdija Kreševljaković',
-      description: '1888 - 1959.',
-      imageUrl: 'assets/images/heroes/hamdija-kresevljakovic.jpg',
+      id: 107,
+      name: 'Mušinović (Ahmet) Senad',
+      description: '28.03.1976 - 22.12.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/dec/musinovic-ahmet-senad.jpg',
       month: 'Decembar'
     },
     {
-      id: 60,
-      name: 'Hamdija Kreševljaković',
-      description: '1888 - 1959.',
-      imageUrl: 'assets/images/heroes/hamdija-kresevljakovic.jpg',
+      id: 108,
+      name: 'Dedić (Derviš) Ramo',
+      description: '04.04.1957 - 23.12.1994.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/dec/dedic-dervis-ramo.jpg',
       month: 'Decembar'
     },
     {
-      id: 60,
-      name: 'Hamdija Kreševljaković',
-      description: '1888 - 1959.',
-      imageUrl: 'assets/images/heroes/hamdija-kresevljakovic.jpg',
+      id: 109,
+      name: 'Krhan (Mujo) Arif',
+      description: '10.01.1938 - 23.12.1994.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/dec/krhan-mujo-arif.jpg',
       month: 'Decembar'
     },
     {
-      id: 60,
-      name: 'Hamdija Kreševljaković',
-      description: '1888 - 1959.',
-      imageUrl: 'assets/images/heroes/hamdija-kresevljakovic.jpg',
+      id: 110,
+      name: 'Gosto (Jusuf) Hamid',
+      description: '17.09.1947 - 30.12.1993.',
+      imageUrl: 'https://podvelezje.ba/assets/images/heroes/dec/gosto-jusuf-hamid.jpg',
       month: 'Decembar'
     }
   ];
