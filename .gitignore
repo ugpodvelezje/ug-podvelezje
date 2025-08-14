@@ -50,3 +50,6 @@ Thumbs.db
 # Claude
 CLAUDE.md
 .claude/*
+
+# Assets
+/src/assets/docs/*
