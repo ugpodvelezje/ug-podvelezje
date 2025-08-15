@@ -32,7 +32,7 @@ export class JoinUsComponent implements OnInit, OnDestroy, AfterViewInit {
   // Statistics data
   public yearsOfWork = 1; // Founded in 2024
   public totalMembers = 126;
-  public goldSponsors = 51;
+  public goldSponsors = 52;
   public facebookFollowers = 4100;
 
   // Animated values
@@ -92,15 +92,15 @@ export class JoinUsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   public partners: Partner[] = [
     {
-      name: 'Skupština HNK',
-      logo: 'https://podvelezje.ba/assets/images/partners/skupstina-hnk.png'
-    },
-    {
       name: 'Adapt 12',
       logo: 'https://podvelezje.ba/assets/images/partners/adapt-12.png'
     },
     {
-      name: 'Amicus hotel',
+      name: 'Skupština HNK',
+      logo: 'https://podvelezje.ba/assets/images/partners/skupstina-hnk.png'
+    },
+    {
+      name: 'Amicus Hotel',
       logo: 'https://podvelezje.ba/assets/images/partners/amicus-hotel-logo.png'
     },
     {
@@ -114,6 +114,10 @@ export class JoinUsComponent implements OnInit, OnDestroy, AfterViewInit {
     {
       name: 'Hercegovinalijek',
       logo: 'https://podvelezje.ba/assets/images/partners/herecgovina-lijek.png'
+    },
+    {
+      name: 'Izgradnja Tojaga',
+      logo: 'https://podvelezje.ba/assets/images/partners/izgradnja-tojaga.png'
     }
   ];
 
