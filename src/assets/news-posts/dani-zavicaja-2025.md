@@ -2,7 +2,7 @@
 id: '1'
 title: 'Raznovrsni sadržaji manifestacije “Dani zavičaja u Podveležju”'
 excerpt: 'Dani zavičaja'
-publishDate: '2025-08-03'
+publishDate: '3. august 2025.'
 author: 'Administrator'
 imageUrl: 'https://podvelezje.ba/assets/images/news/dani-zavicaja-timeline.png'
 tags: ['dani-zavicaja', 'zajednica', 'kultura']
@@ -27,6 +27,7 @@ Program manifestacije će se realizovati tokom četiri vikenda u agustu.
     - Zajednički izlet u prirodu – prilika da uživamo u ljepotama planine Velež.
 - **30. august (subota)** – “Svadbeni običaji” i “Podveleški sto/sinija”
     - Predstavljanje knjige o svadbenim običajima našeg kraja, uz degustaciju tradicionalne hrane i kulturnih detalja.
+
 <br>
 
 **Satnice svih događaja biće objavljene naknadno, a iz Udruženja Podveležje pozivaju sve članove, mještane i prijatelje Podveležja da zajedno obilježe početak jedne nove zavičajne priče.**

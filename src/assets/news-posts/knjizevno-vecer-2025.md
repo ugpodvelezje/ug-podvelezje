@@ -2,7 +2,7 @@
 id: '2'
 title: '"Dani zavičaja": Održana književna večer u Podveležju'
 excerpt: 'Književna večer u Podveležju'
-publishDate: '2025-08-10'
+publishDate: '10. august 2025.'
 author: 'Administrator'
 imageUrl: 'https://podvelezje.ba/assets/images/news/knjizevno-vecer-1.jpeg'
 tags: ['dani-zavicaja', 'zajednica', 'kultura']

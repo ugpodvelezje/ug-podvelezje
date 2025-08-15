@@ -64,12 +64,40 @@ export class NewsService {
       title: metadata.title,
       content: htmlContent,
       excerpt: metadata.excerpt,
-      publishDate: new Date(metadata.publishDate),
+      publishDate: this.parseDate(metadata.publishDate),
       author: metadata.author,
       imageUrl: metadata.imageUrl,
       tags: metadata.tags,
       featured: metadata.featured
     };
+  }
+
+  private parseDate(dateStr: string): Date {
+    // Handle format "DD. Mjesec YYYY." or ISO format "YYYY-MM-DD"
+    if (dateStr.includes('-')) {
+      // ISO format
+      return new Date(dateStr);
+    }
+    
+    // Parse "DD. Mjesec YYYY." format
+    const monthMap: { [key: string]: number } = {
+      'januar': 0, 'februar': 1, 'mart': 2, 'april': 3, 'maj': 4, 'juni': 5,
+      'juli': 6, 'august': 7, 'septembar': 8, 'oktobar': 9, 'novembar': 10, 'decembar': 11
+    };
+    
+    const parts = dateStr.replace('.', '').split(' ');
+    if (parts.length === 3) {
+      const day = parseInt(parts[0]);
+      const month = monthMap[parts[1].toLowerCase()];
+      const year = parseInt(parts[2]);
+      
+      if (!isNaN(day) && month !== undefined && !isNaN(year)) {
+        return new Date(year, month, day);
+      }
+    }
+    
+    // Fallback to current date if parsing fails
+    return new Date();
   }
 
   private loadMarkdownFile(filename: string): Observable<News> {
