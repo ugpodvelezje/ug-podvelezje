@@ -165,18 +165,13 @@
       <button 
         class="carousel-nav carousel-nav--prev" 
         (click)="prevSlide()"
-        aria-label="Previous slide">
+        aria-label="Previous partners">
         <span class="material-icons">chevron_left</span>
       </button>
 
       <div class="carousel-track" [style.transform]="transformValue">
-        @for (partner of displayedPartners; track partner.name + $index) {
-          <div 
-            class="partner-card" 
-            [class.active]="isMiddleCard($index)"
-            [class.side-card]="!isMiddleCard($index)"
-            role="button"
-            [attr.aria-label]="'View ' + partner.name">
+        @for (partner of allPartnersForDisplay; track partner.name + $index) {
+          <div class="partner-card">
             <img [src]="partner.logo" [alt]="partner.name + ' logo'" class="partner-logo">
             <h4>{{ partner.name }}</h4>
           </div>
@@ -187,20 +182,9 @@
       <button 
         class="carousel-nav carousel-nav--next" 
         (click)="nextSlide()"
-        aria-label="Next slide">
+        aria-label="Next partners">
         <span class="material-icons">chevron_right</span>
       </button>
-    </div>
-
-    <div class="carousel-indicators">
-      @for (partner of partners; track partner.name; let i = $index) {
-        <button 
-          class="indicator" 
-          [class.active]="currentSlide === i"
-          (click)="goToSlide(i)"
-          [attr.aria-label]="'Go to slide ' + (i + 1)">
-        </button>
-      }
     </div>
     </div>
   </div>

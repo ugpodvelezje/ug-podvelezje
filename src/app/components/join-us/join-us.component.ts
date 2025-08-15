@@ -21,13 +21,16 @@ interface MembershipBenefit {
   styleUrls: ['./join-us.component.scss']
 })
 export class JoinUsComponent implements OnInit, OnDestroy, AfterViewInit {
-  public currentSlide = 0;
+  public currentOffset = 0;
   public visibleSlides = 3;
-  private autoSlideInterval?: number;
+  private autoScrollInterval?: number;
   private browserService = inject(BrowserService);
   private isTransitioning = false;
   private elementRef = inject(ElementRef);
   private statisticsAnimated = false;
+  private scrollSpeed = 0.5; // pixels per frame
+  private cardWidth = 0;
+  private isPaused = false;
 
   // Statistics data
   public yearsOfWork = 1; // Founded in 2024
@@ -74,27 +77,13 @@ export class JoinUsComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   ];
 
-  // Get current group of partners to display
-  public get displayedPartners(): Partner[] {
-    const startIndex = this.currentSlide;
-    const result: Partner[] = [];
-    
-    // Show 3 partners on desktop, 1 on mobile
-    const itemsToShow = this.visibleSlides;
-    
-    for (let i = 0; i < itemsToShow; i++) {
-      const index = (startIndex + i) % this.partners.length;
-      result.push(this.partners[index]);
-    }
-    
-    return result;
+  // Create a continuous loop of partners for smooth scrolling
+  public get allPartnersForDisplay(): Partner[] {
+    // Triple the partners array to create seamless loop
+    return [...this.partners, ...this.partners, ...this.partners];
   }
 
   public partners: Partner[] = [
-    {
-      name: 'Adapt 12',
-      logo: 'https://podvelezje.ba/assets/images/partners/adapt-12.png'
-    },
     {
       name: 'Skupština HNK',
       logo: 'https://podvelezje.ba/assets/images/partners/skupstina-hnk.png'
@@ -117,25 +106,29 @@ export class JoinUsComponent implements OnInit, OnDestroy, AfterViewInit {
     },
 
     {
-      name: 'Salon namjestaja Royal',
+      name: 'Salon namještaja Royal',
       logo: 'https://podvelezje.ba/assets/images/partners/royal-namjestaj.jpg'
     },
     {
       name: 'HA Hotel',
       logo: 'https://podvelezje.ba/assets/images/partners/ha-hotel.png'
+    },
+    {
+      name: 'Adapt 12',
+      logo: 'https://podvelezje.ba/assets/images/partners/adapt-12.png'
     }
   ];
 
 
   public get transformValue(): string {
-    // No transform needed since we're using displayedPartners
-    return `translateX(0%)`;
+    return `translateX(-${this.currentOffset}px)`;
   }
 
   ngOnInit(): void {
     this.updateVisibleSlides();
-    this.startAutoSlide();
-    this.browserService.addEventListener('resize', this.updateVisibleSlides.bind(this));
+    this.calculateCardWidth();
+    this.startAutoScroll();
+    this.browserService.addEventListener('resize', this.onResize.bind(this));
   }
 
   ngAfterViewInit(): void {
@@ -146,64 +139,80 @@ export class JoinUsComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnDestroy(): void {
-    if (this.autoSlideInterval) {
-      this.browserService.clearInterval(this.autoSlideInterval);
+    if (this.autoScrollInterval) {
+      this.browserService.clearInterval(this.autoScrollInterval);
     }
-    this.browserService.removeEventListener('resize', this.updateVisibleSlides.bind(this));
+    this.browserService.removeEventListener('resize', this.onResize.bind(this));
   }
 
   private updateVisibleSlides(): void {
     this.visibleSlides = this.browserService.getInnerWidth() < 768 ? 1 : 3;
   }
 
-  private startAutoSlide(): void {
-    if (this.autoSlideInterval) {
-      this.browserService.clearInterval(this.autoSlideInterval);
+  private onResize(): void {
+    this.updateVisibleSlides();
+    this.calculateCardWidth();
+  }
+
+  private calculateCardWidth(): void {
+    const containerWidth = this.browserService.getInnerWidth();
+    const padding = containerWidth < 768 ? 32 : 96; // Account for container padding
+    this.cardWidth = (containerWidth - padding) / this.visibleSlides;
+  }
+
+  private startAutoScroll(): void {
+    if (this.autoScrollInterval) {
+      this.browserService.clearInterval(this.autoScrollInterval);
     }
-    this.autoSlideInterval = this.browserService.setInterval(() => {
-      this.nextSlide();
-    }, 5000);
+    
+    this.autoScrollInterval = this.browserService.setInterval(() => {
+      if (!this.isPaused) {
+        this.currentOffset += this.scrollSpeed;
+        
+        // Reset position when we've scrolled through one full set
+        const maxOffset = this.partners.length * this.cardWidth;
+        if (this.currentOffset >= maxOffset) {
+          this.currentOffset = 0;
+        }
+      }
+    }, 16); // ~60fps
   }
 
   public nextSlide(): void {
     if (this.isTransitioning) return;
     
     this.isTransitioning = true;
-    this.currentSlide = (this.currentSlide + 1) % this.partners.length;
+    this.isPaused = true;
+    
+    // Slower forward scroll - adjust multiplier for speed (1 = one card width)
+    this.currentOffset += this.cardWidth * 1;
+    const maxOffset = this.partners.length * this.cardWidth;
+    if (this.currentOffset >= maxOffset) {
+      this.currentOffset = this.currentOffset - maxOffset;
+    }
 
     setTimeout(() => {
       this.isTransitioning = false;
+      this.isPaused = false;
     }, 400);
-    
-    this.startAutoSlide();
   }
 
   public prevSlide(): void {
     if (this.isTransitioning) return;
     
     this.isTransitioning = true;
-    this.currentSlide = (this.currentSlide - 1 + this.partners.length) % this.partners.length;
+    this.isPaused = true;
+    
+    // Slower backward scroll - adjust multiplier for speed (1 = one card width)
+    this.currentOffset -= this.cardWidth * 1;
+    if (this.currentOffset < 0) {
+      this.currentOffset = this.partners.length * this.cardWidth + this.currentOffset;
+    }
 
     setTimeout(() => {
       this.isTransitioning = false;
+      this.isPaused = false;
     }, 400);
-    
-    this.startAutoSlide();
-  }
-
-  public goToSlide(index: number): void {
-    if (this.isTransitioning) return;
-    this.currentSlide = index % this.partners.length;
-    this.startAutoSlide();
-  }
-
-  public isMiddleCard(index: number): boolean {
-    // On desktop (3 cards), middle card is index 1
-    // On mobile (1 card), the only card is always active
-    if (this.visibleSlides === 1) {
-      return true; // Single card is always active on mobile
-    }
-    return index === 1; // Middle card on desktop
   }
 
   private setupIntersectionObserver(): void {
