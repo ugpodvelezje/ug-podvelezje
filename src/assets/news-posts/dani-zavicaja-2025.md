@@ -1,26 +1,32 @@
 ---
 id: '1'
-title: '"Dani zavičaja": Održana književna večer u Podveležju'
-excerpt: 'Književna večer u Podveležju'
-publishDate: '2025-08-10'
+title: 'Raznovrsni sadržaji manifestacije “Dani zavičaja u Podveležju”'
+excerpt: 'Dani zavičaja'
+publishDate: '2025-08-03'
 author: 'Administrator'
-imageUrl: 'https://podvelezje.ba/assets/images/news/knjizevno-vecer-1.jpeg'
+imageUrl: 'https://podvelezje.ba/assets/images/news/dani-zavicaja-timeline.png'
 tags: ['dani-zavicaja', 'zajednica', 'kultura']
 featured: true
 ---
 
-# Književna večer u okviru manifestacije "Dani zavičaja"
+Udruženje građana Podveležje organizuje prve “Dane zavičaja u Podveležju” – manifestaciju kojom započinju novu tradiciju okupljanja, druženja i njegovanja kulture, običaja i zajedništva.
 
-U okviru manifestacije **"Dani zavičaja Podveležje 2025"** Udruženje Građana Podveležje upriličilo je Književnu večer u hotelu Kalima u Podveležu.
+Tokom cijelog mjeseca augusta očekuje vas raznovrstan program ispunjen kulturom, sportom, prirodom i povezivanjem ljudi iz Podveležja i šire, najavljuju iz Udruženja Podveležje.
 
-Moderator programa je bio **Meadin Mrndžić**, a u ime organizatora prisutnima se obratio **Enver Husnić**.
+Program manifestacije će se realizovati tokom četiri vikenda u agustu.
 
-Na književnoj večeri su o svom odnosu prema zavičaju, tradiciji, svojim knjigama, aktivizmu i istraživanjima govorili: Mustafa Jelovac, Mirsad Puce, Sanadin Voloder, Zineta Subašić i Lejla Mušić.
+## Program manifestacije:
 
-Tekstove i poeziju čitala je **Hana Juklo**.
+- **9. august (subota)** – Književna večer
+    - Večer posvećena lokalnim autorima, poeziji i razgovorima o zavičaju.
+- **10. august (nedjelja)** – Marš “5 zlatnih ljiljana”
+    - Najavljujemo tradicionalni pješački pohod u znak sjećanja na heroje našeg kraja, koji organizuje Odred izviđača “5 Zlatnih ljiljana” Mostar.
+- **16. august (subota)** – Sportski vikend i druženje
+    - Futsal 3×3, odbojka, streličarstvo, turnir u dominama i društvenim igrama.
+- **24. august (nedjelja)** – Planinarenje/Hiking
+    - Zajednički izlet u prirodu – prilika da uživamo u ljepotama planine Velež.
+- **30. august (subota)** – “Svadbeni običaji” i “Podveleški sto/sinija”
+    - Predstavljanje knjige o svadbenim običajima našeg kraja, uz degustaciju tradicionalne hrane i kulturnih detalja.
+<br>
 
-## Naredni program
-
-Naredni sadržaj manifestacije je obilježavanje **30. godišnjice pogibije pet izviđača Armije RBiH**. 
-
-Program započinje maršem od harema Dračevice gdje je mezar Ramiza Džihe preko Ravnica do spomenika u Kružnju.
+**Satnice svih događaja biće objavljene naknadno, a iz Udruženja Podveležje pozivaju sve članove, mještane i prijatelje Podveležja da zajedno obilježe početak jedne nove zavičajne priče.**
