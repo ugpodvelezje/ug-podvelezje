@@ -92,24 +92,28 @@ export class JoinUsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   public partners: Partner[] = [
     {
-      name: 'Grad Mostar',
-      logo: '/assets/images/partners/grad-mostar-logo.jpg'
+      name: 'Skupština HNK',
+      logo: 'https://podvelezje.ba/assets/images/partners/skupstina-hnk.png'
     },
     {
-      name: 'Turistička Zajednica HNK',
-      logo: '/assets/images/partners/turisticka-zajednica-hnk-logo.jpg'
+      name: 'Adapt 12',
+      logo: 'https://podvelezje.ba/assets/images/partners/adapt-12.png'
     },
     {
-      name: 'Memic dekor',
-      logo: '/assets/images/partners/memic-dekor-logo.jpg'
+      name: 'Amicus hotel',
+      logo: 'https://podvelezje.ba/assets/images/partners/amicus-hotel-logo.png'
     },
     {
-      name: 'BH Telecom',
-      logo: '/assets/images/partners/bh-telecom-logo.jpg'
+      name: 'Amitea',
+      logo: 'https://podvelezje.ba/assets/images/partners/amitea.png'
     },
     {
-      name: 'Federalno Ministarstvo Okoliša i Turizma',
-      logo: '/assets/images/partners/fedministartstvookolisa-logo.jpg'
+      name: 'HA Hotel',
+      logo: 'https://podvelezje.ba/assets/images/partners/ha-hotel.png'
+    },
+    {
+      name: 'Hercegovinalijek',
+      logo: 'https://podvelezje.ba/assets/images/partners/herecgovina-lijek.png'
     }
   ];
 
