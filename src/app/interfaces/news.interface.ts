@@ -10,6 +10,17 @@ export interface News {
   featured: boolean;
 }
 
+export interface NewsMetadata {
+  id: string;
+  title: string;
+  excerpt: string;
+  publishDate: string;
+  author: string;
+  imageUrl: string;
+  tags: string[];
+  featured: boolean;
+}
+
 export interface NewsResponse {
   items: News[];
   total: number;
