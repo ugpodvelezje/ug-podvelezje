@@ -100,24 +100,29 @@ export class JoinUsComponent implements OnInit, OnDestroy, AfterViewInit {
       logo: 'https://podvelezje.ba/assets/images/partners/skupstina-hnk.png'
     },
     {
-      name: 'Amicus Hotel',
-      logo: 'https://podvelezje.ba/assets/images/partners/amicus-hotel-logo.png'
-    },
-    {
-      name: 'Amitea',
-      logo: 'https://podvelezje.ba/assets/images/partners/amitea.png'
-    },
-    {
-      name: 'HA Hotel',
-      logo: 'https://podvelezje.ba/assets/images/partners/ha-hotel.png'
-    },
-    {
       name: 'Hercegovinalijek',
       logo: 'https://podvelezje.ba/assets/images/partners/herecgovina-lijek.png'
     },
     {
       name: 'Izgradnja Tojaga',
       logo: 'https://podvelezje.ba/assets/images/partners/izgradnja-tojaga.png'
+    },
+    {
+      name: 'Amitea',
+      logo: 'https://podvelezje.ba/assets/images/partners/amitea.png'
+    },
+    {
+      name: 'Amicus Hotel',
+      logo: 'https://podvelezje.ba/assets/images/partners/amicus-hotel-logo.png'
+    },
+
+    {
+      name: 'Salon namjestaja Royal',
+      logo: 'https://podvelezje.ba/assets/images/partners/royal-namjestaj.jpg'
+    },
+    {
+      name: 'HA Hotel',
+      logo: 'https://podvelezje.ba/assets/images/partners/ha-hotel.png'
     }
   ];
 
