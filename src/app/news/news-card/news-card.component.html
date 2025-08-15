@@ -1,4 +1,22 @@
-<div class="news-card" [class.featured]="news.featured">
+<a [routerLink]="['/news', news.id]" class="news-card-link" *ngIf="!showFullContent">
+  <div class="news-card" [class.featured]="news.featured">
+    <div class="news-image">
+      <img [src]="news.imageUrl" [alt]="news.title">
+      <div class="tags">
+        <span class="tag" *ngFor="let tag of news.tags">{{tag}}</span>
+      </div>
+    </div>
+    <div class="news-content">
+      <h3 class="title">{{news.title}}</h3>
+      <div class="meta">
+        <span class="date">{{formatDate(news.publishDate)}}</span>
+        <span class="author">Piše: {{news.author}}</span>
+      </div>
+      <p class="excerpt">{{news.excerpt}}</p>
+    </div>
+  </div>
+</a>
+<div class="news-card" [class.featured]="news.featured" *ngIf="showFullContent">
   <div class="news-image">
     <img [src]="news.imageUrl" [alt]="news.title">
     <div class="tags">
@@ -9,11 +27,8 @@
     <h3 class="title">{{news.title}}</h3>
     <div class="meta">
       <span class="date">{{formatDate(news.publishDate)}}</span>
-      <span class="author">By {{news.author}}</span>
+      <span class="author">Piše: {{news.author}}</span>
     </div>
-    <p class="excerpt">{{showFullContent ? news.content : news.excerpt}}</p>
-    <a [routerLink]="['/news', news.id]" class="read-more" *ngIf="!showFullContent">
-      Pročitaj više...
-    </a>
+    <p class="excerpt">{{news.content}}</p>
   </div>
 </div>

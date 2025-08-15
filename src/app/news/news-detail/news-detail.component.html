@@ -25,8 +25,7 @@
       <img [src]="news.imageUrl" [alt]="news.title">
     </div>
 
-    <div class="article-content">
-      <p>{{news.content}}</p>
+    <div class="article-content" [innerHTML]="news.content">
     </div>
 
     <footer class="article-footer">

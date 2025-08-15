@@ -1,5 +1,17 @@
 @use '../../../styles/abstracts/variables' as *;
 
+.news-card-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  display: block;
+  
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
 .news-card {
   background: $light-color;
   border-radius: $border-radius-md;
