@@ -53,11 +53,18 @@ export class NewsDetailComponent implements OnInit {
   }
 
   formatDate(date: Date): string {
-    return new Date(date).toLocaleDateString('bs', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
+    const d = new Date(date);
+    const day = d.getDate();
+    const year = d.getFullYear();
+    
+    const monthNames = [
+      'januar', 'februar', 'mart', 'april', 'maj', 'juni',
+      'juli', 'august', 'septembar', 'oktobar', 'novembar', 'decembar'
+    ];
+    
+    const month = monthNames[d.getMonth()];
+    
+    return `${day}. ${month} ${year}.`;
   }
 
   goBack(): void {
