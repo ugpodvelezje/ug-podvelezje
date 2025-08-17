@@ -12,7 +12,8 @@ export class NewsService {
   private readonly PAGE_SIZE = 6;
   private newsFiles = [
     'dani-zavicaja-2025.md',
-    'knjizevno-vecer-2025.md'
+    'knjizevno-vecer-2025.md',
+    'sportski-vikend-2025.md'
   ];
 
   constructor(private http: HttpClient) {}
