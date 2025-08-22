@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BrowserService } from '../../services/browser.service';
 import { EmailService } from '../../services/email.service';
+import { SeoService } from '../../services/seo.service';
+import { StructuredDataService } from '../../services/structured-data.service';
 
 @Component({
   selector: 'app-contact',
@@ -31,7 +33,9 @@ export class ContactComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private browserService: BrowserService,
-    private emailService: EmailService
+    private emailService: EmailService,
+    private seoService: SeoService,
+    private structuredDataService: StructuredDataService
   ) {
     this.contactForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
@@ -42,6 +46,8 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.updateSEO();
+    
     const localStorage = this.browserService.getLocalStorage();
     if (localStorage) {
       const savedForm = localStorage.getItem('contactFormData');
@@ -53,6 +59,21 @@ export class ContactComponent implements OnInit {
         localStorage.setItem('contactFormData', JSON.stringify(value));
       });
     }
+  }
+
+  private updateSEO(): void {
+    this.seoService.updateSEO({
+      title: 'Kontakt',
+      description: 'Kontaktirajte Udruženje Građana Podveležje. Pošaljite nam poruku o članstvu, volontiranju, partnerstvu ili bilo kojim pitanjima o našim aktivnostima.',
+      keywords: 'Kontakt, UG Podvelezje, kontakt forma, članstvo, volontiranje, partnerstvo, informacije, Podvelezje kontakt',
+      url: 'https://podvelezje.ba/contact',
+      type: 'website'
+    });
+
+    this.structuredDataService.addBreadcrumbData([
+      { name: 'Početna', url: 'https://podvelezje.ba' },
+      { name: 'Kontakt', url: 'https://podvelezje.ba/contact' }
+    ]);
   }
 
   onSubmit(): void {

@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NewsService } from '../../services/news.service';
 import { News } from '../../interfaces/news.interface';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserService } from '../../services/browser.service';
+import { SeoService } from '../../services/seo.service';
+import { StructuredDataService } from '../../services/structured-data.service';
 
 @Component({
   selector: 'app-news-detail',
@@ -13,7 +15,7 @@ import { BrowserService } from '../../services/browser.service';
   standalone: true,
   imports: [CommonModule, HttpClientModule]
 })
-export class NewsDetailComponent implements OnInit {
+export class NewsDetailComponent implements OnInit, OnDestroy {
   news: News | undefined;
   loading = true;
   error = false;
@@ -23,7 +25,9 @@ export class NewsDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private newsService: NewsService,
-    private browserService: BrowserService
+    private browserService: BrowserService,
+    private seoService: SeoService,
+    private structuredDataService: StructuredDataService
   ) {}
 
   ngOnInit(): void {
@@ -40,6 +44,7 @@ export class NewsDetailComponent implements OnInit {
       next: (news) => {
         if (news) {
           this.news = news;
+          this.updateSEO();
         } else {
           this.error = true;
         }
@@ -50,6 +55,44 @@ export class NewsDetailComponent implements OnInit {
         this.loading = false;
       }
     });
+  }
+
+  private updateSEO(): void {
+    if (!this.news) return;
+
+    const currentUrl = this.getCurrentUrl();
+    const keywords = [
+      'Podveležje',
+      'Novosti',
+      'UG Podvelezje',
+      ...(this.news.tags || [])
+    ].join(', ');
+
+    this.seoService.updateSEO({
+      title: this.news.title,
+      description: this.news.excerpt || this.news.content.substring(0, 160).replace(/<[^>]*>/g, ''),
+      keywords: keywords,
+      image: this.news.imageUrl,
+      url: currentUrl,
+      type: 'article',
+      publishedTime: this.news.publishDate.toISOString(),
+      modifiedTime: this.news.publishDate.toISOString(),
+      author: this.news.author,
+      section: 'News',
+      tags: this.news.tags
+    });
+
+    this.structuredDataService.addNewsArticleData(this.news, currentUrl);
+    this.structuredDataService.addBreadcrumbData([
+      { name: 'Početna', url: 'https://podvelezje.ba' },
+      { name: 'Novosti', url: 'https://podvelezje.ba/news' },
+      { name: this.news.title, url: currentUrl }
+    ]);
+  }
+
+  ngOnDestroy(): void {
+    this.structuredDataService.removeJsonLd('article-jsonld');
+    this.structuredDataService.removeJsonLd('breadcrumb-jsonld');
   }
 
   formatDate(date: Date): string {
