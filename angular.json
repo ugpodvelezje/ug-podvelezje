@@ -27,12 +27,16 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/assets",
-              "src/.htaccess"
+              "src/.htaccess",
+              "src/robots.txt"
             ],
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "sanitize-html"
+            ]
           },
           "configurations": {
             "production": {
@@ -93,7 +97,8 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/assets",
-              "src/.htaccess"
+              "src/.htaccess",
+              "src/robots.txt"
             ],
             "styles": [
               "src/styles.scss"

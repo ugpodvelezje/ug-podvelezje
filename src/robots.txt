@@ -1,0 +1,31 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://podvelezje.ba/sitemap.xml
+
+# Optimize crawling
+Crawl-delay: 1
+
+# Block common bot files (if any exist in the future)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*?preview=*
+Disallow: /*?debug=*
+
+# Allow important directories
+Allow: /assets/
+Allow: /news/
+Allow: /about/
+Allow: /contact/
+Allow: /membership/
+
+# Block development/testing files
+Disallow: /test/
+Disallow: /dev/
+Disallow: /*.test.*
+Disallow: /*.spec.*
+
+# Host information
+Host: podvelezje.ba
