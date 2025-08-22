@@ -148,10 +148,11 @@ export class StructuredDataService {
   }
 
   addNewsArticleData(news: News, url: string): void {
+    const safeUrl = this.sanitizeUrlForJsonLd(url);
     const article = {
       '@context': 'https://schema.org',
       '@type': 'NewsArticle',
-      '@id': url,
+      '@id': safeUrl,
       headline: news.title,
       description: news.excerpt,
       image: {
@@ -179,7 +180,7 @@ export class StructuredDataService {
       },
       mainEntityOfPage: {
         '@type': 'WebPage',
-        '@id': url
+        '@id': safeUrl
       },
       articleSection: 'News',
       inLanguage: 'bs-BA',
@@ -271,14 +272,44 @@ export class StructuredDataService {
       let script = this.document.getElementById(id) as HTMLScriptElement;
       
       if (script) {
-        script.innerHTML = JSON.stringify(data);
+        script.innerHTML = this.jsonLdSafeStringify(data);
       } else {
         script = this.document.createElement('script');
         script.type = 'application/ld+json';
         script.id = id;
-        script.innerHTML = JSON.stringify(data);
+        script.innerHTML = this.jsonLdSafeStringify(data);
         this.document.head.appendChild(script);
       }
+    }
+  }
+
+    /**
+   * Safely stringify data for embedding in <script type="application/ld+json">.
+   * Escapes closing </script tags to prevent XSS.
+   */
+  private jsonLdSafeStringify(data: any): string {
+    return JSON.stringify(data).replace(/<\/script/gi, '<\\/script');
+  }
+
+  /**
+   * Sanitize input URL for insertion into JSON-LD in DOM.
+   * Only allows http(s) URLs, strips dangerous characters.
+   * Returns empty string on failure.
+   */
+  private sanitizeUrlForJsonLd(url: string): string {
+    try {
+      const trimmed = url.trim();
+      // Allow only http(s) schemes, block data: etc.
+      const parsed = new URL(trimmed);
+      if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
+        // Optionally, further restrict/normalize path and fragment
+        // Remove newline, try to avoid closing script tags accidentally
+        return trimmed.replace(/[\n\r<>]/g, '');
+      }
+      // fallback: block everything else
+      return '';
+    } catch (e) {
+      return '';
     }
   }
 

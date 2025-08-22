@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NewsService } from '../../services/news.service';
 import { News } from '../../interfaces/news.interface';
 import { CommonModule } from '@angular/common';
+import sanitizeHtml from 'sanitize-html';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserService } from '../../services/browser.service';
 import { SeoService } from '../../services/seo.service';
@@ -70,7 +71,8 @@ export class NewsDetailComponent implements OnInit, OnDestroy {
 
     this.seoService.updateSEO({
       title: this.news.title,
-      description: this.news.excerpt || this.news.content.substring(0, 160).replace(/<[^>]*>/g, ''),
+      // description: this.news.excerpt || this.news.content.substring(0, 160).replace(/<[^>]*>/g, ''),
+      description: this.news.excerpt || sanitizeHtml(this.news.content.substring(0, 160), { allowedTags: [], allowedAttributes: {} }),
       keywords: keywords,
       image: this.news.imageUrl,
       url: currentUrl,
