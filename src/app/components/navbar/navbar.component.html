@@ -1,4 +1,9 @@
-<header class="navbar" [ngClass]="{'navbar--mobile-open': isMobileMenuOpen()}">
+<header class="navbar" [ngClass]="{
+  'navbar--mobile-open': isMobileMenuOpen(),
+  'navbar--scrolled': isScrolled(),
+  'navbar--transparent': shouldBeTransparent()
+}" 
+>
   <div class="navbar__container">
     <!-- Logo -->
     <a href="/" class="navbar__logo">

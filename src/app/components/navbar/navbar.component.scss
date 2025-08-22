@@ -15,6 +15,17 @@
   backdrop-filter: blur(8px);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   
+  // Transparent on home page for large devices only
+  &.navbar--transparent {
+    // Apply on screens 992px and larger
+    @media (min-width: 992px) {
+      background-color: transparent !important;
+      background: transparent !important;
+      backdrop-filter: none !important;
+      box-shadow: none !important;
+    }
+  }
+  
   // Container for layout
   &__container {
     max-width: 1200px;
@@ -57,6 +68,7 @@
     background-color: abstracts.$primary-color;
     @include abstracts.shadow-md;
   }
+  
   
   // Navigation
   &__nav {

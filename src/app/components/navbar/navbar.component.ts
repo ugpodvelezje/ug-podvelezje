@@ -24,6 +24,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
   // Track scroll state for changing navbar appearance
   isScrolled = signal<boolean>(false);
   
+  // Track if we're on home page for transparent navbar behavior
+  isHomePage = signal<boolean>(false);
+  
   // Track which section is currently active based on scroll position
   activeSection = signal<string>('home');
   
@@ -62,6 +65,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
     return this.mobileMenuOpen();
   }
   
+  // Public getter for transparent state
+  shouldBeTransparent(): boolean {
+    return this.isHomePage() && !this.isScrolled() && !this.isMobileMenuOpen();
+  }
+  
   ngOnInit(): void {
     // Listen to route changes to update active states
     this.routerSubscription = this.router.events.pipe(
@@ -69,6 +77,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
     ).subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.currentRoute.set(event.urlAfterRedirects);
+        // Update home page state
+        const isHome = event.urlAfterRedirects === '/' || event.urlAfterRedirects === '';
+        this.isHomePage.set(isHome);
         // Close mobile menu on route change
         this.closeMobileMenu();
         // Reset to home section when navigating to home page
@@ -97,6 +108,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.initializeSections();
       this.checkSectionVisibility();
+      // Set initial home page state
+      const isHome = this.router.url === '/' || this.router.url === '';
+      this.isHomePage.set(isHome);
     }, 300);
   }
   
@@ -128,10 +142,17 @@ export class NavbarComponent implements OnInit, OnDestroy {
   // Check which section is currently visible and update active section
   private checkSectionVisibility(): void {
     const document = this.browserService.getDocument();
-    if (!document || this.currentRoute() !== '/') return;
+    if (!document) return;
     
     const scrollY = this.browserService.getPageYOffset();
     const windowHeight = this.browserService.getInnerHeight();
+    
+    // Update scroll state for navbar background transition (works on all pages)
+    const scrollThreshold = 20;
+    this.isScrolled.set(scrollY > scrollThreshold);
+    
+    // Only do section visibility detection on home page
+    if (this.currentRoute() !== '/') return;
     
     // Find the section that's most visible in the viewport
     let newActiveSection = 'home';
@@ -185,8 +206,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   
   // Listen for scroll events
   onWindowScroll(): void {
-    // Change navbar style when scrolled
-    const scrollThreshold = 50;
+    // Change navbar style when scrolled - lower threshold for smoother transition
+    const scrollThreshold = 20;
     this.isScrolled.set(this.browserService.getPageYOffset() > scrollThreshold);
     
     // Update section visibility on scroll
