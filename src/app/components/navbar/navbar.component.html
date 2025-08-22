@@ -1,4 +1,9 @@
-<header class="navbar" [ngClass]="{'navbar--mobile-open': isMobileMenuOpen()}">
+<header class="navbar" [ngClass]="{
+  'navbar--mobile-open': isMobileMenuOpen(),
+  'navbar--scrolled': isScrolled(),
+  'navbar--transparent': shouldBeTransparent()
+}" 
+>
   <div class="navbar__container">
     <!-- Logo -->
     <a href="/" class="navbar__logo">
@@ -61,8 +66,7 @@
         </li>
         <!-- Desktop CTA button -->
         <li class="navbar__nav-item navbar__nav-item--desktop-only">
-          <a routerLink="/" 
-             fragment="join-us" 
+          <a href="javascript:void(0)"
              [class.navbar__nav-link--active]="isJoinUsActive()"
              class="navbar__nav-link navbar__nav-link--cta" 
              (click)="navigateToJoinUs()">
@@ -71,15 +75,28 @@
         </li>
       </ul>
       
-      <!-- Mobile CTA button - separate container -->
-      <div class="navbar__mobile-cta">
-        <a routerLink="/" 
-           fragment="join-us" 
-           [class.navbar__nav-link--active]="isJoinUsActive()"
-           class="navbar__nav-link navbar__nav-link--cta" 
-           (click)="navigateToJoinUs()">
-          Pridruži nam se
-        </a>
+      <!-- Mobile CTA button and social links -->
+      <div class="navbar__mobile-footer">
+        <div class="navbar__mobile-cta">
+          <a href="javascript:void(0)"
+             [class.navbar__nav-link--active]="isJoinUsActive()"
+             class="navbar__nav-link navbar__nav-link--cta" 
+             (click)="navigateToJoinUs()">
+            Pridruži nam se
+          </a>
+        </div>
+        
+        <div class="navbar__mobile-social">
+          <a href="https://www.facebook.com/profile.php?id=100064833872953" target="_blank" rel="noopener noreferrer" class="navbar__social-icon" title="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/ug_podvelezje/" target="_blank" rel="noopener noreferrer" class="navbar__social-icon" title="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.youtube.com/channel/UCvJJV_d18akBSDe3irJ2LCA" target="_blank" rel="noopener noreferrer" class="navbar__social-icon" title="YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
       </div>
     </nav>
     
