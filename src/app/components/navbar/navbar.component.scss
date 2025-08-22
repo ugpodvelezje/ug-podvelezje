@@ -122,18 +122,19 @@
       margin: 0 auto;
       flex: 1;
       padding-top: abstracts.$spacing-xs;
-      padding-bottom: 75px; // Space for fixed CTA button at bottom
+      padding-bottom: 140px; // Space for mobile footer section
       overflow-y: auto;
-      height: calc(100vh - 150px); // Account for navbar height and CTA button
+      height: calc(100vh - 210px); // Account for navbar height and mobile footer
     }
   }
 
-  // Mobile CTA container for Join Us button
-  &__mobile-cta {
+  // Mobile footer container
+  &__mobile-footer {
     display: none;
     
     .navbar--mobile-open & {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       width: 100%;
@@ -141,10 +142,77 @@
       bottom: 0;
       left: 0;
       right: 0;
-      padding: abstracts.$spacing-sm abstracts.$spacing-lg;
+      padding: abstracts.$spacing-md abstracts.$spacing-lg;
       background: linear-gradient(180deg, transparent 0%, rgba(abstracts.$primary-color, 0.95) 20%, abstracts.$primary-color 100%);
       z-index: abstracts.$z-index-navbar + 5;
-      height: 70px;
+      gap: abstracts.$spacing-md;
+    }
+  }
+
+  // Mobile CTA container for Join Us button
+  &__mobile-cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-bottom: abstracts.$spacing-sm;
+    border-bottom: 2px solid rgba(abstracts.$secondary-color, 0.3);
+    margin-bottom: abstracts.$spacing-xs;
+  }
+
+  // Mobile social icons container
+  &__mobile-social {
+    display: flex;
+    gap: abstracts.$spacing-sm;
+    justify-content: center;
+    align-items: center;
+  }
+
+  // Social icon styling (based on footer styles)
+  &__social-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(abstracts.$secondary-color, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: abstracts.$secondary-color;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+
+    i {
+      font-size: 1rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: abstracts.$secondary-color;
+      border-radius: 50%;
+      transform: scale(0);
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(abstracts.$secondary-color, 0.2);
+
+      &::before {
+        transform: scale(1);
+      }
+
+      i {
+        color: abstracts.$primary-color;
+      }
     }
   }
   
@@ -353,8 +421,8 @@ body.mobile-menu-open {
   }
 }
 
-// Mobile CTA button in separate container with bouncing animation
-.navbar__mobile-cta .navbar__nav-link--cta {
+// Mobile CTA button in mobile footer with bouncing animation
+.navbar__mobile-footer .navbar__mobile-cta .navbar__nav-link--cta {
   @include abstracts.button-secondary;
   padding: 0.7rem 1.5rem;
   font-weight: 700;
