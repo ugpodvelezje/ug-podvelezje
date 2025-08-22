@@ -22,20 +22,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.isBrowser) {
-      // Handle fragment scrolling
-      this.route.fragment.subscribe(fragment => {
-        if (fragment) {
-          setTimeout(() => {
-            const element = document.getElementById(fragment);
-            if (element) {
-              // Use scrollIntoView with block: 'start' to position at the top of viewport
-              // and behavior: 'auto' to skip animation for immediate scroll
-              element.scrollIntoView({ block: 'start', behavior: 'auto' });
-            }
-          }, 0); // Immediate execution to avoid showing hero section
-        }
-      });
-    }
+    // Fragment handling is now managed by navbar component
+    // No need to handle fragments here anymore
   }
 }

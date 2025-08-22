@@ -277,25 +277,31 @@ export class NavbarComponent implements OnInit, OnDestroy {
   navigateToJoinUs() {
     this.closeMobileMenu();
     
-    // Custom scroll logic to ensure previous section is hidden
+    // Check if we're already on the home page
+    if (this.currentRoute() === '/') {
+      // Already on home page, just scroll to the section
+      this.scrollToJoinUsSection();
+    } else {
+      // Navigate to home page first, then scroll after navigation completes
+      this.router.navigate(['/']).then(() => {
+        // Wait for the page to load and then scroll
+        setTimeout(() => {
+          this.scrollToJoinUsSection();
+        }, 300);
+      });
+    }
+  }
+
+  private scrollToJoinUsSection() {
     setTimeout(() => {
       const joinUsElement = document.getElementById('join-us');
       if (joinUsElement) {
-        const elementTop = joinUsElement.offsetTop;
         const navbarHeight = 70;
-        
-        // Calculate position that ensures About section is completely hidden
-        const aboutElement = document.getElementById('about');
-        let targetPosition = elementTop - navbarHeight;
-        
-        if (aboutElement) {
-          const aboutBottom = aboutElement.offsetTop + aboutElement.offsetHeight;
-          // Ensure we scroll to at least past the about section
-          targetPosition = Math.max(targetPosition, aboutBottom - navbarHeight + 20);
-        }
+        const elementTop = joinUsElement.offsetTop;
+        const scrollTop = elementTop - navbarHeight;
         
         window.scrollTo({
-          top: Math.max(0, targetPosition),
+          top: Math.max(0, scrollTop),
           behavior: 'smooth'
         });
       }
