@@ -62,7 +62,7 @@ export class StructuredDataService {
       '@type': 'Organization',
       '@id': 'https://podvelezje.ba/#organization',
       name: organizationData.name,
-      alternateName: 'UG Podvelezje',
+      alternateName: 'UG Podveležje',
       description: organizationData.description,
       url: organizationData.url,
       logo: {
@@ -170,7 +170,7 @@ export class StructuredDataService {
       },
       publisher: {
         '@type': 'Organization',
-        name: 'UG Podvelezje',
+        name: 'UG Podveležje',
         logo: {
           '@type': 'ImageObject',
           url: 'https://podvelezje.ba/assets/images/logo/logo.png',
@@ -199,7 +199,7 @@ export class StructuredDataService {
       '@context': 'https://schema.org',
       '@type': 'Website',
       '@id': 'https://podvelezje.ba/#website',
-      name: 'UG Podvelezje',
+      name: 'UG Podveležje',
       alternateName: 'Udruženje Građana Podvelezje',
       description: 'Službena web stranica Udruženja Građana Podveležje - Čuvamo tradiciju i gradimo budućnost',
       url: 'https://podvelezje.ba',

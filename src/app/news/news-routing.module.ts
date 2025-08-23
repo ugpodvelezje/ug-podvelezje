@@ -7,12 +7,12 @@ const routes: Routes = [
   {
     path: '',
     component: NewsListComponent,
-    title: 'UG Podvelezje - Novosti'
+    title: 'Novosti | UG Podveležje'
   },
   {
     path: ':id',
     component: NewsDetailComponent,
-    title: 'UG Podvelezje - Detalji Novosti'
+    title: 'UG Podveležje - Detalji Novosti'
   }
 ];
 

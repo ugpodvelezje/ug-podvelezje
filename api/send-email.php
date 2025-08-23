@@ -1,5 +1,5 @@
 <?php
-// send-email.php - Email handler for UG Podvelezje contact form
+// send-email.php - Email handler for UG Podveležje contact form
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: https://podvelezje.ba');
 header('Access-Control-Allow-Methods: POST, OPTIONS');

@@ -1,4 +1,4 @@
-# UG Podvelezje
+# UG Podveležje
 
 [![Angular](https://img.shields.io/badge/Angular-19.2.14-DD0031?style=flat-square&logo=angular)](https://angular.io/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7.2-007ACC?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
@@ -8,7 +8,7 @@
 [![SSR](https://img.shields.io/badge/SSR-Angular_Universal-DD0031?style=flat-square)](https://angular.io/guide/universal)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
-Modern, mobile-first responsive website for the citizens' association "UG Podvelezje" built with Angular 19 and SCSS. The project features Server-Side Rendering (SSR) with Angular Universal and follows Angular's official style guide.
+Modern, mobile-first responsive website for the citizens' association "UG Podveležje" built with Angular 19 and SCSS. The project features Server-Side Rendering (SSR) with Angular Universal and follows Angular's official style guide.
 
 ## 🚀 Features
 
@@ -204,6 +204,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-**UG Podvelezje** - Citizens' Association
+**UG Podveležje** - Citizens' Association
 
 For questions about this project or the organization, please use the contact form on the website.
