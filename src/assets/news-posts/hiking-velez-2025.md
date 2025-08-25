@@ -27,7 +27,7 @@ Posebnu zahvalnost organizatori su uputili Gorskoj službi spašavanja Mostar na
 
 ![Hiking-velez-1](https://podvelezje.ba/assets/images/news/hiking-velez/hiking-kolaz-3.png)<center>*GSS Mostar*</center>
 
-Udruženje građana Podveležje već najavljuje nove planinarske avanture, jer u planu je organizacija sljedećeg pohoda na jedan od drugih vrhova Veleža. Organizatori poručuju: “Pratite naše objave, prijavite se na vrijeme i budite dio novih druženja u prirodi.”
+Udruženje građana Podveležje već najavljuje nove planinarske avanture, jer u planu je organizacija sljedećeg pohoda na jedan od drugih vrhova Veleži. Organizatori poručuju: “Pratite naše objave, prijavite se na vrijeme i budite dio novih druženja u prirodi.”
 
 ![Hiking-velez-0](https://podvelezje.ba/assets/images/news/hiking-velez/kota1905-telecalastva-zajednicka-map.png)<center>*Kota 1905 - Teleća Lastva*</center>
 
