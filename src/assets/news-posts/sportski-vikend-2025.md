@@ -6,7 +6,7 @@ publishDate: '16. august 2025.'
 author: 'Administrator'
 imageUrl: 'https://podvelezje.ba/assets/images/news/sportski-vikend/sportski-vikend-5.jpg'
 tags: ['dani-zavicaja', 'zajednica', 'sport']
-featured: true
+featured: false
 ---
 
 # Sportski vikend u Podveležju okupio stotine mještana i gostiju
