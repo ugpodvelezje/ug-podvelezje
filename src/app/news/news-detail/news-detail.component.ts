@@ -65,7 +65,7 @@ export class NewsDetailComponent implements OnInit, OnDestroy {
     const keywords = [
       'Podveležje',
       'Novosti',
-      'UG Podvelezje',
+      'UG Podveležje',
       ...(this.news.tags || [])
     ].join(', ');
 

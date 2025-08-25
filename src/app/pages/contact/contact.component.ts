@@ -65,7 +65,7 @@ export class ContactComponent implements OnInit {
     this.seoService.updateSEO({
       title: 'Kontakt',
       description: 'Kontaktirajte Udruženje Građana Podveležje. Pošaljite nam poruku o članstvu, volontiranju, partnerstvu ili bilo kojim pitanjima o našim aktivnostima.',
-      keywords: 'Kontakt, UG Podvelezje, kontakt forma, članstvo, volontiranje, partnerstvo, informacije, Podvelezje kontakt',
+      keywords: 'Kontakt, UG Podveležje, kontakt forma, članstvo, volontiranje, partnerstvo, informacije, Podvelezje kontakt',
       url: 'https://podvelezje.ba/contact',
       type: 'website'
     });

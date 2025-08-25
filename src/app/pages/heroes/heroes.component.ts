@@ -828,6 +828,7 @@ export class HeroesComponent implements OnInit, OnDestroy {
   private progress: { [month: string]: number } = {};
   private userInteractionTimers: { [month: string]: any } = {};
   private isUserInteracting: { [month: string]: boolean } = {};
+  private isTimerTriggered = false; // Flag to distinguish between timer and manual slide changes
   private readonly RESUME_DELAY = 3000; // Resume auto-slide after 3 seconds of no interaction
 
   isMobile = false;
@@ -851,12 +852,14 @@ export class HeroesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    // Start auto-slide for each month that has heroes
-    this.months.forEach(month => {
-      if (this.getHeroesForMonth(month).length > 1) {
-        this.startAutoSlide(month);
-      }
-    });
+    // Start auto-slide for each month that has heroes with a small initial delay
+    setTimeout(() => {
+      this.months.forEach(month => {
+        if (this.getHeroesForMonth(month).length > 1) {
+          this.startAutoSlide(month);
+        }
+      });
+    }, 100); // Small delay to ensure DOM is ready
   }
 
   ngOnDestroy() {
@@ -864,6 +867,11 @@ export class HeroesComponent implements OnInit, OnDestroy {
     Object.values(this.slideTimers).forEach(timer => timer?.unsubscribe());
     Object.values(this.progressTimers).forEach(timer => timer?.unsubscribe());
     Object.values(this.userInteractionTimers).forEach(timer => clearTimeout(timer));
+    
+    // Clear all timers collections
+    this.slideTimers = {};
+    this.progressTimers = {};
+    this.userInteractionTimers = {};
   }
 
   getHeroesForMonth(month: string): Hero[] {
@@ -904,15 +912,21 @@ export class HeroesComponent implements OnInit, OnDestroy {
     // Create progress timer (updates every 50ms) - only if not user interacting
     this.progressTimers[month] = interval(50).subscribe(() => {
       if (!this.isUserInteracting[month]) {
-        this.progress[month] = (this.progress[month] + (50 / this.autoSlideInterval) * 100) % 100;
+        this.progress[month] = this.progress[month] + (50 / this.autoSlideInterval) * 100;
+        // Ensure progress doesn't exceed 100
+        if (this.progress[month] >= 100) {
+          this.progress[month] = 100;
+        }
       }
     });
 
     // Create slide timer - only advance if not user interacting
     this.slideTimers[month] = interval(this.autoSlideInterval).subscribe(() => {
       if (!this.isUserInteracting[month]) {
+        this.isTimerTriggered = true; // Mark as timer-triggered
         this.nextSlide(month);
         this.progress[month] = 0; // Reset progress after slide
+        this.isTimerTriggered = false; // Reset flag
       }
     });
   }
@@ -958,7 +972,11 @@ export class HeroesComponent implements OnInit, OnDestroy {
     let currentIndex = this.activeSlideIndices.get(month) || 0;
     currentIndex = (currentIndex + 1) % heroes.length;
     this.activeSlideIndices.set(month, currentIndex);
-    this.handleUserInteraction(month);
+    
+    // Only handle user interaction if this was called manually (not from timer)
+    if (!this.isTimerTriggered) {
+      this.handleUserInteraction(month);
+    }
   }
 
   prevSlide(month: string) {
@@ -997,11 +1015,23 @@ export class HeroesComponent implements OnInit, OnDestroy {
   }
 
   private resetProgress(month: string) {
-    this.progressTimers[month]?.unsubscribe();
+    // Properly cleanup existing timer first
+    if (this.progressTimers[month]) {
+      this.progressTimers[month].unsubscribe();
+      delete this.progressTimers[month];
+    }
+    
+    // Reset progress
     this.progress[month] = 0;
+    
+    // Create new progress timer
     this.progressTimers[month] = interval(50).subscribe(() => {
       if (!this.isUserInteracting[month]) {
-        this.progress[month] = (this.progress[month] + (50 / this.autoSlideInterval) * 100) % 100;
+        this.progress[month] = this.progress[month] + (50 / this.autoSlideInterval) * 100;
+        // Ensure progress doesn't exceed 100
+        if (this.progress[month] >= 100) {
+          this.progress[month] = 100;
+        }
       }
     });
   }

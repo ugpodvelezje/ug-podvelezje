@@ -51,7 +51,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     { label: 'Početna', route: '/', exact: true },
     { label: 'O nama', route: '/about' },
     { label: 'Novosti', route: '/news' },
-    { label: 'Kontakt', route: '/contact' }
+    { label: 'Kontakt', route: '/contact' },
+    { label: 'Heroji', route: '/heroes' }
   ];
   
   

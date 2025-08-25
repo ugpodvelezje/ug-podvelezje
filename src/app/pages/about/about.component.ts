@@ -23,7 +23,7 @@ export class AboutComponent implements OnInit {
     this.seoService.updateSEO({
       title: 'O nama',
       description: 'Saznajte više o Udruženju Građana Podveležje, našoj historiji, misiji i viziji. Radimo na očuvanju kulturne baštine, zaštiti prirode i promociji turizma u Podveležju.',
-      keywords: 'O nama, UG Podvelezje, historia, misija, vizija, kulturna baština, Podvelezje istorija, udruženje građana',
+      keywords: 'O nama, UG Podveležje, historia, misija, vizija, kulturna baština, Podvelezje istorija, udruženje građana',
       url: 'https://podvelezje.ba/about',
       type: 'website'
     });

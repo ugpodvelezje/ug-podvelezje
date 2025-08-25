@@ -9,31 +9,32 @@ export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    title: 'UG Podvelezje - Početna'
+    title: 'Početna | UG Podveležje'
   },
   {
     path: 'about',
     component: AboutComponent,
-    title: 'UG Podvelezje - O nama'
+    title: 'O nama | UG Podveležje'
   },
   {
     path: 'news',
     loadChildren: () => import('./news/news.module').then(m => m.NewsModule),
-    title: 'UG Podvelezje - Novosti'
+    title: 'Novosti | UG Podveležje'
   },
   {
     path: 'contact',
     component: ContactComponent,
-    title: 'UG Podvelezje - Kontakt'
-  },
-  {
-    path: 'heroes',
-    component: HeroesComponent
+    title: 'Kontakt | UG Podveležje'
   },
   {
     path: 'membership',
     component: MembershipPricingComponent,
-    title: 'UG Podvelezje - Članstvo'
+    title: 'Članstvo | UG Podveležje'
+  },
+  {
+    path: 'heroes',
+    component: HeroesComponent,
+    title: 'Heroji | UG Podveležje'
   },
   {
     path: '**',

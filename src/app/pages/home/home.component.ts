@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
     this.seoService.updateSEO({
       title: 'Početna',
       description: 'Udruženje Građana Podveležje - Čuvamo tradiciju i gradimo budućnost. Aktivno radimo na očuvanju kulturne baštine, zaštiti prirode i promociji turizma u Podveležju.',
-      keywords: 'Podveležje, Udruženje građana, Bosna i Hercegovina, kulturna baština, turizam, priroda, tradicija, zajednica, Herzegovina, UG Podvelezje',
+      keywords: 'Podveležje, Udruženje građana, Bosna i Hercegovina, kulturna baština, turizam, priroda, tradicija, zajednica, Herzegovina, UG Podveležje',
       url: 'https://podvelezje.ba',
       type: 'website'
     });
