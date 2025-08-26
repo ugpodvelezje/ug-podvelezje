@@ -23,7 +23,7 @@ export interface SEOData {
 export class SeoService {
   private baseUrl = 'https://podvelezje.ba';
   private defaultImage = 'https://podvelezje.ba/assets/images/logo/logo.png';
-  private siteName = 'UG Podvelezje';
+  private siteName = 'UG Podveležje';
   private defaultDescription = 'Udruženje Građana Podveležje - Čuvamo tradiciju i gradimo budućnost. Aktivno radimo na očuvanju kulturne baštine, zaštiti prirode i promociji turizma u Podveležju.';
 
   constructor(
