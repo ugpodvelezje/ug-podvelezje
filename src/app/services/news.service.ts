@@ -13,7 +13,8 @@ export class NewsService {
   private newsFiles = [
     'dani-zavicaja-2025.md',
     'knjizevno-vecer-2025.md',
-    'sportski-vikend-2025.md'
+    'sportski-vikend-2025.md',
+    'hiking-velez-2025.md'
   ];
 
   constructor(private http: HttpClient) {}
