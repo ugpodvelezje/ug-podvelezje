@@ -14,7 +14,8 @@ export class NewsService {
     'dani-zavicaja-2025.md',
     'knjizevno-vecer-2025.md',
     'sportski-vikend-2025.md',
-    'hiking-velez-2025.md'
+    'hiking-velez-2025.md',
+    'promocija-knjige-i-sinija-2025.md'
   ];
 
   constructor(private http: HttpClient) {}
