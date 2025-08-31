@@ -6,7 +6,7 @@ publishDate: '25. august 2025.'
 author: 'Administrator'
 imageUrl: 'https://podvelezje.ba/assets/images/news/hiking-velez/hiking-zajednicka.png'
 tags: ['dani-zavicaja', 'priroda', 'sport']
-featured: true
+featured: false
 ---
 
 # Uspješno održan pohod na planinu Velež: 70 učesnika uživalo u prirodi i druženju
