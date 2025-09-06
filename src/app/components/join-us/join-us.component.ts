@@ -116,6 +116,10 @@ export class JoinUsComponent implements OnInit, OnDestroy, AfterViewInit {
     {
       name: 'Adapt 12',
       logo: 'https://podvelezje.ba/assets/images/partners/adapt-12.png'
+    },
+    {
+      name: 'Hercegovinapromet',
+      logo: 'https://podvelezje.ba/assets/images/partners/hercegovinapromet.png'
     }
   ];
 
