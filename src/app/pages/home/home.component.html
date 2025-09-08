@@ -104,7 +104,16 @@
         <h2 class="modal__title">Kako doći do Podveležja</h2>
         <div class="modal__directions">
           <div class="modal__transport-section">
-            <h3>🚗 Automobilski saobraćaj</h3>
+            <h3>
+              <svg class="modal__transport-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6 17h10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="7" cy="19" r="1" stroke="currentColor" stroke-width="2"/>
+                <circle cx="15" cy="19" r="1" stroke="currentColor" stroke-width="2"/>
+                <path d="M21 12h-4l-2-4H5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Automobilski saobraćaj
+            </h3>
             <p>
               Podveležje je dostupno preko regionalne ceste koja se odvaja od magistralne ceste Mostar-Trebinje. 
               Udaljenost od Mostara je približno 25 kilometara, a vožnja traje oko 30 minuta kroz 
@@ -113,7 +122,18 @@
           </div>
           
           <div class="modal__transport-section">
-            <h3>🚌 Javni prevoz</h3>
+            <h3>
+              <svg class="modal__transport-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="7" width="18" height="10" rx="2" stroke="currentColor" stroke-width="2"/>
+                <path d="M2 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M6 7V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="6" cy="19" r="1.5" stroke="currentColor" stroke-width="2"/>
+                <circle cx="18" cy="19" r="1.5" stroke="currentColor" stroke-width="2"/>
+                <path d="M8 12h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M5 9h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              Javni prevoz
+            </h3>
             <p>
               Redovne autobusne linije povezuju Podveležje sa Mostarom i okolnim mjestima. Autobusi saobraćaju 
               nekoliko puta dnevno, omogućavajući praktičnu povezanost sa urbanim centrima Hercegovačko-neretvanskog kantona.
@@ -121,7 +141,17 @@
           </div>
           
           <div class="modal__transport-section">
-            <h3>🥾 Planinski pristupi</h3>
+            <h3>
+              <svg class="modal__transport-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 9L12 3l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 3v15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M8 18h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M3 18c0 1.5 3 3 9 3s9-1.5 9-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M15 13l-3-3-3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="12" r="1" fill="currentColor"/>
+              </svg>
+              Planinski pristupi
+            </h3>
             <p>
               Za ljubitelje prirode i planinare, Podveležje je dostupno preko označenih planinarskih staza 
               koje povezuju regiju sa vrhovima planine Velež i susjednim planinama Hercegovine.
@@ -134,7 +164,14 @@
       <div class="modal__body" *ngIf="currentModal === 'villages'">
         <h2 class="modal__title">Sela Podveležja</h2>
         <div class="modal__coming-soon">
-          <div class="modal__coming-soon-icon">🚧</div>
+          <div class="modal__coming-soon-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m0 0v-6a1 1 0 011-1h2a1 1 0 011 1v6m-3 0h3m0 0v0a1 1 0 001-1V10M9 21h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M15 8h2a1 1 0 011 1v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="18" cy="6" r="2" stroke="currentColor" stroke-width="2"/>
+              <path d="M12 2L8 6l4 4 4-4-4-4z" fill="currentColor" opacity="0.3"/>
+            </svg>
+          </div>
           <h3>Uskoro dostupno</h3>
           <p>Radimo na pripremi detaljnih informacija o selima Podveležja. Ova sekcija će uskoro biti dostupna sa kompletnim podacima o svim naseljima u našoj regiji.</p>
         </div>

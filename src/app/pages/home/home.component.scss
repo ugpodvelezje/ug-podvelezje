@@ -672,6 +672,18 @@
       }
     }
 
+    &__transport-icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      color: abstracts.$primary-color;
+      
+      @media (max-width: abstracts.$breakpoint-sm) {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
     // Coming Soon Modal Specific Styles
     &__coming-soon {
       text-align: center;
@@ -680,9 +692,25 @@
       padding: abstracts.$spacing-xl 0;
 
       &-icon {
-        font-size: 4rem;
+        width: 80px;
+        height: 80px;
         margin-bottom: abstracts.$spacing-lg;
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        color: abstracts.$primary-color;
+        
+        @media (max-width: abstracts.$breakpoint-md) {
+          width: 64px;
+          height: 64px;
+        }
+
+        svg {
+          width: 100%;
+          height: 100%;
+        }
       }
 
       h3 {
