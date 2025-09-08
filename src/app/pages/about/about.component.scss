@@ -208,4 +208,94 @@
       flex-direction: row-reverse;
     }
   }
+  
+  // Geographic section styles
+  &__geography {
+    margin-bottom: abstracts.$spacing-xxl;
+    
+    @include abstracts.respond-to(md) {
+      display: flex;
+      align-items: flex-start;
+      gap: abstracts.$spacing-xl;
+    }
+  }
+  
+  &__geographic-details {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: abstracts.$spacing-lg;
+    border-radius: abstracts.$border-radius-md;
+    border-left: 4px solid abstracts.$primary-color;
+    margin-top: abstracts.$spacing-md;
+    
+    h3 {
+      font-size: abstracts.$font-size-lg;
+      font-weight: 600;
+      color: abstracts.$primary-color;
+      margin-bottom: abstracts.$spacing-md;
+      @include abstracts.font-secondary;
+    }
+    
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    li {
+      padding: abstracts.$spacing-xs 0;
+      border-bottom: 1px solid rgba(abstracts.$primary-color, 0.1);
+      color: abstracts.$text-color;
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      strong {
+        color: abstracts.$primary-color;
+        font-weight: 600;
+      }
+    }
+  }
+  
+  // Map container styles
+  &__map-container {
+    border-radius: abstracts.$border-radius-lg;
+    overflow: hidden;
+    margin-bottom: abstracts.$spacing-lg;
+    @include abstracts.shadow-lg;
+    position: relative;
+    
+    @include abstracts.respond-to(md) {
+      flex: 1;
+      margin-bottom: 0;
+    }
+    
+    iframe {
+      width: 100%;
+      height: 400px;
+      border: 0;
+      display: block;
+      
+      @media (max-width: 768px) {
+        height: 300px;
+      }
+      
+      @media (max-width: 480px) {
+        height: 250px;
+      }
+    }
+    
+    // Add a subtle overlay border
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 2px solid rgba(abstracts.$primary-color, 0.1);
+      border-radius: abstracts.$border-radius-lg;
+      pointer-events: none;
+    }
+  }
 }

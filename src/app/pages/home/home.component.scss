@@ -28,6 +28,81 @@
     }
   }
   
+  // Content Navigation Section
+  .content-navigation {
+    padding: abstracts.$spacing-xl abstracts.$spacing-lg;
+    background: linear-gradient(135deg, abstracts.$primary-color 0%, #1a4d3a 100%);
+    color: #ffffff;
+    text-align: center;
+    
+    &__header {
+      margin-bottom: abstracts.$spacing-lg;
+    }
+    
+    &__title {
+      font-size: abstracts.$font-size-xxl;
+      font-weight: 700;
+      margin-bottom: abstracts.$spacing-md;
+      color: #ffffff;
+    }
+    
+    &__divider {
+      width: 60px;
+      height: 3px;
+      background-color: abstracts.$secondary-color;
+      margin: 0 auto abstracts.$spacing-lg;
+      border-radius: 2px;
+    }
+    
+    &__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: abstracts.$spacing-md;
+      justify-content: center;
+      
+      @media (max-width: abstracts.$breakpoint-md) {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    
+    &__link {
+      display: inline-block;
+      padding: abstracts.$spacing-sm abstracts.$spacing-md;
+      background-color: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      
+      &:hover {
+        background-color: abstracts.$secondary-color;
+        color: abstracts.$primary-color;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+      
+      @media (max-width: abstracts.$breakpoint-md) {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+      }
+    }
+
+    &__button {
+      cursor: pointer;
+      font-family: inherit;
+      font-size: inherit;
+
+      &:focus {
+        outline: 2px solid abstracts.$secondary-color;
+        outline-offset: 2px;
+      }
+    }
+  }
+
   // Section 2: Join Us - Light gray background  
   #join-us {
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
@@ -53,4 +128,605 @@
       background: linear-gradient(to right, transparent, rgba(0,0,0,0.05), transparent);
     }
   }
+  
+  // Location Map Section
+  .location-map {
+    padding: abstracts.$spacing-xxl abstracts.$spacing-lg;
+    background-color: #ffffff;
+    
+    &__header {
+      text-align: center;
+      margin-bottom: abstracts.$spacing-xl;
+    }
+    
+    &__title {
+      font-size: abstracts.$font-size-xl;
+      font-weight: 700;
+      color: abstracts.$primary-color;
+      margin-bottom: abstracts.$spacing-md;
+    }
+    
+    &__divider {
+      width: 60px;
+      height: 3px;
+      background-color: abstracts.$secondary-color;
+      margin: 0 auto;
+      border-radius: 2px;
+    }
+    
+    &__content {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: abstracts.$spacing-xl;
+      align-items: start;
+      
+      @media (max-width: abstracts.$breakpoint-md) {
+        grid-template-columns: 1fr;
+        gap: abstracts.$spacing-lg;
+      }
+    }
+    
+    &__text {
+      font-size: abstracts.$font-size-md;
+      line-height: 1.7;
+    }
+    
+    &__paragraph {
+      margin-bottom: abstracts.$spacing-md;
+      color: abstracts.$text-color;
+      
+      a {
+        color: abstracts.$primary-color;
+        text-decoration: none;
+        font-weight: 500;
+        border-bottom: 2px solid transparent;
+        transition: border-color 0.3s ease;
+        
+        &:hover {
+          border-bottom-color: abstracts.$primary-color;
+        }
+      }
+    }
+    
+    &__coordinates {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      padding: abstracts.$spacing-lg;
+      border-radius: 12px;
+      border-left: 4px solid abstracts.$primary-color;
+      
+      h3 {
+        font-size: abstracts.$font-size-lg;
+        font-weight: 600;
+        color: abstracts.$primary-color;
+        margin-bottom: abstracts.$spacing-md;
+      }
+      
+      p {
+        font-family: 'Courier New', monospace;
+        font-weight: 500;
+        margin-bottom: abstracts.$spacing-xs;
+        color: abstracts.$text-color;
+      }
+    }
+  }
+  
+  // Access Info Section
+  .access-info {
+    padding: abstracts.$spacing-xxl abstracts.$spacing-lg;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    
+    &__header {
+      text-align: center;
+      margin-bottom: abstracts.$spacing-xl;
+    }
+    
+    &__title {
+      font-size: abstracts.$font-size-xl;
+      font-weight: 700;
+      color: abstracts.$primary-color;
+      margin-bottom: abstracts.$spacing-md;
+    }
+    
+    &__divider {
+      width: 60px;
+      height: 3px;
+      background-color: abstracts.$secondary-color;
+      margin: 0 auto;
+      border-radius: 2px;
+    }
+    
+    &__content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    &__transport {
+      background-color: #ffffff;
+      padding: abstracts.$spacing-xl;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    &__subtitle {
+      font-size: abstracts.$font-size-lg;
+      font-weight: 600;
+      color: abstracts.$primary-color;
+      margin-bottom: abstracts.$spacing-md;
+      margin-top: abstracts.$spacing-lg;
+      
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    
+    &__paragraph {
+      font-size: abstracts.$font-size-md;
+      line-height: 1.7;
+      color: abstracts.$text-color;
+      margin-bottom: abstracts.$spacing-md;
+      
+      a {
+        color: abstracts.$primary-color;
+        text-decoration: none;
+        font-weight: 500;
+        border-bottom: 2px solid transparent;
+        transition: border-color 0.3s ease;
+        
+        &:hover {
+          border-bottom-color: abstracts.$primary-color;
+        }
+      }
+    }
+  }
+  
+  // Seasonal Content Section
+  .seasonal-content {
+    padding: abstracts.$spacing-xxl abstracts.$spacing-lg;
+    background-color: #ffffff;
+    
+    &__header {
+      text-align: center;
+      margin-bottom: abstracts.$spacing-xl;
+    }
+    
+    &__title {
+      font-size: abstracts.$font-size-xl;
+      font-weight: 700;
+      color: abstracts.$primary-color;
+      margin-bottom: abstracts.$spacing-md;
+    }
+    
+    &__divider {
+      width: 60px;
+      height: 3px;
+      background-color: abstracts.$secondary-color;
+      margin: 0 auto;
+      border-radius: 2px;
+    }
+    
+    &__seasons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: abstracts.$spacing-lg;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    &__season {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      padding: abstracts.$spacing-lg;
+      border-radius: 12px;
+      text-align: center;
+      border-top: 4px solid abstracts.$primary-color;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+    }
+    
+    &__season-title {
+      font-size: abstracts.$font-size-lg;
+      font-weight: 600;
+      color: abstracts.$primary-color;
+      margin-bottom: abstracts.$spacing-md;
+    }
+    
+    &__paragraph {
+      font-size: abstracts.$font-size-md;
+      line-height: 1.6;
+      color: abstracts.$text-color;
+    }
+  }
+  
+  // Villages Section
+  .villages {
+    padding: abstracts.$spacing-xxl abstracts.$spacing-lg;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    
+    &__header {
+      text-align: center;
+      margin-bottom: abstracts.$spacing-xl;
+    }
+    
+    &__title {
+      font-size: abstracts.$font-size-xl;
+      font-weight: 700;
+      color: abstracts.$primary-color;
+      margin-bottom: abstracts.$spacing-md;
+    }
+    
+    &__divider {
+      width: 60px;
+      height: 3px;
+      background-color: abstracts.$secondary-color;
+      margin: 0 auto;
+      border-radius: 2px;
+    }
+    
+    &__content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    &__intro {
+      font-size: abstracts.$font-size-lg;
+      line-height: 1.7;
+      color: abstracts.$text-color;
+      text-align: center;
+      margin-bottom: abstracts.$spacing-xl;
+      
+      a {
+        color: abstracts.$primary-color;
+        text-decoration: none;
+        font-weight: 500;
+        border-bottom: 2px solid transparent;
+        transition: border-color 0.3s ease;
+        
+        &:hover {
+          border-bottom-color: abstracts.$primary-color;
+        }
+      }
+    }
+    
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: abstracts.$spacing-lg;
+    }
+    
+    &__village {
+      background-color: #ffffff;
+      padding: abstracts.$spacing-lg;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      }
+    }
+    
+    &__village-name {
+      font-size: abstracts.$font-size-lg;
+      font-weight: 600;
+      color: abstracts.$primary-color;
+      margin-bottom: abstracts.$spacing-md;
+    }
+    
+    &__village-description {
+      font-size: abstracts.$font-size-md;
+      line-height: 1.6;
+      color: abstracts.$text-color;
+    }
+  }
+  
+  // Media Coverage Section
+  .media-coverage {
+    padding: abstracts.$spacing-xxl abstracts.$spacing-lg;
+    background-color: #ffffff;
+    
+    &__header {
+      text-align: center;
+      margin-bottom: abstracts.$spacing-xl;
+    }
+    
+    &__title {
+      font-size: abstracts.$font-size-xl;
+      font-weight: 700;
+      color: abstracts.$primary-color;
+      margin-bottom: abstracts.$spacing-md;
+    }
+    
+    &__divider {
+      width: 60px;
+      height: 3px;
+      background-color: abstracts.$secondary-color;
+      margin: 0 auto;
+      border-radius: 2px;
+    }
+    
+    &__content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    &__intro {
+      font-size: abstracts.$font-size-lg;
+      line-height: 1.7;
+      color: abstracts.$text-color;
+      text-align: center;
+      margin-bottom: abstracts.$spacing-xl;
+    }
+    
+    &__items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: abstracts.$spacing-lg;
+    }
+    
+    &__item {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      padding: abstracts.$spacing-lg;
+      border-radius: 12px;
+      text-align: center;
+      border-left: 4px solid abstracts.$primary-color;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      }
+    }
+    
+    &__item-title {
+      font-size: abstracts.$font-size-lg;
+      font-weight: 600;
+      color: abstracts.$primary-color;
+      margin-bottom: abstracts.$spacing-md;
+    }
+    
+    &__item-description {
+      font-size: abstracts.$font-size-md;
+      line-height: 1.6;
+      color: abstracts.$text-color;
+    }
+  }
+
+  // Modal Styles
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    padding: abstracts.$spacing-lg;
+
+    &--visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &__content {
+      background-color: #ffffff;
+      border-radius: 16px;
+      max-width: 90vw;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
+
+      @media (max-width: abstracts.$breakpoint-md) {
+        max-width: 95vw;
+        max-height: 95vh;
+        border-radius: 12px;
+      }
+
+      .modal--visible & {
+        transform: translateY(0);
+      }
+    }
+
+    &__close {
+      position: absolute;
+      top: abstracts.$spacing-md;
+      right: abstracts.$spacing-md;
+      width: 40px;
+      height: 40px;
+      border: none;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: abstracts.$primary-color;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+
+      &:hover {
+        background-color: #ffffff;
+        transform: scale(1.1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      &:focus {
+        outline: 2px solid abstracts.$secondary-color;
+        outline-offset: 2px;
+      }
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    &__body {
+      padding: abstracts.$spacing-xxl abstracts.$spacing-xl;
+
+      @media (max-width: abstracts.$breakpoint-md) {
+        padding: abstracts.$spacing-xl abstracts.$spacing-lg;
+      }
+    }
+
+    &__title {
+      font-size: abstracts.$font-size-xl;
+      font-weight: 700;
+      color: abstracts.$primary-color;
+      margin-bottom: abstracts.$spacing-lg;
+      text-align: center;
+
+      @media (max-width: abstracts.$breakpoint-md) {
+        font-size: abstracts.$font-size-lg;
+        margin-bottom: abstracts.$spacing-md;
+      }
+    }
+
+    // Map Modal Specific Styles
+    &__map-container {
+      margin-bottom: abstracts.$spacing-lg;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+      iframe {
+        width: 100%;
+        min-height: 300px;
+
+        @media (max-width: abstracts.$breakpoint-md) {
+          min-height: 250px;
+        }
+      }
+    }
+
+    &__coordinates {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      padding: abstracts.$spacing-lg;
+      border-radius: 12px;
+      border-left: 4px solid abstracts.$primary-color;
+      text-align: center;
+
+      h3 {
+        font-size: abstracts.$font-size-lg;
+        font-weight: 600;
+        color: abstracts.$primary-color;
+        margin-bottom: abstracts.$spacing-md;
+      }
+
+      p {
+        font-family: 'Courier New', monospace;
+        font-weight: 500;
+        margin-bottom: abstracts.$spacing-xs;
+        color: abstracts.$text-color;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    // Directions Modal Specific Styles
+    &__directions {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    &__transport-section {
+      margin-bottom: abstracts.$spacing-lg;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      h3 {
+        font-size: abstracts.$font-size-lg;
+        font-weight: 600;
+        color: abstracts.$primary-color;
+        margin-bottom: abstracts.$spacing-md;
+        display: flex;
+        align-items: center;
+        gap: abstracts.$spacing-sm;
+      }
+
+      p {
+        font-size: abstracts.$font-size-md;
+        line-height: 1.7;
+        color: abstracts.$text-color;
+        background-color: #f8f9fa;
+        padding: abstracts.$spacing-md;
+        border-radius: 8px;
+        margin: 0;
+      }
+    }
+
+    &__transport-icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      color: abstracts.$primary-color;
+      
+      @media (max-width: abstracts.$breakpoint-sm) {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    // Coming Soon Modal Specific Styles
+    &__coming-soon {
+      text-align: center;
+      max-width: 400px;
+      margin: 0 auto;
+      padding: abstracts.$spacing-xl 0;
+
+      &-icon {
+        width: 80px;
+        height: 80px;
+        margin-bottom: abstracts.$spacing-lg;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        color: abstracts.$primary-color;
+        
+        @media (max-width: abstracts.$breakpoint-md) {
+          width: 64px;
+          height: 64px;
+        }
+
+        svg {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      h3 {
+        font-size: abstracts.$font-size-lg;
+        font-weight: 600;
+        color: abstracts.$primary-color;
+        margin-bottom: abstracts.$spacing-md;
+      }
+
+      p {
+        font-size: abstracts.$font-size-md;
+        line-height: 1.6;
+        color: abstracts.$text-color;
+        margin: 0;
+      }
+    }
+  }
 }
+

@@ -15,6 +15,9 @@ import { StructuredDataService } from '../../services/structured-data.service';
 })
 export class HomeComponent implements OnInit {
   private isBrowser: boolean;
+  private scrollPosition = 0;
+  isModalOpen = false;
+  currentModal: 'map' | 'directions' | 'villages' | null = null;
 
   constructor(
     @Inject(PLATFORM_ID) platformId: Object,
@@ -29,6 +32,40 @@ export class HomeComponent implements OnInit {
     this.updateSEO();
     // Fragment handling is now managed by navbar component
     // No need to handle fragments here anymore
+  }
+
+  openModal(type: 'map' | 'directions' | 'villages'): void {
+    this.currentModal = type;
+    this.isModalOpen = true;
+    if (this.isBrowser) {
+      this.scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+      document.body.style.top = `-${this.scrollPosition}px`;
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.classList.add('modal-open');
+    }
+  }
+
+  closeModal(event?: Event): void {
+    if (event && event.target !== event.currentTarget) {
+      return;
+    }
+    this.isModalOpen = false;
+    this.currentModal = null;
+    if (this.isBrowser) {
+      document.body.classList.remove('modal-open');
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      // Use requestAnimationFrame to ensure the scroll happens after DOM updates
+      requestAnimationFrame(() => {
+        window.scrollTo({
+          top: this.scrollPosition,
+          left: 0,
+          behavior: 'instant'
+        });
+      });
+    }
   }
 
   private updateSEO(): void {
