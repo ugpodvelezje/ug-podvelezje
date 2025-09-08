@@ -15,6 +15,7 @@ import { StructuredDataService } from '../../services/structured-data.service';
 })
 export class HomeComponent implements OnInit {
   private isBrowser: boolean;
+  private scrollPosition = 0;
   isModalOpen = false;
   currentModal: 'map' | 'directions' | 'villages' | null = null;
 
@@ -37,6 +38,10 @@ export class HomeComponent implements OnInit {
     this.currentModal = type;
     this.isModalOpen = true;
     if (this.isBrowser) {
+      this.scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+      document.body.style.top = `-${this.scrollPosition}px`;
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
       document.body.classList.add('modal-open');
     }
   }
@@ -49,6 +54,17 @@ export class HomeComponent implements OnInit {
     this.currentModal = null;
     if (this.isBrowser) {
       document.body.classList.remove('modal-open');
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      // Use requestAnimationFrame to ensure the scroll happens after DOM updates
+      requestAnimationFrame(() => {
+        window.scrollTo({
+          top: this.scrollPosition,
+          left: 0,
+          behavior: 'instant'
+        });
+      });
     }
   }
 
