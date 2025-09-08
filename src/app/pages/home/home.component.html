@@ -51,10 +51,96 @@
     </div>
   </section>
 
+  <!-- Content Navigation Section -->
+  <section class="content-navigation" id="content-navigation">
+    <div class="content-navigation__header">
+      <h2 class="content-navigation__title">Otkrijte Podveležje</h2>
+      <div class="content-navigation__divider"></div>
+    </div>
+    <div class="content-navigation__links">
+      <button (click)="openModal('map')" class="content-navigation__link content-navigation__button">Podveležje na mapi</button>
+      <button (click)="openModal('directions')" class="content-navigation__link content-navigation__button">Kako doći do Podveležja</button>
+      <button (click)="openModal('villages')" class="content-navigation__link content-navigation__button">Sela Podveležja</button>
+    </div>
+  </section>
+
   <!-- Join Us Section -->
   <section id="join-us">
     <app-join-us></app-join-us>
   </section>
+
+  <!-- Modal Component -->
+  <div class="modal" [class.modal--visible]="isModalOpen" (click)="closeModal($event)">
+    <div class="modal__content" (click)="$event.stopPropagation()">
+      <button class="modal__close" (click)="closeModal()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <!-- Map Modal Content -->
+      <div class="modal__body" *ngIf="currentModal === 'map'">
+        <h2 class="modal__title">Podveležje na mapi</h2>
+        <div class="modal__map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23104.89!2d17.9067!3d43.3103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x134c0eb5c0e7c5a7%3A0x8b5e5c5e5e5e5e5e!2sPodvelezje%2C%20Bosnia%20and%20Herzegovina!5e0!3m2!1sen!2sba!4v1635000000000!5m2!1sen!2sba"
+            width="100%" 
+            height="400" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <div class="modal__coordinates">
+          <h3>Geografske koordinate Podveležja:</h3>
+          <p><strong>Širina:</strong> 43°18'37"N</p>
+          <p><strong>Dužina:</strong> 17°54'20"E</p>
+        </div>
+      </div>
+
+      <!-- Directions Modal Content -->
+      <div class="modal__body" *ngIf="currentModal === 'directions'">
+        <h2 class="modal__title">Kako doći do Podveležja</h2>
+        <div class="modal__directions">
+          <div class="modal__transport-section">
+            <h3>🚗 Automobilski saobraćaj</h3>
+            <p>
+              Podveležje je dostupno preko regionalne ceste koja se odvaja od magistralne ceste Mostar-Trebinje. 
+              Udaljenost od Mostara je približno 25 kilometara, a vožnja traje oko 30 minuta kroz 
+              prekrasne hercegovačke krajolike.
+            </p>
+          </div>
+          
+          <div class="modal__transport-section">
+            <h3>🚌 Javni prevoz</h3>
+            <p>
+              Redovne autobusne linije povezuju Podveležje sa Mostarom i okolnim mjestima. Autobusi saobraćaju 
+              nekoliko puta dnevno, omogućavajući praktičnu povezanost sa urbanim centrima Hercegovačko-neretvanskog kantona.
+            </p>
+          </div>
+          
+          <div class="modal__transport-section">
+            <h3>🥾 Planinski pristupi</h3>
+            <p>
+              Za ljubitelje prirode i planinare, Podveležje je dostupno preko označenih planinarskih staza 
+              koje povezuju regiju sa vrhovima planine Velež i susjednim planinama Hercegovine.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Villages Modal Content -->
+      <div class="modal__body" *ngIf="currentModal === 'villages'">
+        <h2 class="modal__title">Sela Podveležja</h2>
+        <div class="modal__coming-soon">
+          <div class="modal__coming-soon-icon">🚧</div>
+          <h3>Uskoro dostupno</h3>
+          <p>Radimo na pripremi detaljnih informacija o selima Podveležja. Ova sekcija će uskoro biti dostupna sa kompletnim podacima o svim naseljima u našoj regiji.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Additional home page content will go here -->
 </div>

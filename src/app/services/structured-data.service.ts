@@ -127,8 +127,8 @@ export class StructuredDataService {
       },
       geo: {
         '@type': 'GeoCoordinates',
-        latitude: 43.2163,
-        longitude: 17.8908
+        latitude: 43.3103,
+        longitude: 17.9056
       },
       telephone: '+387-36-XXX-XXX',
       email: 'info@podvelezje.ba',
@@ -256,8 +256,8 @@ export class StructuredDataService {
       },
       geo: {
         '@type': 'GeoCoordinates',
-        latitude: 43.2163,
-        longitude: 17.8908
+        latitude: 43.3103,
+        longitude: 17.9056
       },
       touristType: ['Cultural Tourism', 'Heritage Tourism', 'Nature Tourism'],
       isAccessibleForFree: true,

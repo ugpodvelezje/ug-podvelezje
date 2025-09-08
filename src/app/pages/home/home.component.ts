@@ -15,6 +15,8 @@ import { StructuredDataService } from '../../services/structured-data.service';
 })
 export class HomeComponent implements OnInit {
   private isBrowser: boolean;
+  isModalOpen = false;
+  currentModal: 'map' | 'directions' | 'villages' | null = null;
 
   constructor(
     @Inject(PLATFORM_ID) platformId: Object,
@@ -29,6 +31,25 @@ export class HomeComponent implements OnInit {
     this.updateSEO();
     // Fragment handling is now managed by navbar component
     // No need to handle fragments here anymore
+  }
+
+  openModal(type: 'map' | 'directions' | 'villages'): void {
+    this.currentModal = type;
+    this.isModalOpen = true;
+    if (this.isBrowser) {
+      document.body.classList.add('modal-open');
+    }
+  }
+
+  closeModal(event?: Event): void {
+    if (event && event.target !== event.currentTarget) {
+      return;
+    }
+    this.isModalOpen = false;
+    this.currentModal = null;
+    if (this.isBrowser) {
+      document.body.classList.remove('modal-open');
+    }
   }
 
   private updateSEO(): void {

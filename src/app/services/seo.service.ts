@@ -129,8 +129,8 @@ export class SeoService {
   updateGeographicMeta(): void {
     this.meta.updateTag({ name: 'geo.region', content: 'BA-BIH' });
     this.meta.updateTag({ name: 'geo.placename', content: 'Podvelezje, Bosnia and Herzegovina' });
-    this.meta.updateTag({ name: 'geo.position', content: '43.2163;17.8908' });
-    this.meta.updateTag({ name: 'ICBM', content: '43.2163, 17.8908' });
+    this.meta.updateTag({ name: 'geo.position', content: '43.3103;17.9056' });
+    this.meta.updateTag({ name: 'ICBM', content: '43.3103, 17.9056' });
   }
 
   addHreflangTags(): void {
