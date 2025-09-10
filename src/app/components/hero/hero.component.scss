@@ -89,17 +89,19 @@
     @include abstracts.font-secondary;
     font-size: calc(abstracts.$font-size-xxl * 1.2);
     font-weight: 700;
-    margin-bottom: abstracts.$spacing-xl;
+    margin-bottom: abstracts.$spacing-sm; // Reduced from xl to sm
     color: abstracts.$light-color;
     text-align: center;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
     
     @include abstracts.respond-to(sm) {
       font-size: calc(abstracts.$font-size-xxl * 1.4);
+      margin-bottom: abstracts.$spacing-md;
     }
     
     @include abstracts.respond-to(md) {
       font-size: abstracts.$font-size-hero;
+      margin-bottom: abstracts.$spacing-lg;
     }
   }
   
@@ -135,36 +137,71 @@
     }
   }
   
-  // Subtitle
-  &__subtitle {
-    font-size: abstracts.$font-size-lg;
-    font-weight: 500;
-    color: abstracts.$light-color;
-    text-align: center;
-    margin-bottom: abstracts.$spacing-xl;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  // Subtitle container with fixed dimensions
+  &__subtitle-container {
     position: relative;
-    padding-bottom: abstracts.$spacing-md;
+    width: 100%;
+    max-width: 500px;
+    height: 45px; // Reduced height for mobile
+    margin-top: 0; // No top margin - tight to title
+    margin-bottom: abstracts.$spacing-lg; // Less space below
+    @include abstracts.flex-center;
     
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: linear-gradient(to right, abstracts.$secondary-color, abstracts.$primary-color);
-      border-radius: 2px;
+    @include abstracts.respond-to(sm) {
+      height: 50px;
+      max-width: 600px;
+      margin-top: 0;
+    }
+    
+    @include abstracts.respond-to(md) {
+      height: 55px;
+      max-width: 700px;
+      margin-top: 0;
+    }
+    
+    @include abstracts.respond-to(lg) {
+      height: 60px;
+      max-width: 750px;
+      margin-top: 0;
+    }
+  }
+
+  // Subtitle with direct dropdown animation
+  &__subtitle {
+    font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: abstracts.$font-size-md;
+    font-weight: 500;
+    color: abstracts.$secondary-color;
+    text-align: center;
+    margin: 0;
+    padding: 0 abstracts.$spacing-sm;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    letter-spacing: 0.6px;
+    line-height: 1.2;
+    transform: translateY(-15px);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    width: 100%;
+    
+    &--visible {
+      transform: translateY(0);
+      opacity: 1;
     }
     
     @include abstracts.respond-to(sm) {
+      font-size: abstracts.$font-size-lg;
+      letter-spacing: 0.8px;
+      padding: 0 abstracts.$spacing-md;
+    }
+    
+    @include abstracts.respond-to(md) {
       font-size: abstracts.$font-size-xl;
-      padding-bottom: abstracts.$spacing-lg;
-      
-      &::after {
-        width: 120px;
-      }
+      letter-spacing: 1px;
+    }
+    
+    @include abstracts.respond-to(lg) {
+      font-size: calc(abstracts.$font-size-xl * 1.1);
+      letter-spacing: 1.2px;
     }
   }
   
