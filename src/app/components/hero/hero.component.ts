@@ -27,6 +27,17 @@ export class HeroComponent implements OnInit, OnDestroy {
   isFading = signal<boolean>(false);
   nextImage = signal<HeroImage | null>(null); // Store the next image to preload
   
+  // Subtitle management
+  private subtitles = [
+    'Čuvamo tradiciju i gradimo budućnost',
+    'Povezujemo zajednicu kroz vrijednosti', 
+    'Zajedno stvaramo bolje sutra'
+  ];
+  private subtitleInterval?: number;
+  private subtitleIndex = 0;
+  currentSubtitle = signal<string>(this.subtitles[0]);
+  isSubtitleVisible = signal<boolean>(false);
+  
   constructor(@Inject(PLATFORM_ID) platformId: Object) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
@@ -35,6 +46,7 @@ export class HeroComponent implements OnInit, OnDestroy {
     // Start the slideshow only in browser environment
     if (this.isBrowser) {
       this.startSlideshow();
+      this.startSubtitleAnimation();
     }
   }
   
@@ -42,6 +54,7 @@ export class HeroComponent implements OnInit, OnDestroy {
     // Clean up the interval when component is destroyed
     if (this.isBrowser) {
       this.stopSlideshow();
+      this.stopSubtitleAnimation();
     }
   }
   
@@ -117,6 +130,36 @@ export class HeroComponent implements OnInit, OnDestroy {
     
     if (this.slideshowInterval) {
       clearInterval(this.slideshowInterval);
+    }
+  }
+  
+  private startSubtitleAnimation(): void {
+    if (!this.isBrowser) return;
+    
+    // Start with first subtitle visible after a brief delay
+    setTimeout(() => {
+      this.isSubtitleVisible.set(true);
+    }, 1000);
+    
+    // Cycle through subtitles every 4 seconds
+    this.subtitleInterval = window.setInterval(() => {
+      // Hide current subtitle
+      this.isSubtitleVisible.set(false);
+      
+      // Wait for hide animation, then change subtitle and show
+      setTimeout(() => {
+        this.subtitleIndex = (this.subtitleIndex + 1) % this.subtitles.length;
+        this.currentSubtitle.set(this.subtitles[this.subtitleIndex]);
+        this.isSubtitleVisible.set(true);
+      }, 500); // Half second for hide animation
+    }, 4000);
+  }
+  
+  private stopSubtitleAnimation(): void {
+    if (!this.isBrowser) return;
+    
+    if (this.subtitleInterval) {
+      clearInterval(this.subtitleInterval);
     }
   }
 }
