@@ -1,0 +1,100 @@
+<div class="modal-backdrop" (click)="onBackdropClick($event)">
+  <div class="modal-container">
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <div class="header-content">
+        <h2>
+          <span class="material-icons">group</span>
+          Lista članova
+        </h2>
+        <p class="subtitle">Ukupno {{ filteredMembers.length }} članova</p>
+      </div>
+      <button class="close-button" (click)="onClose()" aria-label="Zatvori">
+        <span class="material-icons">close</span>
+      </button>
+    </div>
+
+    <!-- Statistics Section -->
+    <div class="statistics-bar">
+      <div class="stat-item">
+        <span class="stat-number">{{ memberStats.total }}</span>
+        <span class="stat-label">Ukupno</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">{{ memberStats.gold }}</span>
+        <span class="stat-label">Zlatni</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">{{ memberStats.regular }}</span>
+        <span class="stat-label">Redovni</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">{{ memberStats.honorary }}</span>
+        <span class="stat-label">Počasni</span>
+      </div>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="filter-section">
+      <div class="filter-buttons">
+        <button
+          class="filter-btn"
+          [class.active]="selectedFilter === 'All'"
+          (click)="filterByType('All')">
+          Svi članovi
+        </button>
+        <button
+          class="filter-btn"
+          [class.active]="selectedFilter === 'Gold'"
+          (click)="filterByType('Gold')">
+          Zlatni
+        </button>
+        <button
+          class="filter-btn"
+          [class.active]="selectedFilter === 'Regular'"
+          (click)="filterByType('Regular')">
+          Redovni
+        </button>
+        <button
+          class="filter-btn"
+          [class.active]="selectedFilter === 'Honorary'"
+          (click)="filterByType('Honorary')">
+          Počasni
+        </button>
+      </div>
+    </div>
+
+    <!-- Members Table -->
+    <div class="table-container">
+      @if (filteredMembers.length > 0) {
+        <table class="members-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Ime i prezime</th>
+              <th>Tip članstva</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (member of filteredMembers; track member.id; let i = $index) {
+              <tr>
+                <td class="number-col">{{ i + 1 }}</td>
+                <td class="name-col">{{ member.name }}</td>
+                <td class="type-col">
+                  <span class="membership-badge" [ngClass]="getMembershipTypeBadgeClass(member.membershipType)">
+                    {{ getMembershipTypeLabel(member.membershipType) }}
+                  </span>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      } @else {
+        <div class="empty-state">
+          <span class="material-icons">search_off</span>
+          <p>Nema pronađenih članova</p>
+        </div>
+      }
+    </div>
+  </div>
+</div>
