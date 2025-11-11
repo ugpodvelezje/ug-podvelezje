@@ -23,6 +23,14 @@ export class HeroesComponent implements OnInit, OnDestroy {
     'Juli', 'August', 'Septembar', 'Oktobar', 'Novembar', 'Decembar'
   ];
 
+  // Filter state
+  selectedMonth: string | null = null;
+  isFilterOpen = false;
+  availableMonths: string[] = [];
+
+  // Auto-slide toggle state
+  isAutoSlideEnabled = true;
+
   heroes: Hero[] = [
     // January
     {
@@ -845,6 +853,14 @@ export class HeroesComponent implements OnInit, OnDestroy {
       this.activeSlideIndices.set(month, 0);
       this.isUserInteracting[month] = false;
     });
+    this.initializeAvailableMonths();
+  }
+
+  private initializeAvailableMonths() {
+    // Get only months that have heroes
+    this.availableMonths = this.months.filter(month =>
+      this.heroes.some(hero => hero.month === month)
+    );
   }
 
   private checkScreenSize() {
@@ -905,13 +921,18 @@ export class HeroesComponent implements OnInit, OnDestroy {
     // Reset any existing timers
     this.slideTimers[month]?.unsubscribe();
     this.progressTimers[month]?.unsubscribe();
-    
+
     // Initialize progress
     this.progress[month] = 0;
 
-    // Create progress timer (updates every 50ms) - only if not user interacting
+    // Only start auto-slide if enabled
+    if (!this.isAutoSlideEnabled) {
+      return;
+    }
+
+    // Create progress timer (updates every 50ms) - only if not user interacting and auto-slide enabled
     this.progressTimers[month] = interval(50).subscribe(() => {
-      if (!this.isUserInteracting[month]) {
+      if (!this.isUserInteracting[month] && this.isAutoSlideEnabled) {
         this.progress[month] = this.progress[month] + (50 / this.autoSlideInterval) * 100;
         // Ensure progress doesn't exceed 100
         if (this.progress[month] >= 100) {
@@ -920,9 +941,9 @@ export class HeroesComponent implements OnInit, OnDestroy {
       }
     });
 
-    // Create slide timer - only advance if not user interacting
+    // Create slide timer - only advance if not user interacting and auto-slide enabled
     this.slideTimers[month] = interval(this.autoSlideInterval).subscribe(() => {
-      if (!this.isUserInteracting[month]) {
+      if (!this.isUserInteracting[month] && this.isAutoSlideEnabled) {
         this.isTimerTriggered = true; // Mark as timer-triggered
         this.nextSlide(month);
         this.progress[month] = 0; // Reset progress after slide
@@ -1020,13 +1041,18 @@ export class HeroesComponent implements OnInit, OnDestroy {
       this.progressTimers[month].unsubscribe();
       delete this.progressTimers[month];
     }
-    
+
     // Reset progress
     this.progress[month] = 0;
-    
+
+    // Only create new progress timer if auto-slide is enabled
+    if (!this.isAutoSlideEnabled) {
+      return;
+    }
+
     // Create new progress timer
     this.progressTimers[month] = interval(50).subscribe(() => {
-      if (!this.isUserInteracting[month]) {
+      if (!this.isUserInteracting[month] && this.isAutoSlideEnabled) {
         this.progress[month] = this.progress[month] + (50 / this.autoSlideInterval) * 100;
         // Ensure progress doesn't exceed 100
         if (this.progress[month] >= 100) {
@@ -1034,5 +1060,75 @@ export class HeroesComponent implements OnInit, OnDestroy {
         }
       }
     });
+  }
+
+  // Filter methods
+  toggleFilter() {
+    this.isFilterOpen = !this.isFilterOpen;
+  }
+
+  selectMonth(month: string) {
+    this.selectedMonth = month;
+    this.isFilterOpen = false;
+
+    // Restart auto-slide for the selected month if it has more than 1 hero
+    setTimeout(() => {
+      if (this.getHeroesForMonth(month).length > 1) {
+        this.startAutoSlide(month);
+      }
+    }, 100);
+  }
+
+  clearFilter() {
+    this.selectedMonth = null;
+    this.isFilterOpen = false;
+
+    // Restart auto-slide for all months
+    setTimeout(() => {
+      this.months.forEach(month => {
+        if (this.getHeroesForMonth(month).length > 1) {
+          this.startAutoSlide(month);
+        }
+      });
+    }, 100);
+  }
+
+  getFilteredMonths(): string[] {
+    if (this.selectedMonth) {
+      return [this.selectedMonth];
+    }
+    return this.months;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.filter-dropdown')) {
+      this.isFilterOpen = false;
+    }
+  }
+
+  // Auto-slide toggle method
+  toggleAutoSlide() {
+    this.isAutoSlideEnabled = !this.isAutoSlideEnabled;
+
+    if (this.isAutoSlideEnabled) {
+      // Resume auto-slide for all visible months
+      const visibleMonths = this.getFilteredMonths();
+      setTimeout(() => {
+        visibleMonths.forEach(month => {
+          if (this.getHeroesForMonth(month).length > 1) {
+            this.startAutoSlide(month);
+          }
+        });
+      }, 100);
+    } else {
+      // Stop all auto-slide timers and reset progress
+      Object.keys(this.slideTimers).forEach(month => {
+        this.slideTimers[month]?.unsubscribe();
+        this.progressTimers[month]?.unsubscribe();
+        this.progress[month] = 0;
+      });
+    }
   }
 } 

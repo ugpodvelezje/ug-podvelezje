@@ -9,7 +9,7 @@
     <div class="description-content">
       <h2 class="description-title">Naši heroji kroz historiju</h2>
       <p class="description-text">
-        Na ovoj stranici predstavljamo heroje koji su svojim životom, djelom i žrtvom označili najslavnije stranice historije našeg naroda. 
+        Na ovoj stranici predstavljamo heroje koji su svojim životom, djelom i žrtvom označili najslavnije stranice historije našeg naroda.
         Ovo su ljudi koji su se borili za slobodu, pravdu i dostojanstvo, ostavivši neizbrisiv trag u kolektivnoj memoriji naše zajednice.
       </p>
       <p class="description-text">
@@ -21,9 +21,66 @@
       </p>
     </div>
   </div>
-  
+
+  <!-- Filter & Controls Section -->
+  <div class="filter-section">
+    <div class="controls-container">
+      <!-- Month Filter -->
+      <div class="control-group filter-group">
+        <div class="control-label">
+          <span>Filtriranje po mjesecu:</span>
+        </div>
+        <div class="filter-dropdown">
+          <button class="filter-button" (click)="toggleFilter()">
+            <span class="filter-text">{{ selectedMonth || 'Svi mjeseci' }}</span>
+            <span class="dropdown-arrow" [class.open]="isFilterOpen">▼</span>
+          </button>
+          <div class="dropdown-menu" [class.show]="isFilterOpen">
+            <div class="dropdown-item"
+                 [class.selected]="selectedMonth === null"
+                 (click)="clearFilter()">
+              <span>Svi mjeseci</span>
+              <span class="check-icon" *ngIf="selectedMonth === null">✓</span>
+            </div>
+            <div class="dropdown-divider"></div>
+            <div *ngFor="let month of availableMonths"
+                 class="dropdown-item"
+                 [class.selected]="selectedMonth === month"
+                 (click)="selectMonth(month)">
+              <span>{{ month }}</span>
+              <span class="check-icon" *ngIf="selectedMonth === month">✓</span>
+            </div>
+          </div>
+        </div>
+        <button *ngIf="selectedMonth"
+                class="clear-filter-button"
+                (click)="clearFilter()"
+                title="Obriši filter">
+          ✕
+        </button>
+      </div>
+
+      <!-- Divider -->
+      <div class="controls-divider"></div>
+
+      <!-- Auto-slide Toggle -->
+      <div class="control-group toggle-group" (click)="toggleAutoSlide()">
+        <div class="control-label">
+          <span>Automatsko klizanje:</span>
+        </div>
+        <div class="toggle-switch">
+          <input type="checkbox" [checked]="isAutoSlideEnabled" readonly>
+          <span class="slider"></span>
+        </div>
+        <span class="toggle-status" [class.active]="isAutoSlideEnabled">
+          {{ isAutoSlideEnabled ? 'Uključeno' : 'Isključeno' }}
+        </span>
+      </div>
+    </div>
+  </div>
+
   <div class="months-grid">
-    <div *ngFor="let month of months" class="month-section">
+    <div *ngFor="let month of getFilteredMonths()" class="month-section">
       <h2 class="month-title">{{ month }}</h2>
       <div class="hero-carousel" *ngIf="getHeroesForMonth(month).length > 0">
         <div class="carousel-wrapper" [class.mobile]="isMobile">
@@ -37,7 +94,7 @@
                 <h3>{{ getCurrentHero(month).name }}</h3>
                 <p>{{ getCurrentHero(month).description }}</p>
               </div>
-              <div class="circular-timer">
+              <div *ngIf="isAutoSlideEnabled" class="circular-timer">
                 <svg viewBox="0 0 36 36">
                   <path class="circle-bg"
                     d="M18 2.0845
@@ -69,7 +126,7 @@
                   <h3>{{ hero.name }}</h3>
                   <p>{{ hero.description }}</p>
                 </div>
-                <div *ngIf="i === 1" class="circular-timer">
+                <div *ngIf="i === 1 && isAutoSlideEnabled" class="circular-timer">
                   <svg viewBox="0 0 36 36">
                     <path class="circle-bg"
                       d="M18 2.0845

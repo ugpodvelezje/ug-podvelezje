@@ -78,10 +78,10 @@
 }
 
 .heroes-description {
-  margin: 0 auto $spacing-xxl;
+  margin: 0 auto $spacing-xl;
   max-width: 900px;
 
-  @media (max-width: 768px) { margin-bottom: $spacing-xl; }
+  @media (max-width: 768px) { margin-bottom: $spacing-lg; }
 
   .description-content {
     background: rgba($primary-color, 0.03);
@@ -150,6 +150,381 @@
       }
     }
   }
+}
+
+// Filter Section
+.filter-section {
+  margin: 0 auto $spacing-xxl;
+  max-width: 1000px;
+  padding: 0 $spacing-xl;
+
+  @media (max-width: 768px) {
+    margin-bottom: $spacing-xl;
+    padding: 0 $spacing-md;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 $spacing-xs;
+  }
+}
+
+.controls-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-xl;
+  background: rgba($primary-color, 0.02);
+  border: 2px solid rgba($primary-color, 0.1);
+  border-radius: $border-radius-lg;
+  padding: $spacing-lg $spacing-xl;
+  transition: all 0.3s ease;
+
+  @media (max-width: 992px) {
+    flex-direction: column;
+    gap: $spacing-lg;
+  }
+
+  @media (max-width: 768px) {
+    padding: $spacing-md $spacing-lg;
+  }
+
+  @media (max-width: 480px) {
+    padding: $spacing-sm $spacing-md;
+  }
+
+  &:hover {
+    border-color: rgba($primary-color, 0.2);
+    background: rgba($primary-color, 0.03);
+  }
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  flex: 1;
+
+  @media (max-width: 992px) {
+    width: 100%;
+    justify-content: center;
+  }
+
+  @media (max-width: 576px) {
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+  }
+
+  &.filter-group {
+    @media (max-width: 576px) {
+      justify-content: flex-start;
+    }
+  }
+
+  &.toggle-group {
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+
+    @media (max-width: 992px) {
+      justify-content: center;
+    }
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  .control-label {
+    display: flex;
+    align-items: center;
+    color: $primary-color;
+    font-weight: 600;
+    font-size: $font-size-md;
+    white-space: nowrap;
+
+    @media (max-width: 768px) {
+      font-size: $font-size-sm;
+    }
+
+    @media (max-width: 576px) {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+}
+
+.controls-divider {
+  width: 2px;
+  height: 48px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba($primary-color, 0.2) 20%,
+    rgba($primary-color, 0.2) 80%,
+    transparent
+  );
+
+  @media (max-width: 992px) {
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba($primary-color, 0.2) 20%,
+      rgba($primary-color, 0.2) 80%,
+      transparent
+    );
+  }
+}
+
+.filter-dropdown {
+  position: relative;
+  flex: 1;
+  max-width: 300px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .filter-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-md;
+    background: white;
+    border: 2px solid rgba($primary-color, 0.2);
+    border-radius: $border-radius-md;
+    padding: $spacing-md $spacing-lg;
+    font-size: $font-size-md;
+    font-weight: 500;
+    color: $text-color;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    @media (max-width: 480px) {
+      padding: $spacing-sm $spacing-md;
+      font-size: $font-size-sm;
+    }
+
+    &:hover {
+      border-color: $primary-color;
+      background: rgba($primary-color, 0.02);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    .filter-text {
+      flex: 1;
+      text-align: left;
+      color: $primary-color;
+      font-weight: 600;
+    }
+
+    .dropdown-arrow {
+      transition: transform 0.3s ease;
+      color: $primary-color;
+      font-size: $font-size-sm;
+
+      &.open {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: white;
+    border: 2px solid rgba($primary-color, 0.15);
+    border-radius: $border-radius-md;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 100;
+
+    &.show {
+      max-height: 400px;
+      opacity: 1;
+      transform: translateY(0);
+      overflow-y: auto;
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: $spacing-md $spacing-lg;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: $text-color;
+      font-size: $font-size-md;
+
+      @media (max-width: 480px) {
+        padding: $spacing-sm $spacing-md;
+        font-size: $font-size-sm;
+      }
+
+      &:hover {
+        background: rgba($primary-color, 0.05);
+        color: $primary-color;
+      }
+
+      &.selected {
+        background: rgba($primary-color, 0.08);
+        color: $primary-color;
+        font-weight: 600;
+      }
+
+      .check-icon {
+        color: $primary-color;
+        font-weight: bold;
+        font-size: $font-size-lg;
+      }
+    }
+
+    .dropdown-divider {
+      height: 1px;
+      background: rgba($primary-color, 0.1);
+      margin: $spacing-xs 0;
+    }
+  }
+}
+
+.clear-filter-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba($primary-color, 0.1);
+  border: 2px solid rgba($primary-color, 0.2);
+  border-radius: 50%;
+  color: $primary-color;
+  font-size: $font-size-lg;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 32px;
+    height: 32px;
+    font-size: $font-size-md;
+  }
+
+  &:hover {
+    background: $primary-color;
+    color: white;
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 4px 12px rgba($primary-color, 0.3);
+  }
+
+  &:active {
+    transform: rotate(90deg) scale(0.95);
+  }
+}
+
+// Toggle status text
+.toggle-status {
+  color: rgba($text-color, 0.7);
+  font-size: $font-size-sm;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+
+  @media (max-width: 768px) {
+    font-size: $font-size-xs;
+  }
+
+  &.active {
+    color: $primary-color;
+    font-weight: 600;
+  }
+}
+
+// Modern Toggle Switch
+.toggle-switch {
+  position: relative;
+  width: 56px;
+  height: 28px;
+  display: inline-block;
+  flex-shrink: 0;
+  pointer-events: none; // Prevent double-click handling since parent handles click
+
+  @media (max-width: 768px) {
+    width: 48px;
+    height: 24px;
+  }
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($border-color, 0.5);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 28px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    &:before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+      @media (max-width: 768px) {
+        height: 16px;
+        width: 16px;
+      }
+    }
+  }
+
+  input:checked + .slider {
+    background-color: $primary-color;
+    box-shadow: 0 0 12px rgba($primary-color, 0.3);
+
+    &:before {
+      transform: translateX(28px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
+      @media (max-width: 768px) {
+        transform: translateX(24px);
+      }
+    }
+  }
+}
+
+.toggle-group:hover .slider {
+  box-shadow: 0 0 8px rgba($primary-color, 0.2);
+}
+
+.toggle-group:hover input:checked + .slider {
+  box-shadow: 0 0 16px rgba($primary-color, 0.4);
 }
 
 .months-grid {
