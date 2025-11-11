@@ -24,44 +24,50 @@
 
   <!-- Filter & Controls Section -->
   <div class="filter-section">
-    <div class="filter-container">
-      <div class="filter-label">
-        <span>Filtriranje po mjesecu:</span>
-      </div>
-      <div class="filter-dropdown">
-        <button class="filter-button" (click)="toggleFilter()">
-          <span class="filter-text">{{ selectedMonth || 'Svi mjeseci' }}</span>
-          <span class="dropdown-arrow" [class.open]="isFilterOpen">▼</span>
-        </button>
-        <div class="dropdown-menu" [class.show]="isFilterOpen">
-          <div class="dropdown-item"
-               [class.selected]="selectedMonth === null"
-               (click)="clearFilter()">
-            <span>Svi mjeseci</span>
-            <span class="check-icon" *ngIf="selectedMonth === null">✓</span>
-          </div>
-          <div class="dropdown-divider"></div>
-          <div *ngFor="let month of availableMonths"
-               class="dropdown-item"
-               [class.selected]="selectedMonth === month"
-               (click)="selectMonth(month)">
-            <span>{{ month }}</span>
-            <span class="check-icon" *ngIf="selectedMonth === month">✓</span>
+    <div class="controls-container">
+      <!-- Month Filter -->
+      <div class="control-group filter-group">
+        <div class="control-label">
+          <span>Filtriranje po mjesecu:</span>
+        </div>
+        <div class="filter-dropdown">
+          <button class="filter-button" (click)="toggleFilter()">
+            <span class="filter-text">{{ selectedMonth || 'Svi mjeseci' }}</span>
+            <span class="dropdown-arrow" [class.open]="isFilterOpen">▼</span>
+          </button>
+          <div class="dropdown-menu" [class.show]="isFilterOpen">
+            <div class="dropdown-item"
+                 [class.selected]="selectedMonth === null"
+                 (click)="clearFilter()">
+              <span>Svi mjeseci</span>
+              <span class="check-icon" *ngIf="selectedMonth === null">✓</span>
+            </div>
+            <div class="dropdown-divider"></div>
+            <div *ngFor="let month of availableMonths"
+                 class="dropdown-item"
+                 [class.selected]="selectedMonth === month"
+                 (click)="selectMonth(month)">
+              <span>{{ month }}</span>
+              <span class="check-icon" *ngIf="selectedMonth === month">✓</span>
+            </div>
           </div>
         </div>
+        <button *ngIf="selectedMonth"
+                class="clear-filter-button"
+                (click)="clearFilter()"
+                title="Obriši filter">
+          ✕
+        </button>
       </div>
-      <button *ngIf="selectedMonth"
-              class="clear-filter-button"
-              (click)="clearFilter()"
-              title="Obriši filter">
-        ✕
-      </button>
-    </div>
 
-    <!-- Auto-slide Toggle -->
-    <div class="auto-slide-toggle-container" (click)="toggleAutoSlide()">
-      <div class="toggle-label">
-        <span class="toggle-text">Automatsko klizanje:</span>
+      <!-- Divider -->
+      <div class="controls-divider"></div>
+
+      <!-- Auto-slide Toggle -->
+      <div class="control-group toggle-group" (click)="toggleAutoSlide()">
+        <div class="control-label">
+          <span>Automatsko klizanje:</span>
+        </div>
         <div class="toggle-switch">
           <input type="checkbox" [checked]="isAutoSlideEnabled" readonly>
           <span class="slider"></span>
