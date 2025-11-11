@@ -89,18 +89,31 @@
       <div class="membership__info-section">
         <h3 class="membership__info-title">Način plaćanja</h3>
         <p class="membership__info-text">
-          Članarine možete platiti direktnim uplatom na račun udruženja ili prilikom posjete našoj kancelariji. 
+          Članarine možete platiti direktnim uplatom na račun udruženja ili prilikom posjete našoj kancelariji.
           Svi članovi dobijaju potvrdu o plaćenoj članarini i člansku karticu.
         </p>
       </div>
-      
+
       <div class="membership__info-section">
         <h3 class="membership__info-title">Obnavljanje članstva</h3>
         <p class="membership__info-text">
-          Članstvo se automatski obnavlja svake godine. Članovi će biti obaviješteni mjesec dana prije isteka 
+          Članstvo se automatski obnavlja svake godine. Članovi će biti obaviješteni mjesec dana prije isteka
           članstva s instrukcijama za obnovu.
         </p>
       </div>
     </div>
+
+    <!-- View All Members Button -->
+    <div class="membership__members-cta">
+      <button class="membership__view-members-btn" (click)="openMembersModal()">
+        <span class="material-icons">group</span>
+        Prikaži sve članove
+      </button>
+    </div>
   </div>
+
+  <!-- Members List Modal -->
+  @if (showMembersModal) {
+    <app-members-list-modal (closeModal)="closeMembersModal()"></app-members-list-modal>
+  }
 </section>

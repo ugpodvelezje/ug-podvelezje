@@ -146,6 +146,14 @@
         <div class="statistic-label">Facebook pratilaca</div>
       </div>
     </div>
+
+    <!-- View All Members Button -->
+    <div class="members-cta">
+      <button class="view-members-btn" (click)="openMembersModal()">
+        <span class="material-icons">group</span>
+        Prikaži sve članove
+      </button>
+    </div>
   </div>
 
   <!-- Partners Section -->
@@ -188,4 +196,9 @@
     </div>
     </div>
   </div>
+
+  <!-- Members List Modal -->
+  @if (showMembersModal) {
+    <app-members-list-modal (closeModal)="closeMembersModal()"></app-members-list-modal>
+  }
 </section>

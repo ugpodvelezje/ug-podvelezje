@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, inject, AfterViewInit, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserService } from '../../services/browser.service';
+import { MembersListModalComponent } from '../members-list-modal/members-list-modal.component';
 
 interface Partner {
   name: string;
@@ -16,7 +17,7 @@ interface MembershipBenefit {
 @Component({
   selector: 'app-join-us',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MembersListModalComponent],
   templateUrl: './join-us.component.html',
   styleUrls: ['./join-us.component.scss']
 })
@@ -31,6 +32,9 @@ export class JoinUsComponent implements OnInit, OnDestroy, AfterViewInit {
   private scrollSpeed = 0.5; // pixels per frame
   private cardWidth = 0;
   private isPaused = false;
+
+  // Modal state
+  public showMembersModal = false;
 
   // Statistics data
   public yearsOfWork = 1; // Founded in 2024
@@ -264,5 +268,13 @@ export class JoinUsComponent implements OnInit, OnDestroy, AfterViewInit {
     };
 
     requestAnimationFrame(animate);
+  }
+
+  public openMembersModal(): void {
+    this.showMembersModal = true;
+  }
+
+  public closeMembersModal(): void {
+    this.showMembersModal = false;
   }
 }
