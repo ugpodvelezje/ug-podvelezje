@@ -23,6 +23,11 @@ export class HeroesComponent implements OnInit, OnDestroy {
     'Juli', 'August', 'Septembar', 'Oktobar', 'Novembar', 'Decembar'
   ];
 
+  // Filter state
+  selectedMonth: string | null = null;
+  isFilterOpen = false;
+  availableMonths: string[] = [];
+
   heroes: Hero[] = [
     // January
     {
@@ -845,6 +850,14 @@ export class HeroesComponent implements OnInit, OnDestroy {
       this.activeSlideIndices.set(month, 0);
       this.isUserInteracting[month] = false;
     });
+    this.initializeAvailableMonths();
+  }
+
+  private initializeAvailableMonths() {
+    // Get only months that have heroes
+    this.availableMonths = this.months.filter(month =>
+      this.heroes.some(hero => hero.month === month)
+    );
   }
 
   private checkScreenSize() {
@@ -1020,10 +1033,10 @@ export class HeroesComponent implements OnInit, OnDestroy {
       this.progressTimers[month].unsubscribe();
       delete this.progressTimers[month];
     }
-    
+
     // Reset progress
     this.progress[month] = 0;
-    
+
     // Create new progress timer
     this.progressTimers[month] = interval(50).subscribe(() => {
       if (!this.isUserInteracting[month]) {
@@ -1034,5 +1047,51 @@ export class HeroesComponent implements OnInit, OnDestroy {
         }
       }
     });
+  }
+
+  // Filter methods
+  toggleFilter() {
+    this.isFilterOpen = !this.isFilterOpen;
+  }
+
+  selectMonth(month: string) {
+    this.selectedMonth = month;
+    this.isFilterOpen = false;
+
+    // Restart auto-slide for the selected month if it has more than 1 hero
+    setTimeout(() => {
+      if (this.getHeroesForMonth(month).length > 1) {
+        this.startAutoSlide(month);
+      }
+    }, 100);
+  }
+
+  clearFilter() {
+    this.selectedMonth = null;
+    this.isFilterOpen = false;
+
+    // Restart auto-slide for all months
+    setTimeout(() => {
+      this.months.forEach(month => {
+        if (this.getHeroesForMonth(month).length > 1) {
+          this.startAutoSlide(month);
+        }
+      });
+    }, 100);
+  }
+
+  getFilteredMonths(): string[] {
+    if (this.selectedMonth) {
+      return [this.selectedMonth];
+    }
+    return this.months;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.filter-dropdown')) {
+      this.isFilterOpen = false;
+    }
   }
 } 
