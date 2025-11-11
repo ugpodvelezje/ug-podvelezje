@@ -22,11 +22,10 @@
     </div>
   </div>
 
-  <!-- Filter Section -->
+  <!-- Filter & Controls Section -->
   <div class="filter-section">
     <div class="filter-container">
       <div class="filter-label">
-        <span class="filter-icon">🔍</span>
         <span>Filtriranje po mjesecu:</span>
       </div>
       <div class="filter-dropdown">
@@ -58,6 +57,20 @@
         ✕
       </button>
     </div>
+
+    <!-- Auto-slide Toggle -->
+    <div class="auto-slide-toggle-container" (click)="toggleAutoSlide()">
+      <div class="toggle-label">
+        <span class="toggle-text">Automatsko klizanje:</span>
+        <div class="toggle-switch">
+          <input type="checkbox" [checked]="isAutoSlideEnabled" readonly>
+          <span class="slider"></span>
+        </div>
+        <span class="toggle-status" [class.active]="isAutoSlideEnabled">
+          {{ isAutoSlideEnabled ? 'Uključeno' : 'Isključeno' }}
+        </span>
+      </div>
+    </div>
   </div>
 
   <div class="months-grid">
@@ -75,7 +88,7 @@
                 <h3>{{ getCurrentHero(month).name }}</h3>
                 <p>{{ getCurrentHero(month).description }}</p>
               </div>
-              <div class="circular-timer">
+              <div *ngIf="isAutoSlideEnabled" class="circular-timer">
                 <svg viewBox="0 0 36 36">
                   <path class="circle-bg"
                     d="M18 2.0845
@@ -107,7 +120,7 @@
                   <h3>{{ hero.name }}</h3>
                   <p>{{ hero.description }}</p>
                 </div>
-                <div *ngIf="i === 1" class="circular-timer">
+                <div *ngIf="i === 1 && isAutoSlideEnabled" class="circular-timer">
                   <svg viewBox="0 0 36 36">
                     <path class="circle-bg"
                       d="M18 2.0845
